@@ -3,19 +3,33 @@
   <head>
     <meta charset="utf-8">
     <title>Photo Gallery</title>
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Nunito:300,400,700" />
+     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Exo+2:100,200,300|Nunito" />
     <link rel="stylesheet" href="fa-4.6.3/css/font-awesome.min.css" />
     <link rel="stylesheet" href="css/normalize.css" />
     <link rel="stylesheet" href="css/main.css" />
   </head>
   <body>
     <div class="container">
-      <i class="fa fa-picture-o fa-3x" aria-hidden="true"></i>
-      <input type="text" name="search">
+
+      <section id="search">
+        <i class="fa fa-viadeo-square fa-3x" aria-hidden="true"></i>
+        <label for="main-search">
+          <i class="fa fa-search" aria-hidden="true"></i>
+        </label>
+        <input id="main-search" type="text" name="search">
+      </section>
+      <!-- End Search -->
+
+      <section id="gallery">
+        <!-- Output from script.js -->
+      </section>
+      <!-- End Gallery -->
+
     </div>
 
     <!-- JavaScript Includes -->
     <script src="js/jquery-3.0.0.min.js"></script>
+    <script src="js/imgData.js"></script>
     <script src="js/script.js"></script>
 
   </body>
