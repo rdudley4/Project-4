@@ -8,7 +8,9 @@ body {
   line-height: 1.5;
 }
 
-img { max-width: 100%; }
+img {
+  max-width: 100%;
+}
 
 .container {
   max-width       : 980px;
@@ -18,21 +20,34 @@ img { max-width: 100%; }
   text-align      : center;
 }
 
+a {
+  text-decoration: none;
+  color          : #2c3e50;
+  transition     : color 0.4s ease;
+}
+
+a:focus {
+  outline: none;
+}
 
 /* Search box */
 input[name="search"] {
-  width    : 85%;
-  max-width: 460px;
-  padding  : 10px;
-  padding-left: 30px;
-  font-size: 16px;
-  border: 2px solid #ccc;
+  width        : 85%;
+  max-width    : 460px;
+  padding      : 10px 10px 10px 30px;
+  font-size    : 16px;
+  border       : 2px solid #ccc;
   border-radius: 21px;
-  transition: border-color .5s ease;
+  transition   : border-color 0.5s ease;
 }
 
 input[name="search"]:focus {
   border-color: #16a085;
+}
+
+input[name="search"]:focus + label .fa {
+  color     : #16a085;
+  transition: color 0.5s ease;
 }
 
 .fa-viadeo-square {
@@ -41,14 +56,22 @@ input[name="search"]:focus {
   color        : #2980b9;
 }
 
+#search {
+  position: relative;
+}
+
 #search label {
-  display: none;
+  color   : #ccc;
+  position: absolute;
+  left    : 27.5%;
+  bottom  : 12%;
+  display : none;
 }
 
 /* Gallery */
 #gallery {
-  overflow: hidden;
-  margin-top: 45px;
+  overflow     : hidden;
+  margin-top   : 45px;
   margin-bottom: 20px;
 }
 
@@ -57,9 +80,13 @@ input[name="search"]:focus {
 }
 
 .image-card {
-  height: 200px;
-  margin: auto;
+  height       : 200px;
+  margin       : auto;
   border-radius: 50%;
+}
+
+.image-card:hover > a {
+  color: #16a085;
 }
 
 .image-card:not( :last-of-type ) {
@@ -67,17 +94,26 @@ input[name="search"]:focus {
 }
 
 .image-title {
-  display: block;
+  display    : block;
   font-weight: 200;
-  font-size: 1.15em;
-  padding: 10px;
+  font-size  : 1.15em;
+  padding    : 10px;
   font-family: 'Exo 2', sans-serif;
 }
 
+/* Lightbox */
+#lightbox {
+  position        : fixed;
+  top             : 0;
+  width           : 100%;
+  height          : 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  display         : none;
+}
 
 @media (min-width: 500px) {
   .container {
-    padding-left: 0;
+    padding-left : 0;
     padding-right: 0;
   }
 
@@ -93,10 +129,16 @@ input[name="search"]:focus {
   }
 }
 
+@media (min-width: 1000px) {
+  #search label {
+    display: inline-block;
+  }
+}
+
 @media (min-width: 1100px) {
   .image-card {
     margin-right: 60px;
-    width: auto;
+    width       : auto;
   }
 
   .image-card:nth-of-type(4n) {

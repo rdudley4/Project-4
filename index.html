@@ -6,30 +6,34 @@
      <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Exo+2:100,200,300|Nunito" />
     <link rel="stylesheet" href="fa-4.6.3/css/font-awesome.min.css" />
     <link rel="stylesheet" href="css/normalize.css" />
+    <link rel="stylesheet" href="js/animsition/animsition.min.css" />
     <link rel="stylesheet" href="css/main.css" />
   </head>
   <body>
-    <div class="container">
+    <div class="animsition">
+      <div class="container">
 
-      <section id="search">
-        <i class="fa fa-viadeo-square fa-3x" aria-hidden="true"></i>
-        <label for="main-search">
-          <i class="fa fa-search" aria-hidden="true"></i>
-        </label>
-        <input id="main-search" type="text" name="search">
-      </section>
-      <!-- End Search -->
+        <section id="search">
+          <i class="fa fa-viadeo-square fa-3x" aria-hidden="true"></i>
+          <input id="main-search" type="text" name="search" placeholder="Search images">
+          <label for="main-search">
+            <i class="fa fa-search" aria-hidden="true"></i>
+          </label>
+        </section>
+        <!-- End Search -->
 
-      <section id="gallery">
-        <!-- Output from script.js -->
-      </section>
-      <!-- End Gallery -->
+        <section id="gallery">
+          <!-- Output from script.js -->
+        </section>
+        <!-- End Gallery -->
 
+      </div>
     </div>
 
     <!-- JavaScript Includes -->
     <script src="js/jquery-3.0.0.min.js"></script>
     <script src="js/imgData.js"></script>
+    <script src="js/animsition/animsition.min.js"></script>
     <script src="js/script.js"></script>
 
   </body>
