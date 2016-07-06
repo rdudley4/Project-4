@@ -3,6 +3,7 @@ var imgDatabase = [
     src: 'img/01.jpg',
     thumbnail: '<img src="img/Thumbnails/01.jpg">',
     title: 'Day in a Field',
+    caption: 'This is an image description, where we say things about stuff. Look at it.',
     id: 1
   },
   {
@@ -71,4 +72,4 @@ var imgDatabase = [
     title: 'Field of Stuffs',
     id: 12
   },
-]
+];

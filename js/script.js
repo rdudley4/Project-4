@@ -1,6 +1,7 @@
 var currentImage;
-var $anchor = $( '#gallery a' );
-var $lightbox = $( '<div id="lightbox"></div>' );
+var $lightbox = $( '#lightbox' );
+var $lbImage = $( '.selected' );
+var $controls = $( '#controls' );
 
 $( 'body' ).append( $lightbox );
 
@@ -9,6 +10,7 @@ $( 'body' ).append( $lightbox );
         1a. Create a span for the title
     2. Get title from the objects title key
         2a. Append the title and thumbnail to card
+        2b. Get the title text and set it to our image-title text.
     3. Append completed card to the page. */
 function assembleImage( imageObject ) {
     var $imageCard = $( '<div class="image-card"></div>' );
@@ -17,8 +19,7 @@ function assembleImage( imageObject ) {
 
     $imageTitle.text( imageObject.title );
     $imageCard.append( $imageLink );
-    $imageLink.append( imageObject.thumbnail );
-    $imageLink.append( $imageTitle );
+    $imageLink.append( imageObject.thumbnail, $imageTitle );
     $( '#gallery' ).append( $imageCard );
 }
 
@@ -32,18 +33,40 @@ for ( var i = 0; i < imgDatabase.length; i++ ) {
 
 // Page loading animation
 $( '.animsition' ).animsition({
-  inClass: 'fade-in-down-lg',
-  outClass: 'fade-out-down-lg',
+  inClass: 'fade-in-left-lg',
+  outClass: 'fade-out-left-lg',
   inDuration: 1000,
-  outDuration: 600,
+  outDuration: 400
 });
 
-$( '.image-card' ).click( function( e ) {
+/* Prevent default link functionality
+    1. Fade in our light box on click. */
+$( '.image-card a' ).on( "click", function(e) {
+  var $clicked = $( this );
+  var currentSrc = $clicked.attr( 'href' );
+
   e.preventDefault();
-  console.log( 'Anchor has been clicked.' );
-  $lightbox.fadeIn( 'slow' );
+  $lbImage.attr( 'src', currentSrc );
+
+  $lightbox.fadeIn( 250 );
+  console.log('Lightbox Activated');
 } );
 
-$lightbox.click( function() {
-  $lightbox.fadeOut( 'slow' );
+// Control on click functions
+
+$controls.children( '.fa-chevron-left' ).on( 'click', function() {
+  console.log('Previous trigger has fired.');
+} );
+
+$controls.children( '.fa-chevron-right' ).on( 'click', function() {
+  console.log('Next trigger has fired.');
+} );
+
+$controls.children( '.fa-download' ).on( 'click', function()  {
+  console.log( 'Download trigger has fired.' );
+} );
+
+$controls.children( '.fa-times' ).on( 'click', function() {
+  $lightbox.fadeOut( 250 );
+  console.log('Lightbox Closed');
 } );

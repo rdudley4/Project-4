@@ -2,6 +2,7 @@
 <html>
   <head>
     <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Photo Gallery</title>
      <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Exo+2:100,200,300|Nunito" />
     <link rel="stylesheet" href="fa-4.6.3/css/font-awesome.min.css" />
@@ -15,10 +16,10 @@
 
         <section id="search">
           <i class="fa fa-viadeo-square fa-3x" aria-hidden="true"></i>
-          <input id="main-search" type="text" name="search" placeholder="Search images">
-          <label for="main-search">
+          <input id="main-search" type="text" name="search" placeholder=" Search images">
+          <!-- <label for="main-search">
             <i class="fa fa-search" aria-hidden="true"></i>
-          </label>
+          </label> -->
         </section>
         <!-- End Search -->
 
@@ -26,6 +27,21 @@
           <!-- Output from script.js -->
         </section>
         <!-- End Gallery -->
+
+        <div id="lightbox">
+          <div class="container-lightbox">
+            <!-- Lightbox                                                                                                                                                                -->
+            <img class="selected" src="" />
+            <span class="description">Fry, you can't just sit here in the dark listening to classical music. For the last time, I don't like lilacs! Your 'first' wife was the one who liked lilacs! Are you crazy? I can't swallow that. For one beautiful night I knew what it was like to be a grandmother. Subjugated, yet honored.</span>
+            <div id="controls">
+              <i id="prev" class="fa fa-chevron-left fa-3x" aria-hidden="true"></i>
+              <i id="next" class="fa fa-chevron-right fa-3x" aria-hidden="true"></i>
+              <i id="close" class="fa fa-times fa-2x" aria-hidden="true"></i>
+              <i id="download" class="fa fa-download fa-2x" aria-hidden="true"></i>
+            </div>
+          </div>
+        </div>
+        <!-- End Lightbox -->
 
       </div>
     </div>
