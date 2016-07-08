@@ -4,6 +4,8 @@ var $clicked;
 var $lightbox = $( '#lightbox' );
 var $lbImage = $( '.selected' );
 var $controls = $( '#controls' );
+var firstImage = imgDatabase[ 0 ].src;
+var lastImage = imgDatabase[ imgDatabase.length - 1 ].src;
 var prevClicked = false;
 var nextClicked = false;
 
@@ -36,8 +38,8 @@ function assembleImage( imageObject ) {
 function nextImage() {
   for ( i = 0; i < imgDatabase.length; i++ ) {
     if ( prevClicked && currentSrc === imgDatabase[i].src ) {
-      if ( currentSrc === 'img/01.jpg' ) {
-        currentSrc = imgDatabase[ imgDatabase.length - 1 ].src;
+      if ( currentSrc === firstImage ) {
+        currentSrc = lastImage;
         console.log( 'First image detected, going to end of series.' );
         return currentSrc;
       } else {
@@ -46,8 +48,8 @@ function nextImage() {
         return currentSrc;
       }
     } else if ( nextClicked && currentSrc === imgDatabase[i].src ) {
-        if ( currentSrc === 'img/12.jpg' ) {
-          currentSrc = imgDatabase[ 0 ].src;
+        if ( currentSrc === lastImage ) {
+          currentSrc = firstImage;
           console.log( 'Last image detected, going to start of series.' );
           return currentSrc;
         } else {

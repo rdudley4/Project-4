@@ -117,7 +117,7 @@ a:focus {
   margin       : 30px auto 10px;
   border       : 3px solid #e0e0e0;
   border-radius: 0.3em;
-  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  box-shadow   : 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
 
 #lightbox .fa:hover {
@@ -127,11 +127,11 @@ a:focus {
 .container-lightbox {
   max-width: 80%;
   margin   : 0 auto;
-  padding: 10px;
+  padding  : 10px;
 }
 
-#prev,
-#next {
+#next,
+#prev {
   position: absolute;
 }
 
@@ -145,12 +145,12 @@ a:focus {
 
 #close,
 #download {
-  position: absolute;
+  position   : absolute;
   line-height: 48px;
 }
 
 #close {
-  right    : 33%;
+  right: 33%;
 }
 
 #download {
@@ -158,17 +158,17 @@ a:focus {
 }
 
 #controls {
-  position : relative;
-  height: 48px;
+  position: relative;
+  height  : 48px;
 }
 
 #controls .fa {
   transition: color 0.5s ease;
-  color: #e0e0e0;
+  color     : #e0e0e0;
 }
 
-#prev:hover,
-#close:hover {
+#close:hover,
+#prev:hover {
   color: #ef5350;
 }
 
@@ -181,11 +181,11 @@ a:focus {
 }
 
 .description {
-  color: #fff;
-  max-width: 600px;
-  display: block;
-  line-height: 32px;
-  text-align: justify;
+  color        : #fff;
+  max-width    : 600px;
+  display      : block;
+  line-height  : 32px;
+  text-align   : justify;
   margin-bottom: 20px;
 }
 
@@ -200,27 +200,30 @@ a:focus {
     width: 50%;
   }
 }
+
 @media (min-width: 800px) {
   .image-card {
     width: 33.3333%;
   }
 
   .description {
-    text-align: center;
-    margin-left: auto;
+    text-align  : center;
+    margin-left : auto;
     margin-right: auto;
   }
 
   #controls {
-    width: 60%;
+    width : 60%;
     margin: auto;
   }
 }
+
 @media (min-width: 1000px) {
   #search label {
     display: inline-block;
   }
 }
+
 @media (min-width: 1100px) {
   .image-card {
     margin-right: 60px;
