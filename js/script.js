@@ -29,10 +29,10 @@ function assembleImage( imageObject ) {
 
 /* Loop through our imgDatabase array and..
     1. Detect if previous or next is clicked.
-    2. Check our currentSrc against the current index src value until we get a match.
-    3. If previous, get src value for previous object. If next, get src value of the next object.
-      3a. If we hit previous & we are on first image, set src to the src value of the last index item.
-      3b. If we hit next & we are on the last image, set src to the src value of the first index item.
+    2. If previous, get src value for previous object. If next, get src value of the next object.
+      2a. If we hit previous & we are on first image, set src to the value of the previous index src.
+      2b. If we hit next & we are on the last image, set src to the value of the first index src.
+    3. Check our currentSrc against the current index src value until we get a match.
     4. Return the value of currentSrc */
 
 function nextImage() {
@@ -43,7 +43,6 @@ function nextImage() {
         console.log( 'First image detected, going to end of series.' );
         return currentSrc;
       } else {
-        console.log( 'Previous trigger has fired.' );
         currentSrc = imgDatabase[( i - 1 )].src;
         return currentSrc;
       }
@@ -53,7 +52,6 @@ function nextImage() {
           console.log( 'Last image detected, going to start of series.' );
           return currentSrc;
         } else {
-          console.log( 'Next trigger has fired.' );
           currentSrc = imgDatabase[( i + 1)].src;
           return currentSrc;
         }
