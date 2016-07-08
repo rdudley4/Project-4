@@ -1,9 +1,11 @@
 var currentImage;
+var currentSrc;
+var $clicked;
 var $lightbox = $( '#lightbox' );
 var $lbImage = $( '.selected' );
 var $controls = $( '#controls' );
-
-$( 'body' ).append( $lightbox );
+var prevClicked = false;
+var nextClicked = false;
 
 /* When an image object is passed into the function..
     1. Create a div to hold the image and title
@@ -18,17 +20,43 @@ function assembleImage( imageObject ) {
     var $imageLink = $( '<a href="' + imageObject.src + '"</a>' );
 
     $imageTitle.text( imageObject.title );
-    $imageCard.append( $imageLink );
     $imageLink.append( imageObject.thumbnail, $imageTitle );
+    $imageCard.append( $imageLink );
     $( '#gallery' ).append( $imageCard );
 }
 
-/* Loop through our imgDatabase(imgData.js) and
-    1. Store reference to current imgDatabase object.
-    2. Pass the object to the assembleImage function */
-for ( var i = 0; i < imgDatabase.length; i++ ) {
-  currentImage = imgDatabase[i];
-  assembleImage( currentImage );
+/* Loop through our imgDatabase array and..
+    1. Detect if previous or next is clicked.
+    2. Check our currentSrc against the current index src value until we get a match.
+    3. If previous, get src value for previous object. If next, get src value of the next object.
+      3a. If we hit previous & we are on first image, set src to the src value of the last index item.
+      3b. If we hit next & we are on the last image, set src to the src value of the first index item.
+    4. Return the value of currentSrc */
+
+function nextImage() {
+  for ( i = 0; i < imgDatabase.length; i++ ) {
+    if ( prevClicked && currentSrc === imgDatabase[i].src ) {
+      if ( currentSrc === 'img/01.jpg' ) {
+        currentSrc = imgDatabase[ imgDatabase.length - 1 ].src;
+        console.log( 'First image detected, going to end of series.' );
+        return currentSrc;
+      } else {
+        console.log( 'Previous trigger has fired.' );
+        currentSrc = imgDatabase[( i - 1 )].src;
+        return currentSrc;
+      }
+    } else if ( nextClicked && currentSrc === imgDatabase[i].src ) {
+        if ( currentSrc === 'img/12.jpg' ) {
+          currentSrc = imgDatabase[ 0 ].src;
+          console.log( 'Last image detected, going to start of series.' );
+          return currentSrc;
+        } else {
+          console.log( 'Next trigger has fired.' );
+          currentSrc = imgDatabase[( i + 1)].src;
+          return currentSrc;
+        }
+    }
+  }
 }
 
 // Page loading animation
@@ -39,34 +67,55 @@ $( '.animsition' ).animsition({
   outDuration: 400
 });
 
+$( 'body' ).append( $lightbox );
+
+/* Loop through our imgDatabase(imgData.js) and
+    1. Store reference to current imgDatabase object.
+    2. Pass the object to the assembleImage function */
+for ( var i = 0; i < imgDatabase.length; i++ ) {
+  currentImage = imgDatabase[i];
+  assembleImage( currentImage );
+}
+
 /* Prevent default link functionality
     1. Fade in our light box on click. */
-$( '.image-card a' ).on( "click", function(e) {
-  var $clicked = $( this );
-  var currentSrc = $clicked.attr( 'href' );
-
-  e.preventDefault();
+$( '.image-card a' ).on( "click", function( event ) {
+  event.preventDefault();
+  $clicked = $( this );
+  currentSrc = $clicked.attr( 'href' );
   $lbImage.attr( 'src', currentSrc );
 
-  $lightbox.fadeIn( 250 );
+  $lightbox.fadeIn( 300 );
   console.log('Lightbox Activated');
 } );
 
-// Control on click functions
+// Lightbox control functions
 
-$controls.children( '.fa-chevron-left' ).on( 'click', function() {
-  console.log('Previous trigger has fired.');
+// Previous
+$controls.children( '#prev' ).on( 'click', function() {
+  prevClicked = true;
+  nextClicked = false;
+  currentSrc = nextImage();
+  $lbImage.attr( 'src', currentSrc );
+  console.log( 'Moving to previous image in series: ' + currentSrc );
 } );
 
-$controls.children( '.fa-chevron-right' ).on( 'click', function() {
-  console.log('Next trigger has fired.');
+// Next
+$controls.children( '#next' ).on( 'click', function() {
+  prevClicked = false;
+  nextClicked = true;
+  currentSrc = nextImage();
+  $lbImage.attr( 'src', currentSrc );
+  console.log( 'Moving to next image in series: ' + currentSrc );
 } );
 
-$controls.children( '.fa-download' ).on( 'click', function()  {
+// Download
+$controls.children( '#download' ).on( 'click', function()  {
   console.log( 'Download trigger has fired.' );
 } );
 
-$controls.children( '.fa-times' ).on( 'click', function() {
+// Close
+$controls.children( '#close' ).on( 'click', function() {
   $lightbox.fadeOut( 250 );
   console.log('Lightbox Closed');
 } );
