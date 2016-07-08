@@ -61,6 +61,14 @@ function nextImage() {
   }
 }
 
+function updateImage() {
+  currentSrc = nextImage();
+
+  $lbImage.fadeOut( function() {
+    $lbImage.attr( "src", currentSrc ).fadeIn();
+  } );
+}
+
 // Page loading animation
 $( '.animsition' ).animsition({
   inClass: 'fade-in-left-lg',
@@ -91,14 +99,14 @@ $( '.image-card a' ).on( "click", function( event ) {
   console.log('Lightbox Activated');
 } );
 
+
 // Lightbox control functions
 
 // Previous
 $controls.children( '#prev' ).on( 'click', function() {
   prevClicked = true;
   nextClicked = false;
-  currentSrc = nextImage();
-  $lbImage.attr( 'src', currentSrc );
+  updateImage();
   console.log( 'Moving to previous image in series: ' + currentSrc );
 } );
 
@@ -106,8 +114,7 @@ $controls.children( '#prev' ).on( 'click', function() {
 $controls.children( '#next' ).on( 'click', function() {
   prevClicked = false;
   nextClicked = true;
-  currentSrc = nextImage();
-  $lbImage.attr( 'src', currentSrc );
+  updateImage();
   console.log( 'Moving to next image in series: ' + currentSrc );
 } );
 
