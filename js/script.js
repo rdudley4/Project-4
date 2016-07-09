@@ -6,6 +6,7 @@ var $lbImage = $( '.selected' );
 var $controls = $( '#controls' );
 var firstImage = imgDatabase[ 0 ].src;
 var lastImage = imgDatabase[ imgDatabase.length - 1 ].src;
+var lightboxIsActive = false;
 var prevClicked = false;
 var nextClicked = false;
 
@@ -17,7 +18,7 @@ var nextClicked = false;
         2b. Get the title text and set it to our image-title text.
     3. Append completed card to the page. */
 function assembleImage( imageObject ) {
-    var $imageCard = $( '<div class="image-card"></div>' );
+    var $imageCard = $( '<div class="gallery-item"></div>' );
     var $imageTitle = $( '<span class="image-title"></span>' );
     var $imageLink = $( '<a href="' + imageObject.src + '"</a>' );
 
@@ -95,13 +96,14 @@ for ( var i = 0; i < imgDatabase.length; i++ ) {
 
 /* Prevent default link functionality
     1. Fade in our light box on click. */
-$( '.image-card a' ).on( "click", function( event ) {
+$( '.gallery-item a' ).on( "click", function( event ) {
   event.preventDefault();
   $clicked = $( this );
   currentSrc = $clicked.attr( 'href' );
   $lbImage.attr( 'src', currentSrc );
   updateDescription();
 
+  lightboxIsActive = true;
   $lightbox.fadeIn( 300 );
   console.log('Lightbox Activated');
 } );
@@ -135,5 +137,39 @@ $controls.children( '#download' ).on( 'click', function()  {
 // Close
 $controls.children( '#close' ).on( 'click', function() {
   $lightbox.fadeOut( 250 );
+  lightboxIsActive = false;
   console.log('Lightbox Closed');
+} );
+
+// Info Help
+$( '#help' ).on( 'click', function()  {
+  $( '#controls-help' ).slideToggle();
+} );
+
+
+// Keyboard Controls for Lightbox
+$( document ).keydown( function( e ) {
+  // Store reference to the key that was pressed.
+  var keyPressed = e.which;
+  /* 1. If Escape is pressed & lightbox is open, close lightbox.
+     2. If we press left arrow fire #prev 'click' function.
+     3. If we press right arrow fire #next 'click' function.
+  */
+  if ( lightboxIsActive ) {
+    switch ( keyPressed ) {
+      case 27: // Escape
+        $lightbox.fadeOut( 250 );
+        lightboxIsActive = false;
+        console.log( 'Lightbox Closed.' );
+        break;
+      case 37: // Left Arrow
+        $controls.children( '#prev' ).trigger( 'click' );
+        break;
+      case 39: // Right Arrow
+        $controls.children( '#next' ).trigger( 'click' );
+        break;
+      case 73: // 'i'
+        $( '#help' ).trigger( 'click' );
+    }
+  }
 } );
