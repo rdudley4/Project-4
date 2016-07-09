@@ -67,6 +67,14 @@ function updateImage() {
   } );
 }
 
+function updateDescription() {
+  for ( i = 0; i < imgDatabase.length; i++ ) {
+    if ( currentSrc === imgDatabase[i].src ) {
+      $( '.description' ).text( imgDatabase[i].caption );
+    }
+  }
+}
+
 // Page loading animation
 $( '.animsition' ).animsition({
   inClass: 'fade-in-left-lg',
@@ -92,6 +100,7 @@ $( '.image-card a' ).on( "click", function( event ) {
   $clicked = $( this );
   currentSrc = $clicked.attr( 'href' );
   $lbImage.attr( 'src', currentSrc );
+  updateDescription();
 
   $lightbox.fadeIn( 300 );
   console.log('Lightbox Activated');
@@ -105,6 +114,7 @@ $controls.children( '#prev' ).on( 'click', function() {
   prevClicked = true;
   nextClicked = false;
   updateImage();
+  updateDescription();
   console.log( 'Moving to previous image in series: ' + currentSrc );
 } );
 
@@ -113,6 +123,7 @@ $controls.children( '#next' ).on( 'click', function() {
   prevClicked = false;
   nextClicked = true;
   updateImage();
+  updateDescription();
   console.log( 'Moving to next image in series: ' + currentSrc );
 } );
 
