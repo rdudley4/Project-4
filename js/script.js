@@ -77,15 +77,7 @@ function updateDescription() {
 }
 
 $( document ).ready(function() {
-  // Page loading animation
-  $( '.animsition' ).animsition({
-    inClass: 'fade-in-left-lg',
-    outClass: 'fade-out-left-lg',
-    inDuration: 750,
-    outDuration: 400
-  });
-
-  $( 'body' ).append( $lightbox );
+  $( 'body' ).hide().fadeIn( 600 ).append( $lightbox );
 
   /* Loop through our imgDatabase(imgData.js) and
       1. Store reference to current imgDatabase object.
