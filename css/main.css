@@ -51,10 +51,10 @@ a:focus {
   transition: color 0.5s ease;
 }
 
-.fa-gitlab {
+.fa-fort-awesome {
   display      : block;
   margin-bottom: 10px;
-  color        : #673ab7;
+  color        : #03a9f4;
 }
 
 #search {
@@ -133,9 +133,19 @@ a:focus {
   padding  : 10px;
 }
 
+/* Controls */
+#controls {
+  position: relative;
+  height  : 48px;
+  font-size: .75em;
+}
+
 #next,
-#prev {
+#prev,
+#close,
+#download {
   position: absolute;
+  line-height: 48px;
 }
 
 #prev {
@@ -146,23 +156,12 @@ a:focus {
   right: 0;
 }
 
-#close,
-#download {
-  position   : absolute;
-  line-height: 48px;
-}
-
 #close {
   right: 33%;
 }
 
 #download {
   left: 33%;
-}
-
-#controls {
-  position: relative;
-  height  : 48px;
 }
 
 #controls .fa,
@@ -178,7 +177,7 @@ a:focus {
 }
 
 #download:hover {
-  color: #16a085;
+  color: #9575cd;
 }
 
 #next:hover {
@@ -259,6 +258,10 @@ a:focus {
   .gallery-item {
     float: left;
     width: 50%;
+  }
+
+  #controls {
+    font-size: 1em;
   }
 }
 

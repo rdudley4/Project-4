@@ -76,100 +76,102 @@ function updateDescription() {
   }
 }
 
-// Page loading animation
-$( '.animsition' ).animsition({
-  inClass: 'fade-in-left-lg',
-  outClass: 'fade-out-left-lg',
-  inDuration: 1000,
-  outDuration: 400
-});
+$( document ).ready(function() {
+  // Page loading animation
+  $( '.animsition' ).animsition({
+    inClass: 'fade-in-left-lg',
+    outClass: 'fade-out-left-lg',
+    inDuration: 1000,
+    outDuration: 400
+  });
 
-$( 'body' ).append( $lightbox );
+  $( 'body' ).append( $lightbox );
 
-/* Loop through our imgDatabase(imgData.js) and
-    1. Store reference to current imgDatabase object.
-    2. Pass the object to the assembleImage function */
-for ( var i = 0; i < imgDatabase.length; i++ ) {
-  currentImage = imgDatabase[i];
-  assembleImage( currentImage );
-}
-
-/* Prevent default link functionality
-    1. Fade in our light box on click. */
-$( '.gallery-item a' ).on( "click", function( event ) {
-  event.preventDefault();
-  $clicked = $( this );
-  currentSrc = $clicked.attr( 'href' );
-  $lbImage.attr( 'src', currentSrc );
-  updateDescription();
-
-  lightboxIsActive = true;
-  $lightbox.fadeIn( 300 );
-  console.log('Lightbox Activated');
-} );
-
-
-// Lightbox control functions
-
-// Previous
-$controls.children( '#prev' ).on( 'click', function() {
-  prevClicked = true;
-  nextClicked = false;
-  updateImage();
-  updateDescription();
-  console.log( 'Moving to previous image in series: ' + currentSrc );
-} );
-
-// Next
-$controls.children( '#next' ).on( 'click', function() {
-  prevClicked = false;
-  nextClicked = true;
-  updateImage();
-  updateDescription();
-  console.log( 'Moving to next image in series: ' + currentSrc );
-} );
-
-// Download
-$controls.children( '#download' ).on( 'click', function()  {
-  console.log( 'Download trigger has fired.' );
-} );
-
-// Close
-$controls.children( '#close' ).on( 'click', function() {
-  $lightbox.fadeOut( 250 );
-  lightboxIsActive = false;
-  console.log('Lightbox Closed');
-} );
-
-// Info Help
-$( '#help' ).on( 'click', function()  {
-  $( '#controls-help' ).slideToggle();
-} );
-
-
-// Keyboard Controls for Lightbox
-$( document ).keydown( function( e ) {
-  // Store reference to the key that was pressed.
-  var keyPressed = e.which;
-  /* 1. If Escape is pressed & lightbox is open, close lightbox.
-     2. If we press left arrow fire #prev 'click' function.
-     3. If we press right arrow fire #next 'click' function.
-  */
-  if ( lightboxIsActive ) {
-    switch ( keyPressed ) {
-      case 27: // Escape
-        $lightbox.fadeOut( 250 );
-        lightboxIsActive = false;
-        console.log( 'Lightbox Closed.' );
-        break;
-      case 37: // Left Arrow
-        $controls.children( '#prev' ).trigger( 'click' );
-        break;
-      case 39: // Right Arrow
-        $controls.children( '#next' ).trigger( 'click' );
-        break;
-      case 73: // 'i'
-        $( '#help' ).trigger( 'click' );
-    }
+  /* Loop through our imgDatabase(imgData.js) and
+      1. Store reference to current imgDatabase object.
+      2. Pass the object to the assembleImage function */
+  for ( var i = 0; i < imgDatabase.length; i++ ) {
+    currentImage = imgDatabase[i];
+    assembleImage( currentImage );
   }
-} );
+
+  /* Prevent default link functionality
+      1. Fade in our light box on click. */
+  $( '.gallery-item a' ).on( "click", function( event ) {
+    event.preventDefault();
+    $clicked = $( this );
+    currentSrc = $clicked.attr( 'href' );
+    $lbImage.attr( 'src', currentSrc );
+    updateDescription();
+
+    lightboxIsActive = true;
+    $lightbox.fadeIn( 300 );
+    console.log('Lightbox Activated');
+  } );
+
+
+  // Lightbox control functions
+
+  // Previous
+  $controls.children( '#prev' ).on( 'click', function() {
+    prevClicked = true;
+    nextClicked = false;
+    updateImage();
+    updateDescription();
+    console.log( 'Moving to previous image in series: ' + currentSrc );
+  } );
+
+  // Next
+  $controls.children( '#next' ).on( 'click', function() {
+    prevClicked = false;
+    nextClicked = true;
+    updateImage();
+    updateDescription();
+    console.log( 'Moving to next image in series: ' + currentSrc );
+  } );
+
+  // Download
+  $controls.children( '#download' ).on( 'click', function()  {
+    console.log( 'Download trigger has fired.' );
+  } );
+
+  // Close
+  $controls.children( '#close' ).on( 'click', function() {
+    $lightbox.fadeOut( 250 );
+    lightboxIsActive = false;
+    console.log('Lightbox Closed');
+  } );
+
+  // Info Help
+  $( '#help' ).on( 'click', function()  {
+    $( '#controls-help' ).slideToggle();
+  } );
+
+
+  // Keyboard Controls for Lightbox
+  $( document ).keydown( function( e ) {
+    // Store reference to the key that was pressed.
+    var keyPressed = e.which;
+    /* 1. If Escape is pressed & lightbox is open, close lightbox.
+       2. If we press left arrow fire #prev 'click' function.
+       3. If we press right arrow fire #next 'click' function.
+    */
+    if ( lightboxIsActive ) {
+      switch ( keyPressed ) {
+        case 27: // Escape
+          $lightbox.fadeOut( 250 );
+          lightboxIsActive = false;
+          console.log( 'Lightbox Closed.' );
+          break;
+        case 37: // Left Arrow
+          $controls.children( '#prev' ).trigger( 'click' );
+          break;
+        case 39: // Right Arrow
+          $controls.children( '#next' ).trigger( 'click' );
+          break;
+        case 73: // 'i'
+          $( '#help' ).trigger( 'click' );
+      }
+    }
+  } );
+});
