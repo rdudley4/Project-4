@@ -81,7 +81,7 @@ $( document ).ready(function() {
   $( '.animsition' ).animsition({
     inClass: 'fade-in-left-lg',
     outClass: 'fade-out-left-lg',
-    inDuration: 1000,
+    inDuration: 750,
     outDuration: 400
   });
 
