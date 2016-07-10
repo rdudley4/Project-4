@@ -51,10 +51,10 @@ a:focus {
   transition: color 0.5s ease;
 }
 
-.fa-viadeo-square {
+.fa-gitlab {
   display      : block;
   margin-bottom: 10px;
-  color        : #2980b9;
+  color        : #673ab7;
 }
 
 #search {
@@ -119,6 +119,8 @@ a:focus {
   border       : 3px solid #e0e0e0;
   border-radius: 0.3em;
   box-shadow   : 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  width: 100%;
+  max-width: 800px;
 }
 
 #lightbox .fa:hover {
@@ -185,6 +187,7 @@ a:focus {
 
 #controls-help {
   display     : block;
+  max-width   : 60%;
   margin-top  : 25px;
   margin-left : auto;
   margin-right: auto;
@@ -207,7 +210,7 @@ a:focus {
 .key {
   display      : inline-block;
   width        : 48px;
-  height       : 36px;
+  line-height  : 36px;
   border       : 2px solid #e0e0e0;
   border-radius: 0.3em;
   margin       : auto;
@@ -216,13 +219,6 @@ a:focus {
 
 .key:hover {
   cursor: pointer;
-}
-
-.key h2 {
-  font-size  : 12px;
-  margin     : 0;
-  line-height: 32px;
-  text-align : center;
 }
 
 .esc:hover {
@@ -279,6 +275,7 @@ a:focus {
 
   #controls {
     width : 60%;
+    max-width: 500px;
     margin: auto;
   }
 }
@@ -298,9 +295,4 @@ a:focus {
   .gallery-item:nth-of-type(4n) {
     margin-right: 0;
   }
-
-  .selected {
-    max-width: 60%;
-  }
-
 }
