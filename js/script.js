@@ -17,15 +17,36 @@ var nextClicked = false;
         2a. Append the title and thumbnail to card
         2b. Get the title text and set it to our image-title text.
     3. Append completed card to the page. */
-function assembleImage( imageObject ) {
-    var $imageCard = $( '<div class="gallery-item"></div>' );
-    var $imageTitle = $( '<span class="image-title"></span>' );
-    var $imageLink = $( '<a href="' + imageObject.src + '"</a>' );
+// function assembleImage( imageObject ) {
+//     var $imageCard = $( '<div class="gallery-item"></div>' );
+//     var $imageTitle = $( '<span class="image-title"></span>' );
+//     var $imageLink = $( '<a href="' + imageObject.src + '"</a>' );
+//
+//     $imageTitle.text( imageObject.title );
+//     $imageLink.append( imageObject.thumbnail, $imageTitle );
+//     $imageCard.append( $imageLink );
+//     $( '#gallery' ).append( $imageCard );
+// }
 
-    $imageTitle.text( imageObject.title );
-    $imageLink.append( imageObject.thumbnail, $imageTitle );
-    $imageCard.append( $imageLink );
-    $( '#gallery' ).append( $imageCard );
+function assembleImage( imageObject ) {
+  var $galleryItem = $( '<div class="gallery-item"></div>' );
+  var $front = $( '<div class="front"></div>' );
+  var $back = $( '<div class="back"></div>' );
+  var thumbnail = imageObject.thumbnail;
+  var link = $( '<a href="' + imageObject.src + '"></a>' );
+  var $title = $( '<span></span>' );
+  var $icon = $( '<i class="fa fa-th-large fa-3x" aria-hidden="true"></i>' );
+
+  // Populate front and back of cards
+  $front.append( thumbnail );
+  $title.append( imageObject.title );
+
+  link.append( $icon, $title );
+
+  $back.append( link );
+  $galleryItem.append( $front, $back );
+
+  $( '#gallery' ).append( $galleryItem );
 }
 
 /* Loop through our imgDatabase array and..
@@ -64,7 +85,7 @@ function updateImage() {
   currentSrc = nextImage();
 
   $lbImage.fadeOut( function() {
-    $lbImage.attr( "src", currentSrc ).fadeIn();
+    $lbImage.attr( 'src', currentSrc ).fadeIn();
   } );
 }
 
@@ -77,7 +98,7 @@ function updateDescription() {
 }
 
 $( document ).ready(function() {
-$( 'body' ).hide().fadeIn( 600 ).append( $lightbox );
+  $( 'body' ).hide().fadeIn( 600 ).append( $lightbox );
 
   /* Loop through our imgDatabase(imgData.js) and
       1. Store reference to current imgDatabase object.
@@ -89,15 +110,14 @@ $( 'body' ).hide().fadeIn( 600 ).append( $lightbox );
 
   /* Prevent default link functionality
       1. Fade in our light box on click. */
-  $( '.gallery-item a' ).on( "click", function( event ) {
+  $( '.back a' ).on( "click", function( event ) {
     event.preventDefault();
     $clicked = $( this );
     currentSrc = $clicked.attr( 'href' );
     $lbImage.attr( 'src', currentSrc );
     updateDescription();
-
     lightboxIsActive = true;
-    $lightbox.fadeIn( 300 );
+    $lightbox.fadeToggle( 300 );
     console.log('Lightbox Activated');
   } );
 
@@ -129,7 +149,7 @@ $( 'body' ).hide().fadeIn( 600 ).append( $lightbox );
 
   // Close
   $controls.children( '#close' ).on( 'click', function() {
-    $lightbox.fadeOut( 250 );
+    $lightbox.fadeToggle( 250 );
     lightboxIsActive = false;
     console.log('Lightbox Closed');
   } );
@@ -138,7 +158,6 @@ $( 'body' ).hide().fadeIn( 600 ).append( $lightbox );
   $( '#help' ).on( 'click', function()  {
     $( '#controls-help' ).slideToggle();
   } );
-
 
   // Keyboard Controls for Lightbox
   $( document ).keydown( function( e ) {
@@ -151,7 +170,7 @@ $( 'body' ).hide().fadeIn( 600 ).append( $lightbox );
     if ( lightboxIsActive ) {
       switch ( keyPressed ) {
         case 27: // Escape
-          $lightbox.fadeOut( 250 );
+          $lightbox.fadeToggle( 250 );
           lightboxIsActive = false;
           console.log( 'Lightbox Closed.' );
           break;
