@@ -77,7 +77,7 @@ function updateDescription() {
 }
 
 $( document ).ready(function() {
-  $( 'body' ).hide().fadeIn( 600 ).append( $lightbox );
+$( 'body' ).hide().fadeIn( 600 ).append( $lightbox );
 
   /* Loop through our imgDatabase(imgData.js) and
       1. Store reference to current imgDatabase object.
