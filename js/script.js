@@ -34,14 +34,18 @@ function assembleImage( imageObject ) {
   var $back = $( '<div class="back"></div>' );
   var thumbnail = imageObject.thumbnail;
   var link = $( '<a href="' + imageObject.src + '"></a>' );
-  var $title = $( '<span></span>' );
-  var $icon = $( '<i class="fa fa-th-large fa-3x" aria-hidden="true"></i>' );
+  var details = $( '<div class="details"></div>' );
+  var $title = $( '<span class="title"></span>' );
+  var $icon = $( '<i class="fa fa-picture-o fa-3x" aria-hidden="true"></i>' );
+  var $resolution = $( '<span class="resolution">' + imageObject.resolution + '</span>' );
+  var $id = $( '<span class="image-id">ID: ' + imageObject.id + '</span>' );
 
-  // Populate front and back of cards
+  // Populate front and back of card
   $front.append( thumbnail );
   $title.append( imageObject.title );
+  details.append( $icon, $title, $resolution, $id );
 
-  link.append( $icon, $title );
+  link.append( details );
 
   $back.append( link );
   $galleryItem.append( $front, $back );

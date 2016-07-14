@@ -129,7 +129,7 @@ a:focus {
   overflow     : hidden;
   margin-top   : 45px;
   margin-bottom: 20px;
-  padding: 5px;
+  padding      : 5px;
 }
 
 #gallery img {
@@ -137,21 +137,21 @@ a:focus {
 }
 
 .gallery-item {
-  width : 200px;
-  height: 200px;
-  position: relative;
-  overflow: hidden;
-  display: block;
+  width        : 200px;
+  height       : 200px;
+  position     : relative;
+  overflow     : hidden;
+  display      : block;
   margin-bottom: 40px;
-  box-shadow: 0 0 5px 2px rgba(204,204,204,1);
-  border-radius: .3em;
+  box-shadow   : 0 0 5px 2px rgba(204,204,204,1);
+  border-radius: 0.3em;
 }
 
 .gallery-item div {
-  position: absolute;
-  top: 0;
-  left: 0;
-  -webkit-transition: all .5s ease-in-out;
+  position          : absolute;
+  top               : 0;
+  left              : 0;
+  -webkit-transition: left 0.5s ease-in-out;
 }
 
 .gallery-item .front {
@@ -159,55 +159,72 @@ a:focus {
 }
 
 .gallery-item:hover .front {
-  -webkit-transition: left .5s ease-in-out;
-  left: -204px;
+  -webkit-transition: left 0.5s ease-in-out;
+  left              : -204px;
 }
 
 .back {
-  width: 200px;
+  width      : 200px;
   line-height: 200px;
 }
 
 .back a {
   display: block;
-  width: 200px;
-  height: 200px;
+  width  : 200px;
+  height : 200px;
 }
 
 .back:hover {
   cursor: pointer;
 }
 
-.back a:hover {
-  color: #27ae60;
+.details .fa {
+  display      : block;
+  margin-bottom: 5px;
 }
 
-.gallery-item p {
-  margin: 0;
+.details {
+  line-height: 1em;
+  padding    : 10px;
+  width      : 100%;
+  height     : 200px;
 }
 
-/*div.gallery-item div {
-  position: absolute;
-  top: 0;
-  left: 0;
-  text-align: center;
-  background-color: tomato;
-  -webkit-transition: all .5s ease-in-out;
-}*/
-
-/*.gallery-item:hover > a > .image-title {
-  border-color: rgba(102, 51, 153, .8);
+.details span {
+  display         : block;
+  background-image: url("https://www.transparenttextures.com/patterns/az-subtle.png");
+  background-color: #ddd;
+  padding         : 10px 0;
 }
 
-.image-title {
-  max-width  : 200px;
-  font-weight: 200;
-  font-size  : 1.15em;
-  padding    : 8px;
-  border     : 2px solid rgba(102, 51, 153, 0);
-  font-family: 'Exo 2', sans-serif;
-  transition : border-color 0.5s ease;
-}*/
+.details span:first-of-type {
+  border-top-left-radius : 0.3em;
+  border-top-right-radius: 0.3em;
+}
+
+.details span:last-of-type {
+  border-bottom-left-radius : 0.3em;
+  border-bottom-right-radius: 0.3em;
+}
+
+.image-id:hover,
+.resolution:hover,
+.title:hover {
+  color: #fff;
+  transition: background-color .3s ease;
+}
+
+.title:hover {
+  background-color: #be90d4;
+}
+
+.resolution:hover {
+  background-color: #59abe3;
+}
+
+.image-id:hover {
+  background-color: seagreen;
+}
 
 /* Lightbox */
 #lightbox {
@@ -217,7 +234,7 @@ a:focus {
   width           : 100%;
   height          : 100%;
   background-color: rgba(0, 0, 0, 0.9);
-  z-index: 1001;
+  z-index         : 1001;
 }
 
 .selected {
@@ -247,17 +264,38 @@ a:focus {
   line-height: 48px;
 }
 
-#prev     { left : 0;    }
-#next     { right: 0;   }
-#close    { right: 33%; }
-#download { left : 33%;  }
+#prev {
+  left: 0;
+}
+
+#next {
+  right: 0;
+}
+
+#close {
+  right: 33%;
+}
+
+#download {
+  left: 33%;
+}
 
 #close:hover,
-#prev:hover     { color: #ef5350; }
-#download:hover { color: #9575cd; }
-#next:hover     { color: #27ae60; }
-#help:hover     { color: #9b59b6; }
+#prev:hover {
+  color: #ef5350;
+}
 
+#download:hover {
+  color: #9575cd;
+}
+
+#next:hover {
+  color: #27ae60;
+}
+
+#help:hover {
+  color: #9b59b6;
+}
 
 #controls .fa,
 #controls-help,
@@ -312,7 +350,6 @@ a:focus {
   border-color: #d35400;
   color       : #d35400;
 }
-
 @media (min-width: 500px) {
   .container-main {
     padding-left : 0;
@@ -320,8 +357,8 @@ a:focus {
   }
 
   .gallery-item {
-    display: inline-block;
-    margin-left: 2.5%;
+    display     : inline-block;
+    margin-left : 2.5%;
     margin-right: 2.5%;
   }
 
