@@ -36,7 +36,7 @@ function assembleImage( imageObject ) {
   var link = $( '<a href="' + imageObject.src + '"></a>' );
   var details = $( '<div class="details"></div>' );
   var $title = $( '<span class="title"></span>' );
-  var $icon = $( '<i class="fa fa-picture-o fa-3x" aria-hidden="true"></i>' );
+  var $icon = $( '<i class="fa fa-expand fa-3x" aria-hidden="true"></i>' );
   var $resolution = $( '<span class="resolution">' + imageObject.resolution + '</span>' );
   var $id = $( '<span class="image-id">ID: ' + imageObject.id + '</span>' );
 

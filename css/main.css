@@ -151,7 +151,7 @@ a:focus {
   position          : absolute;
   top               : 0;
   left              : 0;
-  -webkit-transition: left 0.5s ease-in-out;
+  -webkit-transition: top 0.5s ease-in-out;
 }
 
 .gallery-item .front {
@@ -159,8 +159,8 @@ a:focus {
 }
 
 .gallery-item:hover .front {
-  -webkit-transition: left 0.5s ease-in-out;
-  left              : -204px;
+  -webkit-transition: top 0.5s ease-in-out;
+  top              : -204px;
 }
 
 .back {
@@ -174,13 +174,10 @@ a:focus {
   height : 200px;
 }
 
-.back:hover {
-  cursor: pointer;
-}
-
 .details .fa {
   display      : block;
-  margin-bottom: 5px;
+  margin-bottom: 15px;
+  margin-top   : 10px;
 }
 
 .details {
@@ -191,27 +188,15 @@ a:focus {
 }
 
 .details span {
-  display         : block;
-  background-image: url("https://www.transparenttextures.com/patterns/az-subtle.png");
-  background-color: #ddd;
-  padding         : 10px 0;
-}
-
-.details span:first-of-type {
-  border-top-left-radius : 0.3em;
-  border-top-right-radius: 0.3em;
-}
-
-.details span:last-of-type {
-  border-bottom-left-radius : 0.3em;
-  border-bottom-right-radius: 0.3em;
+  display: block;
+  padding: 10px 0;
 }
 
 .image-id:hover,
 .resolution:hover,
 .title:hover {
-  color: #fff;
-  transition: background-color .3s ease;
+  color     : #fff;
+  transition: background-color 0.3s ease;
 }
 
 .title:hover {
