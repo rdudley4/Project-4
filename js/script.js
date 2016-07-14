@@ -38,7 +38,7 @@ function assembleImage( imageObject ) {
   var $title = $( '<span class="title"></span>' );
   var $icon = $( '<i class="fa fa-expand fa-3x" aria-hidden="true"></i>' );
   var $resolution = $( '<span class="resolution">' + imageObject.resolution + '</span>' );
-  var $id = $( '<span class="image-id">ID: ' + imageObject.id + '</span>' );
+  var $id = $( '<span class="image-id">ID - ' + imageObject.id + '</span>' );
 
   // Populate front and back of card
   $front.append( thumbnail );

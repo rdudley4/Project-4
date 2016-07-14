@@ -151,7 +151,7 @@ a:focus {
   position          : absolute;
   top               : 0;
   left              : 0;
-  -webkit-transition: top 0.5s ease-in-out;
+  -webkit-transition: top 0.4s ease-in-out;
 }
 
 .gallery-item .front {
@@ -159,7 +159,7 @@ a:focus {
 }
 
 .gallery-item:hover .front {
-  -webkit-transition: top 0.5s ease-in-out;
+  -webkit-transition: top 0.4s ease-in-out;
   top              : -204px;
 }
 
@@ -200,7 +200,7 @@ a:focus {
 }
 
 .title:hover {
-  background-color: #be90d4;
+  background-color: #d24d57;
 }
 
 .resolution:hover {
@@ -357,11 +357,7 @@ a:focus {
     max-width: 500px;
   }
 }
-@media (min-width: 800px) {
-  /*.gallery-item {
-    width: 33.3333%;
-  }*/
-}
+
 @media (min-width: 1000px) {
   #search label {
     display: inline-block;
