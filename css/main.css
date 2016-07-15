@@ -6,7 +6,6 @@
 body {
   font-family: 'Nunito', sans-serif;
   line-height: 1.5;
-  opacity: 0;
 }
 
 img {
@@ -94,7 +93,7 @@ a:focus {
 }
 
 #main-search:focus {
-  border-color: #2980b9;
+  border-color: #16a085;
   outline     : 0;
 }
 
@@ -151,8 +150,8 @@ a:focus {
 .gallery-item div {
   position          : absolute;
   top               : 0;
-  right             : 0;
-  -webkit-transition: right 0.4s ease-in-out;
+  left              : 0;
+  -webkit-transition: top 0.4s ease-in-out;
 }
 
 .gallery-item .front {
@@ -160,8 +159,8 @@ a:focus {
 }
 
 .gallery-item:hover .front {
-  -webkit-transition: right 0.4s ease-in-out;
-  right             : -204px;
+  -webkit-transition: top 0.4s ease-in-out;
+  top              : -204px;
 }
 
 .back {
@@ -193,23 +192,11 @@ a:focus {
   padding: 10px 0;
 }
 
-.image-id,
-.fa-expand,
-.resolution,
-.title {
-  transition: all .3s ease;
-}
-
 .image-id:hover,
-.fa-expand:hover,
 .resolution:hover,
 .title:hover {
   color     : #fff;
-  transition: all 0.3s ease;
-}
-
-.fa-expand:hover {
-  color: #446cb3;
+  transition: background-color 0.3s ease;
 }
 
 .title:hover {
@@ -370,6 +357,7 @@ a:focus {
     max-width: 500px;
   }
 }
+
 @media (min-width: 1000px) {
   #search label {
     display: inline-block;
