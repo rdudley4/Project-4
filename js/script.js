@@ -1,11 +1,10 @@
 var currentImage;
 var currentSrc;
-var $clicked;
-var $lightbox = $( '#lightbox' );
-var $lbImage = $( '.selected' );
-var $controls = $( '#controls' );
+var $lightbox  = $( '#lightbox' );
+var $lbImage   = $( '.selected' );
+var $controls  = $( '#controls' );
 var firstImage = imgDatabase[ 0 ].src;
-var lastImage = imgDatabase[ imgDatabase.length - 1 ].src;
+var lastImage  = imgDatabase[ imgDatabase.length - 1 ].src;
 var lightboxIsActive = false;
 var prevClicked = false;
 var nextClicked = false;
@@ -30,26 +29,25 @@ var nextClicked = false;
 
 function assembleImage( imageObject ) {
   var $galleryItem = $( '<div class="gallery-item"></div>' );
-  var $front = $( '<div class="front"></div>' );
-  var $back = $( '<div class="back"></div>' );
+  var $front   =     $( '<div class="front"></div>' );
+  var $back    =     $( '<div class="back"></div>' );
+  var $details =     $( '<div class="details"></div>' );
+  var $title   =     $( '<span class="title"></span>' );
+  var $icon    =     $( '<i class="fa fa-expand fa-3x"        aria-hidden="true"></i>' );
+  var $resolution =  $( '<span class="resolution">' + imageObject.resolution + '</span>' );
+  var $link =        $( '<a href="' + imageObject.src + '"></a>' );
+  var $id   =        $( '<span class="image-id">ID - ' + imageObject.id + '</span>' );
   var thumbnail = imageObject.thumbnail;
-  var link = $( '<a href="' + imageObject.src + '"></a>' );
-  var details = $( '<div class="details"></div>' );
-  var $title = $( '<span class="title"></span>' );
-  var $icon = $( '<i class="fa fa-expand fa-3x" aria-hidden="true"></i>' );
-  var $resolution = $( '<span class="resolution">' + imageObject.resolution + '</span>' );
-  var $id = $( '<span class="image-id">ID - ' + imageObject.id + '</span>' );
 
   // Populate front and back of card
+    // front
   $front.append( thumbnail );
+    // back
   $title.append( imageObject.title );
-  details.append( $icon, $title, $resolution, $id );
-
-  link.append( details );
-
-  $back.append( link );
+  $details.append( $icon, $title, $resolution, $id );
+  $link.append( $details );
+  $back.append( $link );
   $galleryItem.append( $front, $back );
-
   $( '#gallery' ).append( $galleryItem );
 }
 
@@ -102,7 +100,9 @@ function updateDescription() {
 }
 
 $( document ).ready(function() {
-  $( 'body' ).hide().fadeIn( 600 ).append( $lightbox );
+  $( 'body' ).velocity( {
+    opacity: 1
+  }, 800 );
 
   /* Loop through our imgDatabase(imgData.js) and
       1. Store reference to current imgDatabase object.
@@ -116,8 +116,7 @@ $( document ).ready(function() {
       1. Fade in our light box on click. */
   $( '.back a' ).on( "click", function( event ) {
     event.preventDefault();
-    $clicked = $( this );
-    currentSrc = $clicked.attr( 'href' );
+    currentSrc = $( this ).attr( 'href' );
     $lbImage.attr( 'src', currentSrc );
     updateDescription();
     lightboxIsActive = true;
