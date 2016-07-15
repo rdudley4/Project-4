@@ -378,3 +378,12 @@ a:focus {
     display: inline-block;
   }
 }
+/*@media (min-width: 1100px) {
+  .gallery-item:nth-of-type(4n + 1) {
+    margin-left: 0;
+  }
+
+  .gallery-item:nth-of-type(4n) {
+    margin-right: 0;
+  }
+}*/

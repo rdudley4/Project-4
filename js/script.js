@@ -92,6 +92,40 @@ function updateDescription() {
   }
 }
 
+function filterResults(index) {
+  var galleryItem = $('.item' + (index + 1));
+  var itemSrc = galleryItem.children('.back').children('a').attr('href');
+
+  if ( imgDatabase[index].isMatched ) {
+      galleryItem.velocity(
+        {
+          bottom: 0
+        },
+        {
+          duration: 400,
+          display: "inline-block"
+        }
+      );
+  } else {
+      galleryItem.velocity(
+        {
+          bottom: -204
+        },
+        {
+          duration: 400,
+          display: "none"
+        }
+      );
+  }
+}
+
+function resetFilter() {
+  for (var i = 0; i < imgDatabase.length; i++) {
+    imgDatabase[i].isMatched = true;
+    filterResults(i);
+  }
+}
+
 $( document ).ready(function() {
   $( 'body' ).velocity( {
     opacity: 1
@@ -108,57 +142,25 @@ $( document ).ready(function() {
   /* On keyup, check the value of our main-search, then..
       1. If value is empty, display all images and do not filter results.
       2. If search is not empty, compare the value against imageObject id or title. */
+
   $mainSearch.on( 'keyup', function() {
     var userInput = $mainSearch.val().toLowerCase();
     var results = "The following images match the search query: ";
 
-    for ( var i = 0; i < imgDatabase.length; i++ ) {
-      var galleryItem = $('.item' + (i + 1));
-      var itemSrc = galleryItem.children('.back').children('a').attr('href');
-
-      if ( userInput.length > 0 ) {
-
-          if ( imgDatabase[i].title.toLowerCase().indexOf( userInput ) !== -1 || parseInt( userInput ) === imgDatabase[i].id ) {
-            results += imgDatabase[i].src + ", ";
-            imgDatabase[i].isMatched = true;
-          } else {
-            imgDatabase[i].isMatched = false;
-          }
-
-          if ( imgDatabase[i].isMatched && itemSrc === imgDatabase[i].src ) {
-              galleryItem.velocity (
-                {
-                  bottom: 0
-                },
-                {
-                  duration: 400,
-                  display: "inline-block"
-                }
-              );
-          } else {
-              galleryItem.velocity (
-                {
-                  bottom: -204
-                },
-                {
-                  duration: 400,
-                  display: "none"
-                }
-              );
-          }
-        console.log(results);
-      } else {
-          galleryItem.velocity(
-            {
-              bottom: 0
-            },
-            {
-              duration: 400,
-              display: "inline-block"
-            }
-          );
-        console.log('Search is empty.');
+    if ( userInput.length > 0 ) {
+      for ( var i = 0; i < imgDatabase.length; i++ ) {
+        if ( imgDatabase[i].title.toLowerCase().indexOf( userInput ) !== -1 || parseInt( userInput ) === imgDatabase[i].id ) {
+          results += imgDatabase[i].src + ", ";
+          imgDatabase[i].isMatched = true;
+        } else {
+          imgDatabase[i].isMatched = false;
+        }
+        filterResults(i);
       }
+      console.log(results);
+    } else {
+      resetFilter();
+      console.log('Search filter has been reset.');
     }
   } );
 
