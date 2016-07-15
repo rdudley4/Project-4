@@ -46,6 +46,31 @@
     <!-- JavaScript Includes -->
     <script src="https://code.jquery.com/jquery-3.1.0.min.js"   integrity="sha256-cCueBR6CsyA4/9szpPfrX3s49M9vUU5BgtiJj06wt/s="   crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/velocity/1.2.3/velocity.min.js"></script>
+    <script type="text/javascript">
+		<!--//--><![CDATA[//><!--
+			var images = new Array()
+			function preload() {
+				for (i = 0; i < preload.arguments.length; i++) {
+					images[i] = new Image()
+					images[i].src = preload.arguments[i]
+				}
+			}
+			preload(
+				"img/01.jpg",
+				"img/02.jpg",
+        "img/03.jpg",
+        "img/04.jpg",
+        "img/05.jpg",
+        "img/06.jpg",
+        "img/07.jpg",
+        "img/08.jpg",
+        "img/09.jpg",
+        "img/10.jpg",
+        "img/11.jpg",
+        "img/12.jpg"
+			)
+		//--><!]]>
+	  </script>
     <script src="js/imgData.js"></script>
     <script src="js/script.js"></script>
 
