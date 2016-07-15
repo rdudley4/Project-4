@@ -156,7 +156,17 @@ $( document ).ready(function() {
 
   // Info Help
   $( '#help' ).on( 'click', function()  {
-    $( '#controls-help' ).slideToggle();
+    if ( $('#controls-help').css('opacity') === '1' ) {
+      $( '#controls-help' ).velocity( {
+        opacity: 0,
+        marginTop: 75
+      }, 400 );
+    } else {
+      $( '#controls-help' ).velocity( {
+        opacity: 1,
+        marginTop: 25
+      }, 400 );
+    }
   } );
 
   // Keyboard Controls for Lightbox

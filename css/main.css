@@ -314,6 +314,7 @@ a:focus {
   max-width : 60%;
   margin-top: 25px;
   font-size : 0.75em;
+  opacity: 1;
 }
 
 #help {
