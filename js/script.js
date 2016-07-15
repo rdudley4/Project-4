@@ -112,60 +112,53 @@ $( document ).ready(function() {
     var userInput = $mainSearch.val().toLowerCase();
     var results = "The following images match the search query: ";
 
-    if ( userInput.length > 0 ) {
-      for ( var i = 0; i < imgDatabase.length; i++ ) {
+    for ( var i = 0; i < imgDatabase.length; i++ ) {
+      var galleryItem = $('.item' + (i + 1));
+      var itemSrc = galleryItem.children('.back').children('a').attr('href');
 
-        if ( imgDatabase[i].title.toLowerCase().indexOf( userInput ) !== -1 || parseInt( userInput ) === imgDatabase[i].id ) {
-          results += imgDatabase[i].src + ", ";
-          imgDatabase[i].isMatched = true;
-        } else {
-          imgDatabase[i].isMatched = false;
-        }
+      if ( userInput.length > 0 ) {
 
-        var galleryItem = $('.item' + (i + 1));
-        var itemSrc = galleryItem.children('.back').children('a').attr('href');
-
-        if ( imgDatabase[i].isMatched && itemSrc === imgDatabase[i].src ) {
-            galleryItem.velocity(
-              {
-                opacity: 1,
-                top: 0
-              },
-              {
-                duration: 400,
-                display: "inline-block"
-              }
-            );
-        } else {
-          // if (itemSrc === imgDatabase[i].src ) {
-            galleryItem.velocity(
-              {
-                opacity: 0,
-                top: -204
-              },
-              {
-                duration: 400,
-                display: "none"
-              }
-            );
-          // }
-        }
-      }
-      console.log(results);
-    } else {
-      for (var i = 0; i < imgDatabase.length; i++) {
-        $( '.item' + (i + 1) ).velocity(
-          {
-            opacity: 1,
-            top: 0
-          },
-          {
-            duration: 400,
-            display: "inline-block"
+          if ( imgDatabase[i].title.toLowerCase().indexOf( userInput ) !== -1 || parseInt( userInput ) === imgDatabase[i].id ) {
+            results += imgDatabase[i].src + ", ";
+            imgDatabase[i].isMatched = true;
+          } else {
+            imgDatabase[i].isMatched = false;
           }
-        );
+
+          if ( imgDatabase[i].isMatched && itemSrc === imgDatabase[i].src ) {
+              galleryItem.velocity (
+                {
+                  bottom: 0
+                },
+                {
+                  duration: 400,
+                  display: "inline-block"
+                }
+              );
+          } else {
+              galleryItem.velocity (
+                {
+                  bottom: -204
+                },
+                {
+                  duration: 400,
+                  display: "none"
+                }
+              );
+          }
+        console.log(results);
+      } else {
+          galleryItem.velocity(
+            {
+              bottom: 0
+            },
+            {
+              duration: 400,
+              display: "inline-block"
+            }
+          );
+        console.log('Search is empty.');
       }
-      console.log('Search is empty.');
     }
   } );
 

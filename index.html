@@ -23,7 +23,7 @@
       <div id="lightbox">
         <div class="container-lightbox">
           <!-- Lightbox                                                                                                                                                                -->
-          <img class="selected" src="" alt="Current Image" />
+          <img class="selected" src="img/01.jpg" alt="Current Image" />
           <span class="description"></span>
           <div id="controls">
             <i id="prev" class="fa fa-chevron-left fa-3x" aria-hidden="true"></i>
@@ -48,11 +48,11 @@
     <script src="https://cdn.jsdelivr.net/velocity/1.2.3/velocity.min.js"></script>
     <script type="text/javascript">
 		// Preload our gallery images
-			var images = new Array()
+			var images = new Array();
 			function preload() {
 				for (i = 0; i < preload.arguments.length; i++) {
-					images[i] = new Image()
-					images[i].src = preload.arguments[i]
+					images[i] = new Image();
+					images[i].src = preload.arguments[i];
 				}
 			}
 			preload(
@@ -68,7 +68,7 @@
         "img/10.jpg",
         "img/11.jpg",
         "img/12.jpg"
-			) // END PRELOAD
+			); // END PRELOAD
 	  </script>
     <script src="js/imgData.js"></script>
     <script src="js/script.js"></script>
