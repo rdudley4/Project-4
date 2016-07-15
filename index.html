@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Photo Gallery</title>
-     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Exo+2:100,200,300|Nunito" />
+     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Exo+2:100,200,300%7CNunito" />
     <link rel="stylesheet" href="fa-4.6.3/css/font-awesome.min.css" />
     <link rel="stylesheet" href="css/normalize.css" />
     <link rel="stylesheet" href="css/main.css" />
@@ -13,8 +13,8 @@
     <div class="container-main">
 
       <section id="search">
-        <img id="logo" src="img/logo_placeholder.png" />
-        <input id="main-search" type="text" name="search" placeholder=" Search images">
+        <img id="logo" src="img/logo_placeholder.png" alt="Site Logo" />
+        <input id="main-search" type="text" name="search" placeholder=" Search by Title or ID">
       </section> <!-- End Search -->
 
       <section id="gallery">
@@ -23,7 +23,7 @@
       <div id="lightbox">
         <div class="container-lightbox">
           <!-- Lightbox                                                                                                                                                                -->
-          <img class="selected" src="" />
+          <img class="selected" src="" alt="Current Image" />
           <span class="description"></span>
           <div id="controls">
             <i id="prev" class="fa fa-chevron-left fa-3x" aria-hidden="true"></i>
@@ -47,7 +47,7 @@
     <script src="https://code.jquery.com/jquery-3.1.0.min.js"   integrity="sha256-cCueBR6CsyA4/9szpPfrX3s49M9vUU5BgtiJj06wt/s="   crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/velocity/1.2.3/velocity.min.js"></script>
     <script type="text/javascript">
-		<!--//--><![CDATA[//><!--
+		// Preload our gallery images
 			var images = new Array()
 			function preload() {
 				for (i = 0; i < preload.arguments.length; i++) {
@@ -68,8 +68,7 @@
         "img/10.jpg",
         "img/11.jpg",
         "img/12.jpg"
-			)
-		//--><!]]>
+			) // END PRELOAD
 	  </script>
     <script src="js/imgData.js"></script>
     <script src="js/script.js"></script>

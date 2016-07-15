@@ -358,8 +358,8 @@ a:focus {
 
   .gallery-item {
     display     : inline-block;
-    margin-left : 2.5%;
-    margin-right: 2.5%;
+    margin-left : 2%;
+    margin-right: 2%;
   }
 
   #controls {
@@ -378,7 +378,7 @@ a:focus {
     display: inline-block;
   }
 }
-@media (min-width: 1100px) {
+/*@media (min-width: 1100px) {
   .gallery-item:nth-of-type(4n + 1) {
     margin-left: 0;
   }
@@ -386,4 +386,4 @@ a:focus {
   .gallery-item:nth-of-type(4n) {
     margin-right: 0;
   }
-}
+}*/
