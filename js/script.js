@@ -17,16 +17,6 @@ var nextClicked = false;
         2a. Append the title and thumbnail to card
         2b. Get the title text and set it to our image-title text.
     3. Append completed card to the page. */
-// function assembleImage( imageObject ) {
-//     var $imageCard = $( '<div class="gallery-item"></div>' );
-//     var $imageTitle = $( '<span class="image-title"></span>' );
-//     var $imageLink = $( '<a href="' + imageObject.src + '"</a>' );
-//
-//     $imageTitle.text( imageObject.title );
-//     $imageLink.append( imageObject.thumbnail, $imageTitle );
-//     $imageCard.append( $imageLink );
-//     $( '#gallery' ).append( $imageCard );
-// }
 
 function assembleImage( imageObject ) {
   var $galleryItem = $( '<div class="gallery-item"></div>' );
@@ -88,8 +78,12 @@ function nextImage() {
 function updateImage() {
   currentSrc = nextImage();
 
-  $lbImage.fadeOut( function() {
-    $lbImage.attr( 'src', currentSrc ).fadeIn();
+  $lbImage.velocity( {
+    opacity: 0,
+  }, 400, function() {
+    $lbImage.velocity( {
+      opacity: 1
+    } ).attr('src', currentSrc);
   } );
 }
 
@@ -102,7 +96,9 @@ function updateDescription() {
 }
 
 $( document ).ready(function() {
-  $( 'body' ).hide().fadeIn( 600 ).append( $lightbox );
+  $( 'body' ).velocity( {
+    opacity: 1
+  }, 600 ).append( $lightbox );
 
   /* Loop through our imgDatabase(imgData.js) and
       1. Store reference to current imgDatabase object.
