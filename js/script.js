@@ -87,7 +87,7 @@ function updateImage() {
 function updateDescription() {
   for ( i = 0; i < imgDatabase.length; i++ ) {
     if ( currentSrc === imgDatabase[i].src ) {
-      $( '.description' ).text( imgDatabase[i].caption );
+      $( '.image-info' ).text( imgDatabase[i].caption );
     }
   }
 }
@@ -224,7 +224,7 @@ $( document ).ready(function() {
   } );
 
   // Keyboard Controls for Lightbox
-  $( document ).keydown( function( e ) {
+  $( document ).keyup( function( e ) {
     // Store reference to the key that was pressed.
     var keyPressed = e.which;
     /* 1. If Escape is pressed & lightbox is open, close lightbox.

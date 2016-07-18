@@ -61,8 +61,7 @@ a:focus {
 }
 
 .image-title,
-.key,
-.selected {
+.key {
   border-radius: 0.3em;
 }
 
@@ -79,6 +78,11 @@ a:focus {
 #lightbox .fa:hover,
 .key:hover {
   cursor: pointer;
+}
+
+#logo {
+  max-width: 33%;
+  margin-bottom: 20px;
 }
 
 /* Search box */
@@ -236,9 +240,10 @@ a:focus {
 }
 
 .selected {
-  margin-bottom: 10px;
   border       : 3px solid #e0e0e0;
-  box-shadow   : 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  border-bottom: 0;
+  border-top-right-radius: .3em;
+  border-top-left-radius: .3em;
   width        : 100%;
   max-width    : 1100px;
   visibility: visible;
@@ -250,6 +255,11 @@ a:focus {
 }
 
 /* Controls */
+#controls,
+#controls-help {
+  color: #e0e0e0;
+}
+
 #controls {
   height   : 48px;
   font-size: 0.75em;
@@ -300,14 +310,21 @@ a:focus {
 #controls-help,
 #help {
   transition: color 0.5s ease;
-  color     : #e0e0e0;
 }
 
 .description {
-  color        : #fff;
-  max-width    : 600px;
+  color        : #222;
   line-height  : 32px;
-  margin-bottom: 20px;
+  background-color: #e0e0e0;
+  border-bottom-left-radius: .3em;
+  border-bottom-right-radius: .3em;
+  background-image: url("https://www.transparenttextures.com/patterns/az-subtle.png");
+}
+
+.image-info {
+  max-width: 600px;
+  margin: 0 auto 20px;
+  padding: 5px;
 }
 
 #controls-help {
@@ -358,8 +375,8 @@ a:focus {
 
   .gallery-item {
     display     : inline-block;
-    margin-left : 2%;
-    margin-right: 2%;
+    margin-left : 2.15%;
+    margin-right: 2.15%;
   }
 
   #controls {
