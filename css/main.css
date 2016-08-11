@@ -239,14 +239,31 @@ a:focus {
   z-index         : 1001;
 }
 
+.selected,
+.description {
+  border: 1px solid #444;
+}
+
 .selected {
-  border       : 3px solid #e0e0e0;
-  border-bottom: 0;
-  border-top-right-radius: .3em;
-  border-top-left-radius: .3em;
   width        : 100%;
   max-width    : 1100px;
   visibility: visible;
+  border-bottom: 0;
+}
+
+.description {
+  margin-bottom: 20px;
+  font-family: 'Roboto', sans-serif;
+  color        : #e0e0e0;
+  line-height  : 32px;
+  background-color: #333;
+  background-image: url("https://www.transparenttextures.com/patterns/dark-fish-skin.png");
+}
+
+.image-info {
+  max-width: 600px;
+  margin: 0 auto;
+  padding: 5px;
 }
 
 .container-lightbox {
@@ -257,7 +274,7 @@ a:focus {
 /* Controls */
 #controls,
 #controls-help {
-  color: #e0e0e0;
+  color: #444;
 }
 
 #controls {
@@ -312,21 +329,6 @@ a:focus {
   transition: color 0.5s ease;
 }
 
-.description {
-  color        : #222;
-  line-height  : 32px;
-  background-color: #e0e0e0;
-  border-bottom-left-radius: .3em;
-  border-bottom-right-radius: .3em;
-  background-image: url("https://www.transparenttextures.com/patterns/az-subtle.png");
-}
-
-.image-info {
-  max-width: 600px;
-  margin: 0 auto 20px;
-  padding: 5px;
-}
-
 #controls-help {
   max-width : 60%;
   margin-top: 25px;
@@ -344,7 +346,7 @@ a:focus {
   display    : inline-block;
   width      : 48px;
   line-height: 36px;
-  border     : 2px solid #e0e0e0;
+  border     : 2px solid #444;
   transition : all 0.5s ease;
 }
 

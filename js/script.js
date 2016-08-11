@@ -77,11 +77,11 @@ function updateImage() {
   currentSrc = nextImage();
   $lbImage.velocity( {
     opacity: 0,
-  }, 400, function() {
+  }, 100, function() {
     $lbImage.velocity( {
       opacity: 1
     } ).attr('src', currentSrc);
-  }, 400 );
+  }, 100 );
 }
 
 function updateDescription() {
@@ -102,7 +102,7 @@ function filterResults(index) {
           bottom: 0
         },
         {
-          duration: 400,
+          duration: 300,
           display: "inline-block"
         }
       );
@@ -112,7 +112,7 @@ function filterResults(index) {
           bottom: -204
         },
         {
-          duration: 400,
+          duration: 300,
           display: "none"
         }
       );
@@ -129,7 +129,7 @@ function resetFilter() {
 $( document ).ready(function() {
   $( 'body' ).velocity( {
     opacity: 1
-  }, 600 ).append( $lightbox );
+  }, 400 ).append( $lightbox );
 
   /* Loop through our imgDatabase(imgData.js) and
       1. Store reference to current imgDatabase object.
