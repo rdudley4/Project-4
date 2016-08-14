@@ -141,6 +141,11 @@ a:focus {
   box-shadow: 0 0 5px 2px rgba(204,204,204,1);
 }
 
+.gallery-item,
+.gallery-item:hover {
+  transition: outline .3s ease;
+}
+
 .gallery-item {
   width        : 200px;
   height       : 200px;
@@ -149,7 +154,11 @@ a:focus {
   display      : block;
   margin-bottom: 40px;
   box-shadow   : 0 0 5px 2px rgba(204,204,204,1);
-  border-radius: 0.3em;
+  outline: 1px solid rgba(68, 68, 68, 0.3);
+}
+
+.gallery-item:hover {
+  outline: 1px solid #777;
 }
 
 .gallery-item div {
@@ -257,7 +266,7 @@ a:focus {
   color        : #e0e0e0;
   line-height  : 32px;
   background-color: #333;
-  background-image: url("https://www.transparenttextures.com/patterns/dark-fish-skin.png");
+  background-image: url("https://www.transparenttextures.com/patterns/binding-dark.png");
 }
 
 .image-info {
