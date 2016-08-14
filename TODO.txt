@@ -1,0 +1,9 @@
+ List of TODO's
+----------------
+1. Implement results notification system.
+  a. When user is filtering results, display how many reults are matched to the query.
+  b. If there are no results, display a message saying no results were found.
+
+2. Implement YouTube videos.
+  a. Perhaps have all the YouYube video data stored in the imgData.js file, and pull from an object with special properties.
+  b. Width of each video thumbnail should be 50%.

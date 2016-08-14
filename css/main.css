@@ -29,6 +29,10 @@ a:focus {
   outline: none;
 }
 
+footer a:hover {
+  color: #c0392b;
+}
+
 #controls,
 #controls-help,
 #help,
@@ -98,7 +102,7 @@ a:focus {
 }
 
 #main-search:focus {
-  border-color: #2980b9;
+  border-color: #FF5252;
   outline     : 0;
 }
 
@@ -154,7 +158,7 @@ a:focus {
   display      : block;
   margin-bottom: 40px;
   box-shadow   : 0 0 5px 2px rgba(204,204,204,1);
-  outline: 1px solid rgba(68, 68, 68, 0.3);
+  outline: 1px solid rgba(0, 0, 0, 0);
 }
 
 .gallery-item:hover {
@@ -278,6 +282,17 @@ a:focus {
 .container-lightbox {
   padding  : 10px;
   max-width: 1000px;
+}
+
+/* Footer */
+
+footer {
+  color: #000;
+  font-family: 'Roboto', sans-serif;
+}
+
+footer span {
+  display: block;
 }
 
 /* Controls */
