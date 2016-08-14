@@ -261,7 +261,7 @@ footer a:hover {
 .selected {
   width        : 100%;
   max-width    : 1100px;
-  margin-bottom: 3px;
+  margin-bottom: 2px;
   visibility   : visible;
 }
 
@@ -272,6 +272,11 @@ footer a:hover {
   line-height     : 32px;
   background-color: #333;
   background-image: url("https://www.transparenttextures.com/patterns/binding-dark.png");
+}
+
+.description,
+#controls {
+  box-shadow: inset 0px 0px 5px 0px rgba(0, 0, 0, 1);
 }
 
 .image-info {
@@ -299,12 +304,17 @@ footer span {
 /* Controls */
 #controls,
 #controls-help {
-  color: #444;
+  color: #555;
 }
 
 #controls {
+  width: 90%;
   height   : 48px;
   font-size: 0.75em;
+  margin-bottom: 15px;
+  background-color: #333;
+  border: 1px solid #444;
+  outline: 1px solid #000;
 }
 
 #close,
@@ -312,15 +322,15 @@ footer span {
 #next,
 #prev {
   position   : absolute;
-  line-height: 48px;
+  line-height: 46px;
 }
 
 #prev {
-  left: 0;
+  left: 10px;
 }
 
 #next {
-  right: 0;
+  right: 10px;
 }
 
 #close {
