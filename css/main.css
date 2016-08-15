@@ -93,7 +93,7 @@ footer a:hover {
   max-width       : 460px;
   padding         : 10px 10px 10px 20px;
   font-size       : 16px;
-  border          : 1px solid #555;;
+  border          : 1px solid #555;
   transition      : all 0.5s ease;
   font-family     : 'FontAwesome', 'Roboto';
 }
