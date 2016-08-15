@@ -84,7 +84,6 @@ footer a:hover {
 }
 
 #logo {
-  max-width    : 33%;
   margin-bottom: 20px;
 }
 
@@ -94,16 +93,9 @@ footer a:hover {
   max-width       : 460px;
   padding         : 10px 10px 10px 20px;
   font-size       : 16px;
-  color           : #e0e0e0;
-  background-color: #444;
-  border          : 1px solid #555;
-  outline         : 1px solid #000;
+  border          : 1px solid #555;;
   transition      : all 0.5s ease;
-  font-family     : 'FontAwesome', 'Nunito';
-}
-
-#main-search:focus {
-  outline-color: rgba(235, 149, 50, 1);
+  font-family     : 'FontAwesome', 'Roboto';
 }
 
 .fa-instagram {
@@ -285,7 +277,6 @@ footer a:hover {
 }
 
 #controls,
-#main-search,
 .description,
 .shadow,
 .key {
