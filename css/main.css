@@ -94,6 +94,7 @@ footer a:hover {
   padding         : 10px 10px 10px 20px;
   font-size       : 16px;
   border          : 1px solid #555;
+  outline         : none;
   transition      : all 0.5s ease;
   font-family     : 'FontAwesome', 'Roboto';
 }
@@ -330,12 +331,19 @@ footer span {
   line-height: 46px;
 }
 
+#next::before,
+#prev::before {
+  border: 1px solid #444;
+  outline: 1px solid #000;
+  padding: 9px;
+}
+
 #prev {
-  left: 10px;
+  left: 1px;
 }
 
 #next {
-  right: 10px;
+  right: 1px;
 }
 
 #close {
@@ -416,6 +424,11 @@ footer span {
 
   #controls {
     font-size: 1em;
+  }
+
+  #next::before,
+  #prev::before {
+    padding: 5px;
   }
 }
 @media (min-width: 600px) {
