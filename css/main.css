@@ -90,24 +90,20 @@ footer a:hover {
 
 /* Search box */
 #main-search {
-  width        : 85%;
-  max-width    : 460px;
-  padding      : 10px 10px 10px 30px;
-  font-size    : 16px;
-  border       : 2px solid #ccc;
-  border-radius: 21px;
-  transition   : border-color 0.5s ease;
-  font-family  : 'FontAwesome', 'Nunito';
+  width           : 85%;
+  max-width       : 460px;
+  padding         : 10px 10px 10px 20px;
+  font-size       : 16px;
+  color           : #e0e0e0;
+  background-color: #444;
+  border          : 1px solid #555;
+  outline         : 1px solid #000;
+  transition      : all 0.5s ease;
+  font-family     : 'FontAwesome', 'Nunito';
 }
 
 #main-search:focus {
-  border-color: #FF5252;
-  outline     : 0;
-}
-
-#main-search:focus + label .fa {
-  color     : #16a085;
-  transition: color 0.5s ease;
+  outline-color: rgba(235, 149, 50, 1);
 }
 
 .fa-instagram {
@@ -289,6 +285,7 @@ footer a:hover {
 }
 
 #controls,
+#main-search,
 .description,
 .shadow,
 .key {
