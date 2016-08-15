@@ -347,11 +347,11 @@ footer span {
 }
 
 #close {
-  right: 33%;
+  right: 33.3333%;
 }
 
 #download {
-  left: 33%;
+  left: 33.3333%;
 }
 
 #close:hover,
@@ -434,7 +434,6 @@ footer span {
 @media (min-width: 600px) {
   #controls {
     width    : 60%;
-    max-width: 500px;
   }
 }
 @media (min-width: 1000px) {
