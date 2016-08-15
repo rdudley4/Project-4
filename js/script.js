@@ -144,10 +144,10 @@ $( document ).ready(function() {
 
   /*  Image Filtering - Main Search on keyup.
         a. Store users input converted to lower case in userInput.
-        b. Test if userInput is > 0, so we can be user has entered some text.
+        b. Test if userInput is > 0, so we can be sure the user has entered some text.
         c. Loop through imgDatabase and test the following:
             1. If any of the imgDatabase.title's contain the userInput.
-            2. If the query parsed as an integer matches any of the imgDatabase.id's.
+            2. If userInput parsed as an integer matches any of the imgDatabase.id's.
             3. When match is found, set isMatched = true. Else set it to false.
         d. Call filterResults if search field contains input, else call resetFilter. */
 
@@ -229,12 +229,12 @@ $( document ).ready(function() {
     if ( $('#controls-help').css('opacity') === '1' ) {
       $( '#controls-help' ).velocity( {
         opacity: 0,
-        marginTop: 75
+        marginTop: 54
       }, 400 );
     } else {
       $( '#controls-help' ).velocity( {
         opacity: 1,
-        marginTop: 25
+        marginTop: 4
       }, 400 );
     }
   } );
