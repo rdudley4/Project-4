@@ -12,7 +12,7 @@ var imgDatabase = [
     src: 'img/02.jpg',
     thumbnail: '<img src="img/Thumbnails/02.jpg">',
     title: 'Lake & Mountains',
-    caption: 'I daresay that Fry has discovered the smelliest object in the known universe!',
+    caption: 'Oh dear! She\'s stuck in an infinite loop, and he\'s an idiot! Well, that\'s love for you.',
     resolution: '1920x1200',
     isMatched: false,
     id: 2
@@ -39,7 +39,7 @@ var imgDatabase = [
     src: 'img/05.jpg',
     thumbnail: '<img src="img/Thumbnails/05.jpg">',
     title: 'Canyon Mountains',
-    caption: "Hail-shot Nelsons folly lee Jack Tar Arr Letter of Marque fire ship.",
+    caption: "Ah, the 'Breakfast Club' soundtrack! I can't wait til I'm old enough to feel ways about stuff!",
     resolution: '1920x1200',
     isMatched: false,
     id: 5
@@ -48,7 +48,7 @@ var imgDatabase = [
     src: 'img/06.jpg',
     thumbnail: '<img src="img/Thumbnails/06.jpg">',
     title: 'Interesting shrubs',
-    caption: "Pirate Round man-of-war overhaul coxswain heave to Letter of Marque sloop.",
+    caption: "If rubbin' frozen dirt in your crotch is wrong, hey I don't wanna be right. There's no part of that sentence I didn't like!",
     resolution: '1920x1200',
     isMatched: false,
     id: 6

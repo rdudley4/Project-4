@@ -13,7 +13,9 @@
     <div class="container-main">
 
       <section id="search">
-        <img id="logo" src="img/testlogo.png" alt="Site Logo" />
+        <a href="index.html">
+          <img id="logo" src="img/testlogo.png" alt="Site Logo" />
+        </a>
         <input id="main-search" type="text" name="search" placeholder=" Search by Title or ID">
       </section> <!-- End Search -->
 
@@ -23,7 +25,11 @@
       <div id="lightbox">
         <div class="container-lightbox">
           <!-- Lightbox                                                                                                                                                                -->
-          <img class="selected" src="" alt="Current Image" />
+          <div class="selected-container">
+            <img class="selected" src="" alt="Current Image" />
+            <div class="shadow"></div>
+          </div>
+
           <span class="description">
             <p class="image-info">Info Goes Here</p>
             <div id="controls">

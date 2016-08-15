@@ -7,3 +7,7 @@
 2. Implement YouTube videos.
   a. Perhaps have all the YouYube video data stored in the imgData.js file, and pull from an object with special properties.
   b. Width of each video thumbnail should be 50%.
+
+3. Update hotkey help keys to one uniform color.
+  a. Perhaps switch these over to a square theme as well.
+  b. Implement hover help. When the user hovers over the key, it should tell them what it does.

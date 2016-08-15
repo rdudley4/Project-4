@@ -77,11 +77,11 @@ function updateImage() {
   currentSrc = nextImage();
   $lbImage.velocity( {
     opacity: 0,
-  }, 100, function() {
+  }, 150, function() {
     $lbImage.velocity( {
       opacity: 1
     } ).attr('src', currentSrc);
-  }, 100 );
+  }, 150 );
 }
 
 function updateDescription() {

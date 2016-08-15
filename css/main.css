@@ -241,6 +241,11 @@ footer a:hover {
   background-color: seagreen;
 }
 
+.description,
+.details {
+  font-family: 'Roboto', sans-serif;
+}
+
 /* Lightbox */
 #lightbox {
   position        : fixed;
@@ -253,8 +258,8 @@ footer a:hover {
 }
 
 .description,
-.selected {
-  border: 1px solid #444;
+.shadow {
+  border : 1px solid #444;
   outline: 1px solid #000;
 }
 
@@ -265,18 +270,30 @@ footer a:hover {
   visibility   : visible;
 }
 
+.selected-container {
+  position: relative;
+}
+
+.shadow {
+  position: absolute;
+  width   : 100%;
+  height  : 100%;
+  top     : 0;
+  left    : 0;
+}
+
 .description {
   margin-bottom   : 20px;
-  font-family     : 'Roboto', sans-serif;
   color           : #e0e0e0;
   line-height     : 32px;
   background-color: #333;
-  background-image: url("https://www.transparenttextures.com/patterns/binding-dark.png");
+  background-image: url("../img/binding-dark.png");
 }
 
+#controls,
 .description,
-#controls {
-  box-shadow: inset 0px 0px 5px 0px rgba(0, 0, 0, 1);
+.shadow {
+  box-shadow: inset 0 0 5px 0 rgba(0, 0, 0, 1);
 }
 
 .image-info {
@@ -308,13 +325,13 @@ footer span {
 }
 
 #controls {
-  width: 90%;
-  height   : 48px;
-  font-size: 0.75em;
-  margin-bottom: 15px;
+  width           : 90%;
+  height          : 48px;
+  font-size       : 0.75em;
+  margin-bottom   : 15px;
   background-color: #333;
-  border: 1px solid #444;
-  outline: 1px solid #000;
+  border          : 1px solid #444;
+  outline         : 1px solid #000;
 }
 
 #close,
@@ -354,10 +371,6 @@ footer span {
   color: #27ae60;
 }
 
-#help:hover {
-  color: #9b59b6;
-}
-
 #controls .fa,
 #controls-help,
 #help {
@@ -385,24 +398,52 @@ footer span {
   transition : all 0.5s ease;
 }
 
+.esc {
+  border-color: rgba(192, 57, 43, .5);
+  color       : rgba(192, 57, 43, .5);
+}
+
+.left-arrow {
+  border-color: rgba(41, 128, 185, 0.5);
+  color       : rgba(41, 128, 185, 0.5);
+}
+
+.right-arrow {
+  border-color: rgba(39, 174, 96, 0.5);
+  color       : rgba(39, 174, 96, 0.5);
+}
+
+.key-I {
+  border-color: rgba(211, 84, 0, 0.5);
+  color       : rgba(211, 84, 0, 0.5);
+}
+
+#help {
+  color: rgba(155, 89, 182, .5);
+}
+
 .esc:hover {
-  border-color: #c0392b;
-  color       : #c0392b;
+  border-color: rgba(192, 57, 43, 1);
+  color       : rgba(192, 57, 43, 1);
 }
 
 .left-arrow:hover {
-  border-color: #2980b9;
-  color       : #2980b9;
+  border-color: rgba(41, 128, 185, 1);
+  color       : rgba(41, 128, 185, 1);
 }
 
 .right-arrow:hover {
-  border-color: #27ae60;
-  color       : #27ae60;
+  border-color: rgba(39, 174, 96, 1);
+  color       : rgba(39, 174, 96, 1);
 }
 
 .key-I:hover {
-  border-color: #d35400;
-  color       : #d35400;
+  border-color: rgba(211, 84, 0, 1);
+  color       : rgba(211, 84, 0, 1);
+}
+
+#help:hover {
+  color: rgba(155, 89, 182, 1);
 }
 @media (min-width: 500px) {
   .container-main {
