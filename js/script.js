@@ -226,15 +226,13 @@ $( document ).ready(function() {
   */
 
   $( '#help' ).on( 'click', function()  {
-    if ( $('#controls-help').css('opacity') === '1' ) {
+    if ( $('#controls-help').css('margin-top') === '4px' ) {
       $( '#controls-help' ).velocity( {
-        opacity: 0,
-        marginTop: 54
+        marginTop: -55,
       }, 400 );
     } else {
       $( '#controls-help' ).velocity( {
-        opacity: 1,
-        marginTop: 4
+        marginTop: 4,
       }, 400 );
     }
   } );

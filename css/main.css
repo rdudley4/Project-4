@@ -380,8 +380,9 @@ footer span {
 #controls-help {
   max-width : 60%;
   margin-top: 4px;
+  margin-bottom: 10px;
   font-size : 0.75em;
-  opacity   : 1;
+  font-family: 'Nunito', sans-serif;
 }
 
 #help {
