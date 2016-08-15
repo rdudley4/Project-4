@@ -22,7 +22,7 @@ function assembleImage( imageObject ) {
   var $galleryItem = $( '<div class="gallery-item"></div>' );
   var $front       = $( '<div class="front"></div>' );
   var $back        = $( '<div class="back"></div>' );
-  var thumbnail    = imageObject.thumbnail;
+  var thumbnail    = $( '<img src="' + imageObject.thumbnail + '">' );
   var link         = $( '<a href="' + imageObject.src + '"></a>' );
   var details      = $( '<div class="details"></div>' );
   var $title       = $( '<span class="title"></span>' );
@@ -131,17 +131,25 @@ $( document ).ready(function() {
     opacity: 1
   }, 400 ).append( $lightbox );
 
-  /* Loop through our imgDatabase(imgData.js) and
-      1. Store reference to current imgDatabase object.
-      2. Pass the object to the assembleImage function */
+  /*  Loop through our imgDatabase and...
+        a. Store a reference to our current object.
+        b. Pass object into assembleImage.
+        c. Increment itemCounter (used only to generate class names for gallery items.) */
+
   for ( var i = 0; i < imgDatabase.length; i++ ) {
     var imgData = imgDatabase[i];
     assembleImage( imgData );
     itemCounter++;
   }
-  /* On keyup, check the value of our main-search, then..
-      1. If value is empty, display all images and do not filter results.
-      2. If search is not empty, compare the value against imageObject id or title. */
+
+  /*  Image Filtering - Main Search on keyup.
+        a. Store users input converted to lower case in userInput.
+        b. Test if userInput is > 0, so we can be user has entered some text.
+        c. Loop through imgDatabase and test the following:
+            1. If any of the imgDatabase.title's contain the userInput.
+            2. If the query parsed as an integer matches any of the imgDatabase.id's.
+            3. When match is found, set isMatched = true. Else set it to false.
+        d. Call filterResults if search field contains input, else call resetFilter. */
 
   $mainSearch.on( 'keyup', function() {
     var userInput = $mainSearch.val().toLowerCase();
@@ -164,8 +172,12 @@ $( document ).ready(function() {
     }
   } );
 
-  /* Prevent default link functionality
-      1. Fade in our light box on click. */
+  /*  Start lightbox when user clicks on any of the image 'cards'
+        a. Prevent default link event.
+        b. Store a reference to the clicked images href attribute, and set this to our lightbox image.
+        c. Call updateDescription to update info text.
+        d. Set lightboxIsActive = true and fade in the lightbox.
+  */
   $( '.back a' ).on( "click", function( event ) {
     event.preventDefault();
     currentSrc = $( this ).attr( 'href' );
@@ -208,7 +220,11 @@ $( document ).ready(function() {
     console.log('Lightbox Closed');
   } );
 
-  // Info Help
+  /* Info Help - When user clicks on 'Hotkey Info' [Toggle Effect]
+      a. If #controls-help opacity is 1, then we fade the element out by setting the opacity to 0 and sliding it down with margin.
+      b. Else we can assume the element is hidden and conversely set the opacity to 1 and slide the element back up.
+  */
+
   $( '#help' ).on( 'click', function()  {
     if ( $('#controls-help').css('opacity') === '1' ) {
       $( '#controls-help' ).velocity( {
@@ -223,14 +239,13 @@ $( document ).ready(function() {
     }
   } );
 
-  // Keyboard Controls for Lightbox
+  /* Keyboard Controls for Lightbox
+      a. Store a reference to most recent key press in keyPressed.
+      b. Test if lightboxIsActive is true. If so, use switch statement to test for certain key presses.
+      c. Have hotkeys trigger the click event on corresponding control.
+  */
   $( document ).keyup( function( e ) {
-    // Store reference to the key that was pressed.
     var keyPressed = e.which;
-    /* 1. If Escape is pressed & lightbox is open, close lightbox.
-       2. If we press left arrow fire #prev 'click' function.
-       3. If we press right arrow fire #next 'click' function.
-    */
 
     if ( lightboxIsActive ) {
       switch ( keyPressed ) {
