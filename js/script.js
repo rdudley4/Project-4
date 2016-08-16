@@ -226,13 +226,25 @@ $( document ).ready(function() {
 
   $( '#help' ).on( 'click', function()  {
     if ( $('#hotkey-info').css('margin-top') === '4px' ) {
-      $( '#hotkey-info' ).velocity( {
-        marginTop: -55,
-      }, 400 );
+      $( '#hotkey-info' ).velocity(
+        {
+          marginTop: -53,
+        },
+        {
+          duration: 400,
+          visibility: "hidden"
+        }
+      );
     } else {
-      $( '#hotkey-info' ).velocity( {
-        marginTop: 4,
-      }, 400 );
+      $( '#hotkey-info' ).velocity(
+        {
+          marginTop: 4,
+        },
+        {
+          duration: 400,
+          visibility: "visible"
+        }
+      );
     }
   } );
 

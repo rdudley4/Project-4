@@ -282,6 +282,9 @@ footer a:hover {
 }
 
 #controls,
+#help,
+#prev,
+#next,
 .lb-control-box,
 .shadow,
 .key {
@@ -313,6 +316,7 @@ footer span {
 /* Controls */
 #controls,
 #hotkey-info,
+#help,
 .key {
   color: #555;
 }
@@ -358,8 +362,7 @@ footer span {
   left: 33.3333%;
 }
 
-#close:hover,
-#prev:hover {
+#close:hover {
   color: #ef5350;
 }
 
@@ -367,28 +370,45 @@ footer span {
   color: #9575cd;
 }
 
+#prev:hover,
 #next:hover {
-  color: #27ae60;
+  box-shadow: none;
 }
 
-#controls .fa,
-#hotkey-info,
-#help {
-  transition: color 0.5s ease;
+#prev:hover {
+  background-color: rgba(210, 77, 87, .8);
+  color: #fff;
+}
+
+#prev:hover::before {
+  border-color: rgba(210, 77, 87, .8);
+}
+
+#next:hover {
+  background-color: rgba(1, 152, 117, 0.8);
+  color: #fff;
+}
+
+#next:hover::before {
+  border-color: rgba(1, 152, 117, .8);
 }
 
 #hotkey-info {
   max-width    : 60%;
   margin-top   : 4px;
-  margin-bottom: 10px;
   font-size    : 0.75em;
   font-family  : 'Nunito', sans-serif;
 }
 
 #help {
-  margin-top : 10px;
-  font-size  : 1em;
-  font-family: 'FontAwesome', 'Nunito';
+  max-width: 201px;
+  padding: 7px;
+  margin: 10px auto;
+  background: #333;
+  border: 1px solid #444;
+  outline: 1px solid #000;
+  font-size  : .75em;
+  font-family: 'FontAwesome', 'Roboto';
 }
 
 .key {
@@ -398,20 +418,30 @@ footer span {
   background-color: #333;
   border          : 1px solid #444;
   outline         : 1px solid #000;
-  transition      : all 0.5s ease;
 }
 
 .key:nth-of-type(odd) {
   margin-right: -1px;
 }
 
-.key:hover {
-  border: 1px solid rgba(68, 108, 179, 0.8);
-}
-
 .key:hover,
 #help:hover {
-  color: rgba(68, 108, 179, 0.8);
+  color: #fff;
+  border: 1px solid rgba(68, 108, 179, 0.8);
+  background-color: rgba(68, 108, 179, 0.8);
+}
+
+#controls,
+#help,
+.key {
+  background-image: url("https://www.transparenttextures.com/patterns/60-lines.png");
+}
+
+.key,
+#help,
+#prev,
+#next {
+  transition: all .3s ease;
 }
 
 @media (min-width: 500px) {
@@ -432,7 +462,7 @@ footer span {
 
   #next::before,
   #prev::before {
-    padding: 5px;
+    padding: 5px 10px;
   }
 }
 @media (min-width: 600px) {
