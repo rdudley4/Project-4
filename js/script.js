@@ -20,8 +20,8 @@ var itemCounter = 1;
 
 function assembleImage( imageObject ) {
   var $galleryItem = $( '<div class="gallery-item"></div>' );
-  var $front       = $( '<div class="front"></div>' );
-  var $back        = $( '<div class="back"></div>' );
+  var $top         = $( '<div class="layer-top"></div>' );
+  var $bottom      = $( '<div class="layer-bottom"></div>' );
   var thumbnail    = $( '<img src="' + imageObject.thumbnail + '">' );
   var link         = $( '<a href="' + imageObject.src + '"></a>' );
   var details      = $( '<div class="details"></div>' );
@@ -31,13 +31,12 @@ function assembleImage( imageObject ) {
   var $id          = $( '<span class="image-id">ID - ' + imageObject.id + '</span>' );
 
   // Populate front and back of card
-  $front.append( thumbnail );
+  $top.append( thumbnail );
   $title.append( imageObject.title );
   details.append( $icon, $title, $resolution, $id );
   link.append( details );
-  $back.append( link );
-  $galleryItem.addClass( 'item' + itemCounter );
-  $galleryItem.append( $front, $back );
+  $bottom.append( link );
+  $galleryItem.addClass( 'item' + itemCounter ).append( $top, $bottom );
   $( '#gallery' ).append( $galleryItem );
 }
 
@@ -87,7 +86,7 @@ function updateImage() {
 function updateDescription() {
   for ( i = 0; i < imgDatabase.length; i++ ) {
     if ( currentSrc === imgDatabase[i].src ) {
-      $( '.image-info' ).text( imgDatabase[i].caption );
+      $( '.image-description' ).text( imgDatabase[i].caption );
     }
   }
 }
@@ -144,7 +143,7 @@ $( document ).ready(function() {
 
   /*  Image Filtering - Main Search on keyup.
         a. Store users input converted to lower case in userInput.
-        b. Test if userInput is > 0, so we can be sure the user has entered some text.
+        b. Test if userInput.length is > 0, so we can be sure the user has entered some text.
         c. Loop through imgDatabase and test the following:
             1. If any of the imgDatabase.title's contain the userInput.
             2. If userInput parsed as an integer matches any of the imgDatabase.id's.
@@ -173,12 +172,12 @@ $( document ).ready(function() {
   } );
 
   /*  Start lightbox when user clicks on any of the image 'cards'
-        a. Prevent default link event.
+        a. Prevent default anchor event from directly linking to the image.
         b. Store a reference to the clicked images href attribute, and set this to our lightbox image.
         c. Call updateDescription to update info text.
         d. Set lightboxIsActive = true and fade in the lightbox.
   */
-  $( '.back a' ).on( "click", function( event ) {
+  $( '.layer-bottom a' ).on( "click", function( event ) {
     event.preventDefault();
     currentSrc = $( this ).attr( 'href' );
     $lbImage.attr( 'src', currentSrc );
@@ -221,17 +220,17 @@ $( document ).ready(function() {
   } );
 
   /* Info Help - When user clicks on 'Hotkey Info' [Toggle Effect]
-      a. If #controls-help opacity is 1, then we fade the element out by setting the opacity to 0 and sliding it down with margin.
+      a. If #hotkey-info opacity is 1, then we fade the element out by setting the opacity to 0 and sliding it down with margin.
       b. Else we can assume the element is hidden and conversely set the opacity to 1 and slide the element back up.
   */
 
   $( '#help' ).on( 'click', function()  {
-    if ( $('#controls-help').css('margin-top') === '4px' ) {
-      $( '#controls-help' ).velocity( {
+    if ( $('#hotkey-info').css('margin-top') === '4px' ) {
+      $( '#hotkey-info' ).velocity( {
         marginTop: -55,
       }, 400 );
     } else {
-      $( '#controls-help' ).velocity( {
+      $( '#hotkey-info' ).velocity( {
         marginTop: 4,
       }, 400 );
     }

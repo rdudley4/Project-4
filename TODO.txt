@@ -1,13 +1,15 @@
  List of TODO's
 ----------------
 1. Implement results notification system.
-  a. When user is filtering results, display how many reults are matched to the query.
-  b. If there are no results, display a message saying no results were found.
+  	a. When user is filtering results, display how many reults are matched to the query.
+  	b. If there are no results, display a message saying no results were found.
 
 2. Implement YouTube videos.
-  a. Perhaps have all the YouYube video data stored in the imgData.js file, and pull from an object with special properties.
-  b. Width of each video thumbnail should be 50%.
+  	a. Perhaps have all the YouYube video data stored in the imgData.js file, and pull from an object with special properties.
+  	b. Width of each video thumbnail should be 50%.
 
-3. Update hotkey help keys to one uniform color.
-  a. Perhaps switch these over to a square theme as well.
-  b. Implement hover help. When the user hovers over the key, it should tell them what it does.
+3. Implement 'maximize' lightbox functionality.
+	a. When user clicks on the plus symbol, it should expand the image to it's original size.
+	b. If image is maximized, give our user some way to revert to default lightbox image size.
+		bb. Perhaps just let user click anywhere on maximized image to revert.
+   

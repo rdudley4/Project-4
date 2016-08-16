@@ -33,13 +33,17 @@ footer a:hover {
   color: #c0392b;
 }
 
+.crawler {
+  display: none;
+}
+
 #controls,
-#controls-help,
+#hotkey-info,
 #help,
 #main-search,
-.container-lightbox,
+.lightbox-container,
 .container-main,
-.description,
+.lb-control-box,
 .gallery-item,
 .image-title,
 .key,
@@ -48,19 +52,19 @@ footer a:hover {
   margin-right: auto;
 }
 
-#controls-help,
+#hotkey-info,
 #help,
 #main-search,
-.description,
+.lb-control-box,
 .image-title,
 .selected {
   display: block;
 }
 
-#controls-help,
+#hotkey-info,
 #help,
 .container-main,
-.description {
+.lb-control-box {
   text-align: center;
 }
 
@@ -160,21 +164,21 @@ footer a:hover {
   -webkit-transition: right 0.4s ease-in-out;
 }
 
-.gallery-item .front {
+.gallery-item .layer-top {
   z-index: 1000;
 }
 
-.gallery-item:hover .front {
+.gallery-item:hover .layer-top {
   -webkit-transition: right 0.4s ease-in-out;
   right             : -204px;
 }
 
-.back {
+.layer-bottom {
   width      : 200px;
   line-height: 200px;
 }
 
-.back a {
+.layer-bottom a {
   display: block;
   width  : 200px;
   height : 200px;
@@ -229,7 +233,7 @@ footer a:hover {
   background-color: seagreen;
 }
 
-.description,
+.lb-control-box,
 .details {
   font-family: 'Roboto', sans-serif;
 }
@@ -245,7 +249,7 @@ footer a:hover {
   z-index         : 1001;
 }
 
-.description,
+.lb-control-box,
 .shadow {
   border : 1px solid #444;
   outline: 1px solid #000;
@@ -270,7 +274,7 @@ footer a:hover {
   left    : 0;
 }
 
-.description {
+.lb-control-box {
   color           : #e0e0e0;
   line-height     : 32px;
   background-color: #333;
@@ -278,19 +282,19 @@ footer a:hover {
 }
 
 #controls,
-.description,
+.lb-control-box,
 .shadow,
 .key {
   box-shadow: inset 0 0 5px 0 rgba(0, 0, 0, 1);
 }
 
-.image-info {
+.image-description {
   max-width: 600px;
   margin   : 0 auto;
   padding  : 5px;
 }
 
-.container-lightbox {
+.lightbox-container {
   padding  : 10px;
   max-width: 1000px;
 }
@@ -308,7 +312,7 @@ footer span {
 
 /* Controls */
 #controls,
-#controls-help,
+#hotkey-info,
 .key {
   color: #555;
 }
@@ -333,7 +337,7 @@ footer span {
 
 #next::before,
 #prev::before {
-  border: 1px solid #444;
+  border : 1px solid #444;
   outline: 1px solid #000;
   padding: 9px;
 }
@@ -368,17 +372,17 @@ footer span {
 }
 
 #controls .fa,
-#controls-help,
+#hotkey-info,
 #help {
   transition: color 0.5s ease;
 }
 
-#controls-help {
-  max-width : 60%;
-  margin-top: 4px;
+#hotkey-info {
+  max-width    : 60%;
+  margin-top   : 4px;
   margin-bottom: 10px;
-  font-size : 0.75em;
-  font-family: 'Nunito', sans-serif;
+  font-size    : 0.75em;
+  font-family  : 'Nunito', sans-serif;
 }
 
 #help {
@@ -388,13 +392,13 @@ footer span {
 }
 
 .key {
-  display    : inline-block;
-  width      : 48px;
-  line-height: 36px;
+  display         : inline-block;
+  width           : 48px;
+  line-height     : 36px;
   background-color: #333;
-  border     : 1px solid #444;
-  outline: 1px solid #000;
-  transition : all 0.5s ease;
+  border          : 1px solid #444;
+  outline         : 1px solid #000;
+  transition      : all 0.5s ease;
 }
 
 .key:nth-of-type(odd) {
