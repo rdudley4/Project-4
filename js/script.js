@@ -13,11 +13,9 @@ var nextClicked = false;
 
 function onYouTubeIframeAPIReady() {
   for (var i = 0; i < imgDatabase.length; i++) {
-    if (imgDatabase[i].type === 'youtube') {
+    if (imgDatabase[i].type === 'yt') {
       var player;
       player = new YT.Player('item' + imgDatabase[i].id, {
-        width: 200,
-        height: 270,
         videoId: imgDatabase[i].videoID,
       });
     }
@@ -35,7 +33,7 @@ function onYouTubeIframeAPIReady() {
 function assembleImage( imageObject ) {
   var $galleryItem = $( '<div class="gallery-item"></div>' );
 
-  if (imageObject.type === 'image') {
+  if (imageObject.type === 'img') {
     var $top         = $( '<div class="layer-top"></div>' );
     var $bottom      = $( '<div class="layer-bottom"></div>' );
     var thumbnail    = $( '<img src="' + imageObject.thumbnail + '">' );
@@ -53,11 +51,10 @@ function assembleImage( imageObject ) {
     link.append( details );
     $bottom.append( link );
     $galleryItem.append( $top, $bottom );
-  } else if (imageObject.type === 'youtube') {
+  } else if (imageObject.type === 'yt') {
     console.log('Video stuff fired.');
   }
   $galleryItem.attr( 'id', 'item' + imageObject.id );
-  //$galleryItem.addClass( 'item' + imageObject.id );
   $( '#gallery' ).append( $galleryItem );
 }
 
@@ -69,6 +66,7 @@ function assembleImage( imageObject ) {
     3. Check our currentSrc against the current index src value until we get a match.
     4. Return the value of currentSrc */
 
+// TODO: Fix the logic here to work with YT Videos.
 function nextImage() {
   for ( i = 0; i < imgDatabase.length; i++ ) {
     if ( prevClicked && currentSrc === imgDatabase[i].src ) {
@@ -175,7 +173,7 @@ $( document ).ready(function() {
 
     if ( userInput.length > 0 ) {
       for ( var i = 0; i < imgDatabase.length; i++ ) {
-        if ( imgDatabase[i].title.toLowerCase().indexOf( userInput ) !== -1 || parseInt( userInput ) === imgDatabase[i].id ) {
+        if ( imgDatabase[i].title.toLowerCase().indexOf( userInput ) !== -1 || parseInt( userInput ) === imgDatabase[i].id || imgDatabase[i].type === userInput ) {
           results += imgDatabase[i].src + ", ";
           imgDatabase[i].isMatched = true;
         } else {
