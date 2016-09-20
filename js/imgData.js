@@ -122,8 +122,8 @@ var imgDatabase = [
   {
     id: 13,
     type: 'yt',
-    title: 'Mokita x The Ready Set - Broken Parts',
-    videoID: 'Y43dXgGpJfE',
+    title: 'Elephante - Plans (ft. Brandyn Burnette)',
+    videoID: 'vwbMofCqYT8',
     isMatched: false,
   },
   {
@@ -136,15 +136,15 @@ var imgDatabase = [
   {
     id: 15,
     type: 'yt',
-    title: 'Billy Lockett - Wide Eyed (Vacant Remix)',
-    videoID: 'xGx93EQKhXo',
+    title: 'Marshmello - Alone (Speaker Of The House Remix)',
+    videoID: 'M0D7iab8NMw',
     isMatched: false,
   },
   {
     id: 16,
     type: 'yt',
-    title: 'KING - Promise',
-    videoID: 'huyubjGGngE',
+    title: 'Slushii - To Say Goodbye',
+    videoID: 'fEhV4BAuXTE',
     isMatched: false,
   },
 ];

@@ -1,10 +1,9 @@
 var currentSrc;
+var videoCount  = 0;
 var $lightbox   = $( '#lightbox' );
 var $lbImage    = $( '.selected' );
 var $controls   = $( '#controls' );
 var $mainSearch = $( '#main-search' );
-var firstImage  = imgDatabase[ 0 ].src;
-var lastImage   = imgDatabase[ imgDatabase.length - 1 ].src;
 var lightboxIsActive = false;
 var prevClicked = false;
 var nextClicked = false;
@@ -18,6 +17,7 @@ function onYouTubeIframeAPIReady() {
       player = new YT.Player('item' + imgDatabase[i].id, {
         videoId: imgDatabase[i].videoID,
       });
+      videoCount++;
     }
   }
 }
@@ -69,6 +69,8 @@ function assembleImage( imageObject ) {
 // TODO: Fix the logic here to work with YT Videos.
 function nextImage() {
   for ( i = 0; i < imgDatabase.length; i++ ) {
+    var firstImage  = imgDatabase[ 0 ].src;
+    var lastImage   = imgDatabase[imgDatabase.length - ( videoCount + 1 )].src;
     if ( prevClicked && currentSrc === imgDatabase[i].src ) {
       if ( currentSrc === firstImage ) {
         currentSrc = lastImage;
