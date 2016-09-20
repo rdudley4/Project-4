@@ -129,8 +129,8 @@ var imgDatabase = [
   {
     id: 14,
     type: 'yt',
-    title: 'Zeds Dead x NGHTMRE - Frontlines (ft. GG Magree)',
-    videoID: 'oAmQIDIK8RA',
+    title: 'Mako x Hermitude - Smoke Filled Room vs The Buzz',
+    videoID: 'WvkzMM3VRGs',
     isMatched: false,
   },
   {
@@ -145,6 +145,34 @@ var imgDatabase = [
     type: 'yt',
     title: 'Slushii - To Say Goodbye',
     videoID: 'fEhV4BAuXTE',
+    isMatched: false,
+  },
+  {
+    id: 17,
+    type: 'yt',
+    title: 'Creedence Clearwater Revival - "Travelin Band"',
+    videoID: '4JoeGMazX4o',
+    isMatched: false,
+  },
+  {
+    id: 18,
+    type: 'yt',
+    title: 'Otis Redding - Sitting On The Dock Of The Bay',
+    videoID: 'wyPKRcBTsFQ',
+    isMatched: false,
+  },
+  {
+    id: 19,
+    type: 'yt',
+    title: 'Bill Withers - Ain\'t No Sunshine',
+    videoID: 'tIdIqbv7SPo',
+    isMatched: false,
+  },
+  {
+    id: 20,
+    type: 'yt',
+    title: 'Antoine Dufour - These Moments',
+    videoID: 'YQlyHbu0zz4',
     isMatched: false,
   },
 ];
