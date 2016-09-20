@@ -1,5 +1,6 @@
 var imgDatabase = [
   {
+    type: 'image',
     src: 'img/01.jpg',
     thumbnail: 'img/Thumbnails/01.jpg',
     title: 'Day in a Field',
@@ -9,6 +10,7 @@ var imgDatabase = [
     id: 1
   },
   {
+    type: 'image',
     src: 'img/02.jpg',
     thumbnail: 'img/Thumbnails/02.jpg',
     title: 'Lake & Mountains',
@@ -18,15 +20,17 @@ var imgDatabase = [
     id: 2
   },
   {
+    type: 'image',
     src: 'img/03.jpg',
     thumbnail: 'img/Thumbnails/03.jpg',
     title: 'Green Stuff',
-    caption: 'Your lyrics lack subtlety. You can\'t just have your characters announce how they feel.',
+    caption: "There's only one man I've ever called a coward, and that's Brian Doyle Murray. No, what I'm calling you is a television actor.",
     resolution: '1920x1200',
     isMatched: false,
     id: 3
   },
   {
+    type: 'image',
     src: 'img/04.jpg',
     thumbnail: 'img/Thumbnails/04.jpg',
     title: 'Glaciers',
@@ -36,6 +40,7 @@ var imgDatabase = [
     id: 4
   },
   {
+    type: 'image',
     src: 'img/05.jpg',
     thumbnail: 'img/Thumbnails/05.jpg',
     title: 'Canyon Mountains',
@@ -45,6 +50,7 @@ var imgDatabase = [
     id: 5
   },
   {
+    type: 'image',
     src: 'img/06.jpg',
     thumbnail: 'img/Thumbnails/06.jpg',
     title: 'Interesting shrubs',
@@ -54,6 +60,7 @@ var imgDatabase = [
     id: 6
   },
   {
+    type: 'image',
     src: 'img/07.jpg',
     thumbnail: 'img/Thumbnails/07.jpg',
     title: 'The Swamp',
@@ -63,6 +70,7 @@ var imgDatabase = [
     id: 7
   },
   {
+    type: 'image',
     src: 'img/08.jpg',
     thumbnail: 'img/Thumbnails/08.jpg',
     title: 'The Beach',
@@ -72,6 +80,7 @@ var imgDatabase = [
     id: 8
   },
   {
+    type: 'image',
     src: 'img/09.jpg',
     thumbnail: 'img/Thumbnails/09.jpg',
     title: 'Peaceful Pathway',
@@ -81,6 +90,7 @@ var imgDatabase = [
     id: 9
   },
   {
+    type: 'image',
     src: 'img/10.jpg',
     thumbnail: 'img/Thumbnails/10.jpg',
     title: 'Mountain Waves',
@@ -90,6 +100,7 @@ var imgDatabase = [
     id: 10
   },
   {
+    type: 'image',
     src: 'img/11.jpg',
     thumbnail: 'img/Thumbnails/11.jpg',
     title: 'Eye from the Sky',
@@ -99,6 +110,7 @@ var imgDatabase = [
     id: 11
   },
   {
+    type: 'image',
     src: 'img/12.jpg',
     thumbnail: 'img/Thumbnails/12.jpg',
     title: 'Field of Stuffs',
@@ -106,5 +118,29 @@ var imgDatabase = [
     resolution: '1920x1200',
     isMatched: false,
     id: 12
+  },
+  {
+    type: 'youtube',
+    title: 'Broken Parts',
+    videoID: 'Y43dXgGpJfE',
+    id: 13
+  },
+  {
+    type: 'youtube',
+    title: 'Six Feet Under',
+    videoID: 'KRt5WWnVCoA',
+    id: 14
+  },
+  {
+    type: 'youtube',
+    title: 'Wide Eyed (Vacant Remix)',
+    videoID: 'xGx93EQKhXo',
+    id: 15
+  },
+  {
+    type: 'youtube',
+    title: 'Promise',
+    videoID: 'huyubjGGngE',
+    id: 16
   },
 ];

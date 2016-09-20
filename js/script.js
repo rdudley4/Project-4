@@ -8,7 +8,21 @@ var lastImage   = imgDatabase[ imgDatabase.length - 1 ].src;
 var lightboxIsActive = false;
 var prevClicked = false;
 var nextClicked = false;
-var itemCounter = 1;
+
+// Load our YouTube Videos to the page when the IFrame API is ready.
+
+function onYouTubeIframeAPIReady() {
+  for (var i = 0; i < imgDatabase.length; i++) {
+    if (imgDatabase[i].type === 'youtube') {
+      var player;
+      player = new YT.Player('item' + imgDatabase[i].id, {
+        width: 200,
+        height: 270,
+        videoId: imgDatabase[i].videoID,
+      });
+    }
+  }
+}
 
 /* When an image object is passed into the function..
     1. Create a div to hold the image and title
@@ -20,23 +34,30 @@ var itemCounter = 1;
 
 function assembleImage( imageObject ) {
   var $galleryItem = $( '<div class="gallery-item"></div>' );
-  var $top         = $( '<div class="layer-top"></div>' );
-  var $bottom      = $( '<div class="layer-bottom"></div>' );
-  var thumbnail    = $( '<img src="' + imageObject.thumbnail + '">' );
-  var link         = $( '<a href="' + imageObject.src + '"></a>' );
-  var details      = $( '<div class="details"></div>' );
-  var $title       = $( '<span class="title"></span>' );
-  var $icon        = $( '<i class="fa fa-expand fa-3x" aria-hidden="true"></i>' );
-  var $resolution  = $( '<span class="resolution">' + imageObject.resolution + '</span>' );
-  var $id          = $( '<span class="image-id">ID - ' + imageObject.id + '</span>' );
 
-  // Populate front and back of card
-  $top.append( thumbnail );
-  $title.append( imageObject.title );
-  details.append( $icon, $title, $resolution, $id );
-  link.append( details );
-  $bottom.append( link );
-  $galleryItem.addClass( 'item' + itemCounter ).append( $top, $bottom );
+  if (imageObject.type === 'image') {
+    var $top         = $( '<div class="layer-top"></div>' );
+    var $bottom      = $( '<div class="layer-bottom"></div>' );
+    var thumbnail    = $( '<img src="' + imageObject.thumbnail + '">' );
+    var link         = $( '<a href="' + imageObject.src + '"></a>' );
+    var details      = $( '<div class="details"></div>' );
+    var $title       = $( '<span class="title"></span>' );
+    var $icon        = $( '<i class="fa fa-expand fa-3x" aria-hidden="true"></i>' );
+    var $resolution  = $( '<span class="resolution">' + imageObject.resolution + '</span>' );
+    var $id          = $( '<span class="image-id">ID - ' + imageObject.id + '</span>' );
+
+    // Populate front and back of card
+    $top.append( thumbnail );
+    $title.append( imageObject.title );
+    details.append( $icon, $title, $resolution, $id );
+    link.append( details );
+    $bottom.append( link );
+    $galleryItem.append( $top, $bottom );
+  } else if (imageObject.type === 'youtube') {
+    console.log('Video stuff fired.');
+  }
+  $galleryItem.attr( 'id', 'item' + imageObject.id );
+  //$galleryItem.addClass( 'item' + imageObject.id );
   $( '#gallery' ).append( $galleryItem );
 }
 
@@ -92,7 +113,7 @@ function updateDescription() {
 }
 
 function filterResults(index) {
-  var galleryItem = $('.item' + (index + 1));
+  var galleryItem = $('#item' + (index + 1));
   var itemSrc = galleryItem.children('.back').children('a').attr('href');
 
   if ( imgDatabase[index].isMatched ) {
@@ -132,13 +153,11 @@ $( document ).ready(function() {
 
   /*  Loop through our imgDatabase and...
         a. Store a reference to our current object.
-        b. Pass object into assembleImage.
-        c. Increment itemCounter (used only to generate class names for gallery items.) */
+        b. Pass object into assembleImage. */
 
   for ( var i = 0; i < imgDatabase.length; i++ ) {
     var imgData = imgDatabase[i];
     assembleImage( imgData );
-    itemCounter++;
   }
 
   /*  Image Filtering - Main Search on keyup.
@@ -219,19 +238,21 @@ $( document ).ready(function() {
     console.log('Lightbox Closed');
   } );
 
-  /* Info Help - When user clicks on 'Hotkey Info' [Toggle Effect]
-      a. If #hotkey-info opacity is 1, then we fade the element out by setting the opacity to 0 and sliding it down with margin.
-      b. Else we can assume the element is hidden and conversely set the opacity to 1 and slide the element back up.
+  /* Info Help - When user clicks on 'Hotkey Info' bar [Toggle Effect]
+      a. By default hotkey-info is hidden, so we test this value
+      to see whether is it currently visible. Added bonus we can keep track of visibility even if lightbox is closed and re-opened.
+        IF: info-help is currently visible, and the help bar was clicked, we want to 'slide' the hotkeys upwards using margins and hide the element.
+        ELSE: info-help is currently hidden, slide hotkeys into view with regular margins and set the display to visible.
   */
 
   $( '#help' ).on( 'click', function()  {
-    if ( $('#hotkey-info').css('margin-top') === '4px' ) {
+    if ( $('#hotkey-info').css('visibility') === 'visible' ) {
       $( '#hotkey-info' ).velocity(
         {
           marginTop: -53,
         },
         {
-          duration: 400,
+          duration: 350,
           visibility: "hidden"
         }
       );
@@ -241,7 +262,7 @@ $( document ).ready(function() {
           marginTop: 4,
         },
         {
-          duration: 400,
+          duration: 350,
           visibility: "visible"
         }
       );

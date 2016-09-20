@@ -104,6 +104,13 @@
         "img/11.jpg",
         "img/12.jpg"
 			) // END PRELOAD
+
+      // Load YouTube IFrame Player API
+      var tag = document.createElement('script');
+
+      tag.src = "https://www.youtube.com/iframe_api";
+      var firstScriptTag = document.getElementsByTagName('script')[0];
+      firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
 	  </script>
     <script src="js/imgData.js"></script>
     <script src="js/script.js"></script>

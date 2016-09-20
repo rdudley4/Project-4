@@ -395,9 +395,10 @@ footer span {
 
 #hotkey-info {
   max-width    : 60%;
-  margin-top   : 4px;
+  margin-top   : -53px;
   font-size    : 0.75em;
   font-family  : 'Nunito', sans-serif;
+  visibility   : hidden;
 }
 
 #help {
@@ -454,6 +455,11 @@ footer span {
     display     : inline-block;
     margin-left : 2.15%;
     margin-right: 2.15%;
+  }
+
+  .gallery-item[title="YouTube video player"] {
+    width: 45.7%;
+    height: 270px;
   }
 
   #controls {

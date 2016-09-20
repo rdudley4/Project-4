@@ -4,9 +4,10 @@
   	a. When user is filtering results, display how many reults are matched to the query.
   	b. If there are no results, display a message saying no results were found.
 
-2. Implement YouTube videos.
-  	a. Perhaps have all the YouYube video data stored in the imgData.js file, and pull from an object with special properties.
-  	b. Width of each video thumbnail should be 50%.
+2. Update YT Implementation
+	a. Slight sizing problem with the videos, unwanted white space on the right side of images 		   due to the way they are sized, investigate another method.
+	b. Fix YT videos in the lightbox.
+  	
 
 3. Implement 'maximize' lightbox functionality.
 	a. When user clicks on the plus symbol, it should expand the image to it's original size.
