@@ -117,7 +117,9 @@ footer a:hover {
 #pause,
 #pause:hover,
 #play,
-#play:hover {
+#play:hover,
+#min,
+#min:hover {
   transition: all .2s ease;
 }
 
@@ -130,7 +132,8 @@ footer a:hover {
 }
 
 #pause:hover,
-#play:hover {
+#play:hover,
+#min:hover {
   color: #e0e0e0;
   cursor: pointer;
 }
@@ -138,6 +141,16 @@ footer a:hover {
 #play {
   opacity: 0;
   visibility: hidden;
+}
+
+#min {
+  position: absolute;
+  right: 10px;
+  line-height: 50px;
+}
+
+#min:hover {
+  color: #27ae60;
 }
 
 #currentThumbnail {
