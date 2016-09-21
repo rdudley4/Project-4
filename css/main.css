@@ -9,6 +9,12 @@ body {
   opacity    : 0;
 }
 
+iframe.gallery-item {
+  width    : 429px;
+  max-width: 960px;
+  height   : 240.9px;
+}
+
 img {
   max-width: 100%;
 }
@@ -38,31 +44,31 @@ footer a:hover {
 }
 
 #controls,
-#hotkey-info,
 #help,
+#hotkey-info,
 #main-search,
-.lightbox-container,
 .container-main,
-.lb-control-box,
 .gallery-item,
 .image-title,
 .key,
+.lb-control-box,
+.lightbox-container,
 .selected {
   margin-left : auto;
   margin-right: auto;
 }
 
-#hotkey-info,
 #help,
+#hotkey-info,
 #main-search,
-.lb-control-box,
 .image-title,
+.lb-control-box,
 .selected {
   display: block;
 }
 
-#hotkey-info,
 #help,
+#hotkey-info,
 .container-main,
 .lb-control-box {
   text-align: center;
@@ -91,16 +97,64 @@ footer a:hover {
   margin-bottom: 20px;
 }
 
+/* Current Song */
+#song-container {
+  position        : fixed;
+  bottom          : 0;
+  width           : 40%;
+  z-index         : 1002;
+  background-color: rgba(33, 33, 33, .9);
+  color           : #e0e0e0;
+  text-align      : center;
+}
+
+#currentThumbnail,
+#currentSong,
+#song-container span {
+  float: left;
+}
+
+#pause,
+#pause:hover,
+#play,
+#play:hover {
+  transition: all .2s ease;
+}
+
+#pause,
+#play {
+  position: absolute;
+  left: 19px;
+  line-height: 50px;
+  color: rgba(33, 33, 33, .9);
+}
+
+#pause:hover,
+#play:hover {
+  color: #e0e0e0;
+  cursor: pointer;
+}
+
+#play {
+  opacity: 0;
+  visibility: hidden;
+}
+
+#currentThumbnail {
+  width       : 64px;
+  margin-right: 10px;
+}
+
 /* Search box */
 #main-search {
-  width           : 85%;
-  max-width       : 460px;
-  padding         : 10px 10px 10px 20px;
-  font-size       : 16px;
-  border          : 1px solid #555;
-  outline         : none;
-  transition      : all 0.5s ease;
-  font-family     : 'FontAwesome', 'Roboto';
+  width      : 85%;
+  max-width  : 460px;
+  padding    : 10px 10px 10px 20px;
+  font-size  : 16px;
+  border     : 1px solid #555;
+  outline    : none;
+  transition : all 0.5s ease;
+  font-family: 'FontAwesome', 'Roboto';
 }
 
 .fa-instagram {
@@ -233,8 +287,8 @@ footer a:hover {
   background-color: seagreen;
 }
 
-.lb-control-box,
-.details {
+.details,
+.lb-control-box {
   font-family: 'Roboto', sans-serif;
 }
 
@@ -250,7 +304,8 @@ footer a:hover {
 }
 
 .lb-control-box,
-.shadow {
+.shadow,
+#song-container {
   border : 1px solid #444;
   outline: 1px solid #000;
 }
@@ -283,11 +338,11 @@ footer a:hover {
 
 #controls,
 #help,
-#prev,
 #next,
+#prev,
+.key,
 .lb-control-box,
-.shadow,
-.key {
+.shadow {
   box-shadow: inset 0 0 5px 0 rgba(0, 0, 0, 1);
 }
 
@@ -315,8 +370,8 @@ footer span {
 
 /* Controls */
 #controls,
-#hotkey-info,
 #help,
+#hotkey-info,
 .key {
   color: #555;
 }
@@ -370,14 +425,14 @@ footer span {
   color: #9575cd;
 }
 
-#prev:hover,
-#next:hover {
+#next:hover,
+#prev:hover {
   box-shadow: none;
 }
 
 #prev:hover {
   background-color: rgba(210, 77, 87, .8);
-  color: #fff;
+  color           : #fff;
 }
 
 #prev:hover::before {
@@ -386,7 +441,7 @@ footer span {
 
 #next:hover {
   background-color: rgba(1, 152, 117, 0.8);
-  color: #fff;
+  color           : #fff;
 }
 
 #next:hover::before {
@@ -394,21 +449,21 @@ footer span {
 }
 
 #hotkey-info {
-  max-width    : 60%;
-  margin-top   : -53px;
-  font-size    : 0.75em;
-  font-family  : 'Nunito', sans-serif;
-  visibility   : hidden;
+  max-width  : 60%;
+  margin-top : -53px;
+  font-size  : 0.75em;
+  font-family: 'Nunito', sans-serif;
+  visibility : hidden;
 }
 
 #help {
-  max-width: 201px;
-  padding: 7px;
-  margin: 10px auto;
-  background: #333;
-  border: 1px solid #444;
-  outline: 1px solid #000;
-  font-size  : .75em;
+  max-width  : 201px;
+  padding    : 7px;
+  margin     : 10px auto;
+  background : #333;
+  border     : 1px solid #444;
+  outline    : 1px solid #000;
+  font-size  : 0.75em;
   font-family: 'FontAwesome', 'Roboto';
 }
 
@@ -425,10 +480,10 @@ footer span {
   margin-right: -1px;
 }
 
-.key:hover,
-#help:hover {
-  color: #fff;
-  border: 1px solid rgba(68, 108, 179, 0.8);
+#help:hover,
+.key:hover {
+  color           : #fff;
+  border          : 1px solid rgba(68, 108, 179, 0.8);
   background-color: rgba(68, 108, 179, 0.8);
 }
 
@@ -438,13 +493,12 @@ footer span {
   background-image: url("https://www.transparenttextures.com/patterns/60-lines.png");
 }
 
-.key,
 #help,
+#next,
 #prev,
-#next {
-  transition: all .3s ease;
+.key {
+  transition: all 0.3s ease;
 }
-
 @media (min-width: 500px) {
   .container-main {
     padding-left : 0;
@@ -468,7 +522,7 @@ footer span {
 }
 @media (min-width: 600px) {
   #controls {
-    width    : 60%;
+    width: 60%;
   }
 }
 @media (min-width: 1000px) {

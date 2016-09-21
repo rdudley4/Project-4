@@ -1,4 +1,8 @@
 var currentSrc;
+var videoId;
+var videoTitle;
+var currentVideo;
+var player;
 var videoCount  = 0;
 var $lightbox   = $( '#lightbox' );
 var $lbImage    = $( '.selected' );
@@ -7,21 +11,75 @@ var $mainSearch = $( '#main-search' );
 var lightboxIsActive = false;
 var prevClicked = false;
 var nextClicked = false;
+var videoPaused = false;
 
 // Load our YouTube Videos to the page when the IFrame API is ready.
 
 function onYouTubeIframeAPIReady() {
   for (var i = 0; i < imgDatabase.length; i++) {
     if (imgDatabase[i].type === 'yt') {
-      var player;
       player = new YT.Player('item' + imgDatabase[i].id, {
         videoId: imgDatabase[i].videoID,
+        events: {
+          'onStateChange': onPlayerStateChange
+        }
       });
       videoCount++;
     }
   }
 }
 
+function onPlayerStateChange(event) {
+  currentVideo = event.target;
+  videoTitle = currentVideo.getVideoData().title;
+  videoId = currentVideo.getVideoData().video_id;
+
+  //bind events
+  var pauseButton = document.getElementById("pause");
+  pauseButton.addEventListener("click", function() {
+    currentVideo.pauseVideo();
+  });
+
+  var playButton = document.getElementById("play");
+  playButton.addEventListener("click", function() {
+    currentVideo.playVideo();
+  });
+
+  $('#currentThumbnail').attr("src", 'http://img.youtube.com/vi/' + videoId + '/0.jpg');
+  $('#currentSong').text(videoTitle);
+
+  if (event.data == YT.PlayerState.PLAYING) {
+    $( '#play' ).velocity(
+      {
+        opacity: 0,
+      }, 100, function() {
+      $('#pause').velocity(
+        {
+          opacity: 1
+        },
+        {
+          visibility: 'visible',
+          duration: 50
+        }
+      );
+    } ).css('visibility', 'hidden');
+  } else if (event.data == YT.PlayerState.PAUSED) {
+    $( '#pause' ).velocity(
+      {
+        opacity: 0,
+      }, 100, function() {
+      $('#play').velocity(
+        {
+          opacity: 1
+        },
+        {
+          visibility: 'visible',
+          duration: 50
+        }
+      );
+    } ).css('visibility', 'hidden');
+  }
+}
 /* When an image object is passed into the function..
     1. Create a div to hold the image and title
         1a. Create a span for the title
@@ -168,6 +226,7 @@ $( document ).ready(function() {
             2. If userInput parsed as an integer matches any of the imgDatabase.id's.
             3. When match is found, set isMatched = true. Else set it to false.
         d. Call filterResults if search field contains input, else call resetFilter. */
+
 
   $mainSearch.on( 'keyup', function() {
     var userInput = $mainSearch.val().toLowerCase();

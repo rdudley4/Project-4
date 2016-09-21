@@ -125,6 +125,7 @@ var imgDatabase = [
     title: 'Elephante - Plans (ft. Brandyn Burnette)',
     videoID: 'vwbMofCqYT8',
     isMatched: false,
+    isPlaying: false
   },
   {
     id: 14,
@@ -132,6 +133,7 @@ var imgDatabase = [
     title: 'Mako x Hermitude - Smoke Filled Room vs The Buzz',
     videoID: 'WvkzMM3VRGs',
     isMatched: false,
+    isPlaying: false
   },
   {
     id: 15,
@@ -139,6 +141,7 @@ var imgDatabase = [
     title: 'Marshmello - Alone (Speaker Of The House Remix)',
     videoID: 'M0D7iab8NMw',
     isMatched: false,
+    isPlaying: false
   },
   {
     id: 16,
@@ -146,6 +149,7 @@ var imgDatabase = [
     title: 'Slushii - To Say Goodbye',
     videoID: 'fEhV4BAuXTE',
     isMatched: false,
+    isPlaying: false
   },
   {
     id: 17,
@@ -153,6 +157,7 @@ var imgDatabase = [
     title: 'Creedence Clearwater Revival - "Travelin Band"',
     videoID: '4JoeGMazX4o',
     isMatched: false,
+    isPlaying: false
   },
   {
     id: 18,
@@ -160,6 +165,7 @@ var imgDatabase = [
     title: 'Otis Redding - Sitting On The Dock Of The Bay',
     videoID: 'wyPKRcBTsFQ',
     isMatched: false,
+    isPlaying: false
   },
   {
     id: 19,
@@ -167,12 +173,14 @@ var imgDatabase = [
     title: 'Bill Withers - Ain\'t No Sunshine',
     videoID: 'tIdIqbv7SPo',
     isMatched: false,
+    isPlaying: false
   },
   {
     id: 20,
     type: 'yt',
-    title: 'Antoine Dufour - These Moments',
-    videoID: 'YQlyHbu0zz4',
+    title: 'Stevie Wonder - Superstition',
+    videoID: 'wDZFf0pm0SE',
     isMatched: false,
+    isPlaying: false
   },
 ];
