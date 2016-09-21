@@ -1,6 +1,5 @@
 var imgDatabase = [
   {
-    id: 1,
     type: 'img',
     src: 'img/01.jpg',
     thumbnail: 'img/Thumbnails/01.jpg',
@@ -10,7 +9,6 @@ var imgDatabase = [
     isMatched: false,
   },
   {
-    id: 2,
     type: 'img',
     src: 'img/02.jpg',
     thumbnail: 'img/Thumbnails/02.jpg',
@@ -20,7 +18,6 @@ var imgDatabase = [
     isMatched: false,
   },
   {
-    id: 3,
     type: 'img',
     src: 'img/03.jpg',
     thumbnail: 'img/Thumbnails/03.jpg',
@@ -30,7 +27,6 @@ var imgDatabase = [
     isMatched: false,
   },
   {
-    id: 4,
     type: 'img',
     src: 'img/04.jpg',
     thumbnail: 'img/Thumbnails/04.jpg',
@@ -40,7 +36,6 @@ var imgDatabase = [
     isMatched: false,
   },
   {
-    id: 5,
     type: 'img',
     src: 'img/05.jpg',
     thumbnail: 'img/Thumbnails/05.jpg',
@@ -50,7 +45,6 @@ var imgDatabase = [
     isMatched: false,
   },
   {
-    id: 6,
     type: 'img',
     src: 'img/06.jpg',
     thumbnail: 'img/Thumbnails/06.jpg',
@@ -60,7 +54,6 @@ var imgDatabase = [
     isMatched: false,
   },
   {
-    id: 7,
     type: 'img',
     src: 'img/07.jpg',
     thumbnail: 'img/Thumbnails/07.jpg',
@@ -70,7 +63,6 @@ var imgDatabase = [
     isMatched: false,
   },
   {
-    id: 8,
     type: 'img',
     src: 'img/08.jpg',
     thumbnail: 'img/Thumbnails/08.jpg',
@@ -80,7 +72,6 @@ var imgDatabase = [
     isMatched: false,
   },
   {
-    id: 9,
     type: 'img',
     src: 'img/09.jpg',
     thumbnail: 'img/Thumbnails/09.jpg',
@@ -90,7 +81,6 @@ var imgDatabase = [
     isMatched: false,
   },
   {
-    id: 10,
     type: 'img',
     src: 'img/10.jpg',
     thumbnail: 'img/Thumbnails/10.jpg',
@@ -100,7 +90,6 @@ var imgDatabase = [
     isMatched: false,
   },
   {
-    id: 11,
     type: 'img',
     src: 'img/11.jpg',
     thumbnail: 'img/Thumbnails/11.jpg',
@@ -110,7 +99,6 @@ var imgDatabase = [
     isMatched: false,
   },
   {
-    id: 12,
     type: 'img',
     src: 'img/12.jpg',
     thumbnail: 'img/Thumbnails/12.jpg',
@@ -120,67 +108,51 @@ var imgDatabase = [
     isMatched: false,
   },
   {
-    id: 13,
     type: 'yt',
-    title: 'Elephante - Plans (ft. Brandyn Burnette)',
-    videoID: 'vwbMofCqYT8',
+    title: 'Kap Slap - Harbor ft. Jake Etheridge',
+    videoID: 'exgJUscSy3s',
     isMatched: false,
-    isPlaying: false
   },
   {
-    id: 14,
     type: 'yt',
-    title: 'Mako x Hermitude - Smoke Filled Room vs The Buzz',
-    videoID: 'WvkzMM3VRGs',
+    title: 'Porter Robinson & Madeon - Shelter',
+    videoID: 'FS16b01M4Rw',
     isMatched: false,
-    isPlaying: false
   },
   {
-    id: 15,
     type: 'yt',
-    title: 'Marshmello - Alone (Speaker Of The House Remix)',
-    videoID: 'M0D7iab8NMw',
+    title: 'Alan Walker - Sing Me To Sleep (Marshmello Remix)',
+    videoID: 'jsmbXhhPpy8',
     isMatched: false,
-    isPlaying: false
   },
   {
-    id: 16,
     type: 'yt',
     title: 'Slushii - To Say Goodbye',
     videoID: 'fEhV4BAuXTE',
     isMatched: false,
-    isPlaying: false
   },
   {
-    id: 17,
     type: 'yt',
     title: 'Creedence Clearwater Revival - "Travelin Band"',
     videoID: '4JoeGMazX4o',
     isMatched: false,
-    isPlaying: false
   },
   {
-    id: 18,
     type: 'yt',
     title: 'Otis Redding - Sitting On The Dock Of The Bay',
     videoID: 'wyPKRcBTsFQ',
     isMatched: false,
-    isPlaying: false
   },
   {
-    id: 19,
     type: 'yt',
     title: 'Bill Withers - Ain\'t No Sunshine',
     videoID: 'tIdIqbv7SPo',
     isMatched: false,
-    isPlaying: false
   },
   {
-    id: 20,
     type: 'yt',
-    title: 'Gemini - Trap Door',
-    videoID: 'hsmJ85ysBkY',
+    title: 'Tritonal - Waiting 4 U',
+    videoID: 'ERqYIvYXHdw',
     isMatched: false,
-    isPlaying: false
   },
 ];

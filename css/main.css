@@ -10,7 +10,7 @@ body {
 }
 
 iframe.gallery-item {
-  width    : 429px;
+  width    : 100%;
   max-width: 960px;
   height   : 240.9px;
 }
@@ -100,8 +100,10 @@ footer a:hover {
 /* Current Song */
 #song-container {
   position        : fixed;
-  bottom          : 0;
-  width           : 40%;
+  bottom          : 2px;
+  left            : 2px;
+  height          : 50px;
+  width           : 35%;
   z-index         : 1002;
   background-color: rgba(33, 33, 33, .9);
   color           : #e0e0e0;
@@ -126,7 +128,7 @@ footer a:hover {
 #pause,
 #play {
   position: absolute;
-  left: 19px;
+  left: 18px;
   line-height: 50px;
   color: rgba(33, 33, 33, .9);
 }
@@ -155,6 +157,7 @@ footer a:hover {
 
 #currentThumbnail {
   width       : 64px;
+  height      : 48px;
   margin-right: 10px;
 }
 
@@ -522,6 +525,10 @@ footer span {
     display     : inline-block;
     margin-left : 2.15%;
     margin-right: 2.15%;
+  }
+
+  iframe.gallery-item {
+    width: 429px;
   }
 
   #controls {

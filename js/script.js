@@ -3,6 +3,7 @@ var videoId;
 var videoTitle;
 var currentVideo;
 var player;
+var controlBarExtended = true;
 var videoCount  = 0;
 var $lightbox   = $( '#lightbox' );
 var $lbImage    = $( '.selected' );
@@ -45,7 +46,9 @@ function onPlayerStateChange(event) {
     currentVideo.playVideo();
   });
 
-  $('#currentThumbnail').attr("src", 'http://img.youtube.com/vi/' + videoId + '/0.jpg');
+
+
+  $('#currentThumbnail').attr("src", 'https://img.youtube.com/vi/' + videoId + '/mqdefault.jpg');
   $('#currentSong').text(videoTitle);
 
   if (event.data == YT.PlayerState.PLAYING) {
@@ -68,7 +71,7 @@ function onPlayerStateChange(event) {
       {
         opacity: 0,
       }, 100, function() {
-      $('#play').velocity(
+      $( '#play' ).velocity(
         {
           opacity: 1
         },
@@ -80,6 +83,46 @@ function onPlayerStateChange(event) {
     } ).css('visibility', 'hidden');
   }
 }
+
+// Minimize Currently Playing Bar
+$('#min').on("click", function() {
+  $windowWidth = $(window).width();
+  var $songBar = $('#song-container');
+  if ( controlBarExtended ) {
+    $songBar.children('span').velocity(
+    {
+      opacity: 0
+    },
+    {
+      duration: 100,
+      display: 'none'
+    });
+    $songBar.velocity( {
+      width: 100,
+    }, 450 );
+    $('#min').velocity({
+      rotateZ: 180
+    }, 350 );
+    controlBarExtended = false;
+  } else {
+    $songBar.children('span').velocity(
+    {
+      opacity: 1
+    },
+    {
+      duration: 600,
+      display: 'block'
+    });
+    $songBar.velocity({
+      width: 665,
+    }, 450 );
+    $('#min').velocity({
+      rotateZ: 360
+    }, 350 );
+    controlBarExtended = true;
+  }
+});
+
 /* When an image object is passed into the function..
     1. Create a div to hold the image and title
         1a. Create a span for the title
@@ -91,7 +134,7 @@ function onPlayerStateChange(event) {
 function assembleImage( imageObject ) {
   var $galleryItem = $( '<div class="gallery-item"></div>' );
 
-  if (imageObject.type === 'img') {
+  if ( imageObject.type === 'img' ) {
     var $top         = $( '<div class="layer-top"></div>' );
     var $bottom      = $( '<div class="layer-bottom"></div>' );
     var thumbnail    = $( '<img src="' + imageObject.thumbnail + '">' );
@@ -109,7 +152,8 @@ function assembleImage( imageObject ) {
     link.append( details );
     $bottom.append( link );
     $galleryItem.append( $top, $bottom );
-  } else if (imageObject.type === 'yt') {
+  } else if ( imageObject.type === 'yt' ) {
+
     console.log('Video stuff fired.');
   }
   $galleryItem.attr( 'id', 'item' + imageObject.id );
@@ -209,13 +253,11 @@ $( document ).ready(function() {
     opacity: 1
   }, 400 ).append( $lightbox );
 
-  /*  Loop through our imgDatabase and...
-        a. Store a reference to our current object.
-        b. Pass object into assembleImage. */
-
   for ( var i = 0; i < imgDatabase.length; i++ ) {
-    var imgData = imgDatabase[i];
-    assembleImage( imgData );
+    // Give each of our objects an ID.
+    imgDatabase[i].id = i + 1;
+    // Pass object into assembleImage to build gallery.
+    assembleImage( imgDatabase[i] );
   }
 
   /*  Image Filtering - Main Search on keyup.
@@ -335,7 +377,6 @@ $( document ).ready(function() {
   */
   $( document ).keyup( function( e ) {
     var keyPressed = e.which;
-
     if ( lightboxIsActive ) {
       switch ( keyPressed ) {
         case 27: // Escape
@@ -351,6 +392,12 @@ $( document ).ready(function() {
           break;
         case 73: // 'i'
           $( '#help' ).trigger( 'click' );
+      }
+    } else {
+      switch ( keyPressed ) {
+        case 192:
+          $('#min').trigger('click');
+          break;
       }
     }
   } );
