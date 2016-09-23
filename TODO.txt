@@ -3,14 +3,9 @@
 1. Implement results notification system.
   	a. When user is filtering results, display how many reults are matched to the query.
   	b. If there are no results, display a message saying no results were found.
-
-2. Update YT Implementation
-	a. Slight sizing problem with the videos, unwanted white space on the right side of images 		   due to the way they are sized, investigate another method.
-	b. Fix YT videos in the lightbox.
   	
-
-3. Implement 'maximize' lightbox functionality.
-	a. When user clicks on the plus symbol, it should expand the image to it's original size.
-	b. If image is maximized, give our user some way to revert to default lightbox image size.
-		bb. Perhaps just let user click anywhere on maximized image to revert.
-   
+2. Update Animations
+	a. Switch the lightbox fade toggle from jQuery to velocity so we can take advantage of hw
+	acceleration on mobile devices for better performance.
+	b. Maybe update updateImage to use velocity.ui utility function as well.
+	c. Clean up other non ui velocity animations code to single line. 

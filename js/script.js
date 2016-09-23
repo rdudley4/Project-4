@@ -77,7 +77,7 @@ $toggle.on("click", function() {
         { e: $toggle, p: { rotateZ: 360 }, o: { duration: animLength, sequenceQueue: false } }
       ],
       hideControlBar = [
-        { e: $songBar, p: { width: 100 }, o: { duration: animLength } },
+        { e: $songBar, p: { width: 97 }, o: { duration: animLength } },
         { e: $songBar.children('span'), p: { opacity: 0 }, o: { duration: animLength, display: 'none', sequenceQueue: false } },
         { e: $toggle, p: { rotateZ: 180 }, o: { duration: animLength, sequenceQueue: false } }
       ];
