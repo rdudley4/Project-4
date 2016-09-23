@@ -101,7 +101,7 @@ $('#min').on("click", function() {
       width: 100,
     }, 350 );
     $('#min').velocity({
-      rotateZ: -180
+      rotateZ: 180
     }, 350 );
     controlBarExtended = false;
   } else {
