@@ -109,8 +109,8 @@ var imgDatabase = [
   },
   {
     type: 'yt',
-    title: 'Kap Slap - Harbor ft. Jake Etheridge',
-    videoID: 'exgJUscSy3s',
+    title: 'Ether - With You',
+    videoID: 'Bbolp_zGM6s',
     isMatched: false,
   },
   {
@@ -147,6 +147,12 @@ var imgDatabase = [
     type: 'yt',
     title: 'Bill Withers - Ain\'t No Sunshine',
     videoID: 'tIdIqbv7SPo',
+    isMatched: false,
+  },
+  {
+    type: 'yt',
+    title: 'Paul Gilbert - Technical Difficulties (Racer X)',
+    videoID: 'rn-wj4pRpIE',
     isMatched: false,
   }
 ];

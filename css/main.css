@@ -6,7 +6,6 @@
 body {
   font-family: 'Nunito', sans-serif;
   line-height: 1.5;
-  opacity    : 0;
 }
 
 iframe.gallery-item {
@@ -160,6 +159,14 @@ footer a:hover {
   width       : 64px;
   height      : 48px;
   margin-right: 10px;
+}
+
+#currentSong {
+  max-width: 250px;
+  max-height: 18px;
+  font-size: .75em;
+  overflow: hidden;
+  text-align: left;
 }
 
 /* Search box */
@@ -522,6 +529,10 @@ footer span {
     padding-right: 0;
   }
 
+  #currentSong {
+    max-width: 100%;
+  }
+
   .gallery-item {
     display     : inline-block;
     margin-left : 2.15%;
@@ -546,6 +557,7 @@ footer span {
     width: 60%;
   }
 }
+
 @media (min-width: 1000px) {
   #search label {
     display: inline-block;

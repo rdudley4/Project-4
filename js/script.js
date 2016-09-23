@@ -72,7 +72,7 @@ $toggle.on("click", function() {
   var $songBar = $('#song-container'),
       animLength = 350,
       showContolBar = [
-        { e: $songBar, p: { width: 665 }, o: { duration: animLength } },
+        { e: $songBar, p: { width: adjustLength() }, o: { duration: animLength } },
         { e: $songBar.children('span'), p: { opacity: 1 }, o: { duration: animLength, display: 'block', sequenceQueue: false } },
         { e: $toggle, p: { rotateZ: 360 }, o: { duration: animLength, sequenceQueue: false } }
       ],
@@ -81,7 +81,6 @@ $toggle.on("click", function() {
         { e: $songBar.children('span'), p: { opacity: 0 }, o: { duration: animLength, display: 'none', sequenceQueue: false } },
         { e: $toggle, p: { rotateZ: 180 }, o: { duration: animLength, sequenceQueue: false } }
       ];
-
   if ( controlBarExtended ) {
     $.Velocity.RunSequence( hideControlBar );
     controlBarExtended = false;
@@ -90,6 +89,20 @@ $toggle.on("click", function() {
     controlBarExtended = true;
   }
 });
+
+function adjustLength() {
+  var barLength;
+  if ($(window).width() < 800) {
+    barLength = $(window).width() - 4;
+    return barLength;
+  } else if ($(window).width() < 1500) {
+    barLength = $(window).width() / 2;
+    return barLength;
+  } else {
+    barLength = $(window).width() / 3;
+    return barLength;
+  }
+};
 
 /* When an image object is passed into the function..
     1. Create a div to hold the image and title
@@ -164,12 +177,8 @@ function nextImage() {
 
 function updateImage() {
   currentSrc = nextImage();
-  $lbImage.velocity( {
-    opacity: 0,
-  }, 150, function() {
-    $lbImage.velocity( {
-      opacity: 1
-    } ).attr('src', currentSrc);
+  $lbImage.velocity( { opacity: 0, }, 150, function() {
+    $lbImage.velocity( { opacity: 1 } ).attr('src', currentSrc);
   }, 150 );
 }
 
@@ -216,9 +225,7 @@ function resetFilter() {
 }
 
 $( document ).ready(function() {
-  $( 'body' ).velocity( {
-    opacity: 1
-  }, 400 ).append( $lightbox );
+  $( 'body' ).append( $lightbox );
 
   for ( var i = 0; i < imgDatabase.length; i++ ) {
     // Give each of our objects an ID.
@@ -226,6 +233,8 @@ $( document ).ready(function() {
     // Pass object into assembleImage to build gallery.
     assembleImage( imgDatabase[i] );
   }
+
+
 
   /*  Image Filtering - Main Search on keyup.
         a. Store users input converted to lower case in userInput.
@@ -270,7 +279,7 @@ $( document ).ready(function() {
     $lbImage.attr( 'src', currentSrc );
     updateDescription();
     lightboxIsActive = true;
-    $lightbox.fadeToggle( 300 );
+    $lightbox.velocity( { opacity: 1 }, { duration: 75, display: "block" });
     console.log('Lightbox Activated');
   } );
 
@@ -301,14 +310,14 @@ $( document ).ready(function() {
 
   // Close
   $controls.children( '#close' ).on( 'click', function() {
-    $lightbox.fadeToggle( 250 );
+    $lightbox.velocity( { opacity: 0 }, { duration: 75, display: "none" });
     lightboxIsActive = false;
     console.log('Lightbox Closed');
   } );
 
   /* Info Help - When user clicks on 'Hotkey Info' bar [Toggle Effect]
       a. By default hotkey-info is hidden, so we test this value
-      to see whether is it currently visible. Added bonus we can keep track of visibility even if lightbox is closed and re-opened.
+      to see whether it is currently visible. Added bonus we can keep track of visibility even if lightbox is closed and re-opened.
         IF: info-help is currently visible, and the help bar was clicked, we want to 'slide' the hotkeys upwards using margins and hide the element.
         ELSE: info-help is currently hidden, slide hotkeys into view with regular margins and set the display to visible.
   */
@@ -347,7 +356,7 @@ $( document ).ready(function() {
     if ( lightboxIsActive ) {
       switch ( keyPressed ) {
         case 27: // Escape
-          $lightbox.fadeToggle( 250 );
+          $lightbox.velocity( { opacity: 0 }, { duration: 75, display: "none" });
           lightboxIsActive = false;
           console.log( 'Lightbox Closed.' );
           break;
