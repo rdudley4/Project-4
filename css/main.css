@@ -103,7 +103,7 @@ footer a:hover {
   bottom          : 2px;
   left            : 2px;
   height          : 50px;
-  width           : 35%;
+  width           : 100px;
   z-index         : 1002;
   background-color: rgba(33, 33, 33, .9);
   color           : #e0e0e0;
@@ -148,7 +148,8 @@ footer a:hover {
 #min {
   position: absolute;
   right: 10px;
-  line-height: 50px;
+  line-height: 48px;
+  transform: rotateZ(-180deg);
 }
 
 #min:hover {

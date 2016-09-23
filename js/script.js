@@ -1,18 +1,18 @@
-var currentSrc;
-var videoId;
-var videoTitle;
-var currentVideo;
-var player;
-var controlBarExtended = true;
-var videoCount  = 0;
-var $lightbox   = $( '#lightbox' );
-var $lbImage    = $( '.selected' );
-var $controls   = $( '#controls' );
-var $mainSearch = $( '#main-search' );
-var lightboxIsActive = false;
-var prevClicked = false;
-var nextClicked = false;
-var videoPaused = false;
+var currentSrc,
+    videoId,
+    videoTitle,
+    currentVideo,
+    player,
+    controlBarExtended = false,
+    videoCount  = 0,
+    $lightbox   = $( '#lightbox' ),
+    $lbImage    = $( '.selected' ),
+    $controls   = $( '#controls' ),
+    $mainSearch = $( '#main-search' ),
+    lightboxIsActive = false,
+    prevClicked = false,
+    nextClicked = false,
+    videoPaused = false;
 
 // Load our YouTube Videos to the page when the IFrame API is ready.
 
@@ -66,7 +66,7 @@ function onPlayerStateChange(event) {
         }
       );
     } ).css('visibility', 'hidden');
-  } else if (event.data == YT.PlayerState.PAUSED) {
+  } else if (event.data == YT.PlayerState.PAUSED || event.data == YT.PlayerState.ENDED) {
     $( '#pause' ).velocity(
       {
         opacity: 0,
@@ -86,7 +86,7 @@ function onPlayerStateChange(event) {
 
 // Minimize Currently Playing Bar
 $('#min').on("click", function() {
-  $windowWidth = $(window).width();
+  // $windowWidth = $(window).width();
   var $songBar = $('#song-container');
   if ( controlBarExtended ) {
     $songBar.children('span').velocity(
@@ -99,9 +99,9 @@ $('#min').on("click", function() {
     });
     $songBar.velocity( {
       width: 100,
-    }, 450 );
+    }, 350 );
     $('#min').velocity({
-      rotateZ: 180
+      rotateZ: -180
     }, 350 );
     controlBarExtended = false;
   } else {
@@ -115,7 +115,7 @@ $('#min').on("click", function() {
     });
     $songBar.velocity({
       width: 665,
-    }, 450 );
+    }, 350 );
     $('#min').velocity({
       rotateZ: 360
     }, 350 );
@@ -135,15 +135,15 @@ function assembleImage( imageObject ) {
   var $galleryItem = $( '<div class="gallery-item"></div>' );
 
   if ( imageObject.type === 'img' ) {
-    var $top         = $( '<div class="layer-top"></div>' );
-    var $bottom      = $( '<div class="layer-bottom"></div>' );
-    var thumbnail    = $( '<img src="' + imageObject.thumbnail + '">' );
-    var link         = $( '<a href="' + imageObject.src + '"></a>' );
-    var details      = $( '<div class="details"></div>' );
-    var $title       = $( '<span class="title"></span>' );
-    var $icon        = $( '<i class="fa fa-expand fa-3x" aria-hidden="true"></i>' );
-    var $resolution  = $( '<span class="resolution">' + imageObject.resolution + '</span>' );
-    var $id          = $( '<span class="image-id">ID - ' + imageObject.id + '</span>' );
+    var $top         = $( '<div class="layer-top"></div>' ),
+        $bottom      = $( '<div class="layer-bottom"></div>' ),
+        thumbnail    = $( '<img src="' + imageObject.thumbnail + '">' ),
+        link         = $( '<a href="' + imageObject.src + '"></a>' ),
+        details      = $( '<div class="details"></div>' ),
+        $title       = $( '<span class="title"></span>' ),
+        $icon        = $( '<i class="fa fa-expand fa-3x" aria-hidden="true"></i>' ),
+        $resolution  = $( '<span class="resolution">' + imageObject.resolution + '</span>' ),
+        $id          = $( '<span class="image-id">ID - ' + imageObject.id + '</span>' );
 
     // Populate front and back of card
     $top.append( thumbnail );
@@ -153,7 +153,6 @@ function assembleImage( imageObject ) {
     $bottom.append( link );
     $galleryItem.append( $top, $bottom );
   } else if ( imageObject.type === 'yt' ) {
-
     console.log('Video stuff fired.');
   }
   $galleryItem.attr( 'id', 'item' + imageObject.id );
@@ -171,8 +170,8 @@ function assembleImage( imageObject ) {
 // TODO: Fix the logic here to work with YT Videos.
 function nextImage() {
   for ( i = 0; i < imgDatabase.length; i++ ) {
-    var firstImage  = imgDatabase[ 0 ].src;
-    var lastImage   = imgDatabase[imgDatabase.length - ( videoCount + 1 )].src;
+    var firstImage  = imgDatabase[ 0 ].src,
+        lastImage   = imgDatabase[imgDatabase.length - ( videoCount + 1 )].src;
     if ( prevClicked && currentSrc === imgDatabase[i].src ) {
       if ( currentSrc === firstImage ) {
         currentSrc = lastImage;
@@ -215,8 +214,8 @@ function updateDescription() {
 }
 
 function filterResults(index) {
-  var galleryItem = $('#item' + (index + 1));
-  var itemSrc = galleryItem.children('.back').children('a').attr('href');
+  var galleryItem = $('#item' + (index + 1)),
+      itemSrc = galleryItem.children('.back').children('a').attr('href');
 
   if ( imgDatabase[index].isMatched ) {
       galleryItem.velocity(
@@ -271,8 +270,8 @@ $( document ).ready(function() {
 
 
   $mainSearch.on( 'keyup', function() {
-    var userInput = $mainSearch.val().toLowerCase();
-    var results = "The following images match the search query: ";
+    var userInput = $mainSearch.val().toLowerCase(),
+        results = "The following images match the search query: ";
 
     if ( userInput.length > 0 ) {
       for ( var i = 0; i < imgDatabase.length; i++ ) {

@@ -127,8 +127,8 @@ var imgDatabase = [
   },
   {
     type: 'yt',
-    title: 'Slushii - To Say Goodbye',
-    videoID: 'fEhV4BAuXTE',
+    title: 'President Taft\'s Secret Pony Brigade',
+    videoID: 'QrpCN014mS8',
     isMatched: false,
   },
   {
@@ -148,11 +148,5 @@ var imgDatabase = [
     title: 'Bill Withers - Ain\'t No Sunshine',
     videoID: 'tIdIqbv7SPo',
     isMatched: false,
-  },
-  {
-    type: 'yt',
-    title: 'Tritonal - Waiting 4 U',
-    videoID: 'ERqYIvYXHdw',
-    isMatched: false,
-  },
+  }
 ];
