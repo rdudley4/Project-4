@@ -87,39 +87,40 @@ function onPlayerStateChange(event) {
 // Minimize Currently Playing Bar
 $('#min').on("click", function() {
   // $windowWidth = $(window).width();
-  var $songBar = $('#song-container');
+  var $songBar = $('#song-container'),
+      $minimize = $('#min'),
+      animLength = 350,
+      showContolBar = [
+        { e: $songBar, p: { width: 665 }, o: { duration: animLength } },
+        { e: $minimize, p: { rotateZ: 360 }, o: { duration: animLength, sequenceQueue: false } },
+        { e: $songBar.children('span'), p: { opacity: 1 }, o: { duration: animLength, display: 'block', sequenceQueue: false } }
+      ],
+      hideControlBar = [
+        { e: $songBar, p: { width: 100 }, o: { duration: animLength } },
+        { e: $minimize, p: { rotateZ: 180 }, o: { duration: animLength, sequenceQueue: false } },
+        { e: $songBar.children('span'), p: { opacity: 0 }, o: { duration: animLength, display: 'none', sequenceQueue: false } }
+      ];
+
   if ( controlBarExtended ) {
-    $songBar.children('span').velocity(
-    {
-      opacity: 0
-    },
-    {
-      duration: 100,
-      display: 'none'
-    });
-    $songBar.velocity( {
-      width: 100,
-    }, 350 );
-    $('#min').velocity({
-      rotateZ: 180
-    }, 350 );
+    $.Velocity.RunSequence( hideControlBar );
     controlBarExtended = false;
   } else {
-    $songBar.children('span').velocity(
-    {
-      opacity: 1
-    },
-    {
-      duration: 600,
-      display: 'block'
-    });
-    $songBar.velocity({
-      width: 665,
-    }, 350 );
-    $('#min').velocity({
-      rotateZ: 360
-    }, 350 );
+    $.Velocity.RunSequence( showContolBar );
     controlBarExtended = true;
+    // $songBar.children('span').velocity(
+    // {
+    //   opacity: 1
+    // },
+    // {
+    //   duration: 600,
+    //   display: 'block'
+    // });
+    // $songBar.velocity({
+    //   width: 665,
+    // }, 350 );
+    // $('#min').velocity({
+    //   rotateZ: 360
+    // }, 350 );
   }
 });
 
