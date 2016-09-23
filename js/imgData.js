@@ -115,14 +115,14 @@ var imgDatabase = [
   },
   {
     type: 'yt',
-    title: 'Porter Robinson & Madeon - Shelter',
-    videoID: 'FS16b01M4Rw',
+    title: 'Vanic - Samurai (ft. Katy Tiz)',
+    videoID: 'drcCOc2v80o',
     isMatched: false,
   },
   {
     type: 'yt',
-    title: 'Alan Walker - Sing Me To Sleep (Marshmello Remix)',
-    videoID: 'jsmbXhhPpy8',
+    title: 'Flybear - Soon...',
+    videoID: 'GXNGjs5WMGk',
     isMatched: false,
   },
   {

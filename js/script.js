@@ -9,6 +9,7 @@ var currentSrc,
     $lbImage    = $( '.selected' ),
     $controls   = $( '#controls' ),
     $mainSearch = $( '#main-search' ),
+    $toggle =     $( '#toggle' ),
     lightboxIsActive = false,
     prevClicked = false,
     nextClicked = false,
@@ -31,6 +32,16 @@ function onYouTubeIframeAPIReady() {
 }
 
 function onPlayerStateChange(event) {
+
+  var hidePlayButton = [
+    { e: $('#play'), p: { opacity: 0 }, o: { duration: 100, visibility: 'hidden' } },
+    { e: $('#pause'), p: { opacity: 1 }, o: { duration: 100, visibility: 'visible' } }
+  ],
+      showPlayButton = [
+    { e: $('#pause'), p: { opacity: 0 }, o: { duration: 100, visibility: 'hidden' } },
+    { e: $('#play'), p: { opacity: 1 }, o: { duration: 100, visibility: 'visible' } }
+  ];
+
   currentVideo = event.target;
   videoTitle = currentVideo.getVideoData().title;
   videoId = currentVideo.getVideoData().video_id;
@@ -46,59 +57,29 @@ function onPlayerStateChange(event) {
     currentVideo.playVideo();
   });
 
-
-
   $('#currentThumbnail').attr("src", 'https://img.youtube.com/vi/' + videoId + '/mqdefault.jpg');
   $('#currentSong').text(videoTitle);
 
   if (event.data == YT.PlayerState.PLAYING) {
-    $( '#play' ).velocity(
-      {
-        opacity: 0,
-      }, 100, function() {
-      $('#pause').velocity(
-        {
-          opacity: 1
-        },
-        {
-          visibility: 'visible',
-          duration: 50
-        }
-      );
-    } ).css('visibility', 'hidden');
+    $.Velocity.RunSequence( hidePlayButton );
   } else if (event.data == YT.PlayerState.PAUSED || event.data == YT.PlayerState.ENDED) {
-    $( '#pause' ).velocity(
-      {
-        opacity: 0,
-      }, 100, function() {
-      $( '#play' ).velocity(
-        {
-          opacity: 1
-        },
-        {
-          visibility: 'visible',
-          duration: 50
-        }
-      );
-    } ).css('visibility', 'hidden');
+    $.Velocity.RunSequence( showPlayButton );
   }
 }
 
 // Minimize Currently Playing Bar
-$('#min').on("click", function() {
-  // $windowWidth = $(window).width();
+$toggle.on("click", function() {
   var $songBar = $('#song-container'),
-      $minimize = $('#min'),
       animLength = 350,
       showContolBar = [
         { e: $songBar, p: { width: 665 }, o: { duration: animLength } },
-        { e: $minimize, p: { rotateZ: 360 }, o: { duration: animLength, sequenceQueue: false } },
-        { e: $songBar.children('span'), p: { opacity: 1 }, o: { duration: animLength, display: 'block', sequenceQueue: false } }
+        { e: $songBar.children('span'), p: { opacity: 1 }, o: { duration: animLength, display: 'block', sequenceQueue: false } },
+        { e: $toggle, p: { rotateZ: 360 }, o: { duration: animLength, sequenceQueue: false } }
       ],
       hideControlBar = [
         { e: $songBar, p: { width: 100 }, o: { duration: animLength } },
-        { e: $minimize, p: { rotateZ: 180 }, o: { duration: animLength, sequenceQueue: false } },
-        { e: $songBar.children('span'), p: { opacity: 0 }, o: { duration: animLength, display: 'none', sequenceQueue: false } }
+        { e: $songBar.children('span'), p: { opacity: 0 }, o: { duration: animLength, display: 'none', sequenceQueue: false } },
+        { e: $toggle, p: { rotateZ: 180 }, o: { duration: animLength, sequenceQueue: false } }
       ];
 
   if ( controlBarExtended ) {
@@ -107,20 +88,6 @@ $('#min').on("click", function() {
   } else {
     $.Velocity.RunSequence( showContolBar );
     controlBarExtended = true;
-    // $songBar.children('span').velocity(
-    // {
-    //   opacity: 1
-    // },
-    // {
-    //   duration: 600,
-    //   display: 'block'
-    // });
-    // $songBar.velocity({
-    //   width: 665,
-    // }, 350 );
-    // $('#min').velocity({
-    //   rotateZ: 360
-    // }, 350 );
   }
 });
 
@@ -396,7 +363,7 @@ $( document ).ready(function() {
     } else {
       switch ( keyPressed ) {
         case 192:
-          $('#min').trigger('click');
+          $toggle.trigger('click');
           break;
       }
     }

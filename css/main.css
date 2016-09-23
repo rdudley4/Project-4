@@ -120,8 +120,8 @@ footer a:hover {
 #pause:hover,
 #play,
 #play:hover,
-#min,
-#min:hover {
+#toggle,
+#toggle:hover {
   transition: all .2s ease;
 }
 
@@ -135,7 +135,7 @@ footer a:hover {
 
 #pause:hover,
 #play:hover,
-#min:hover {
+#toggle:hover {
   color: #e0e0e0;
   cursor: pointer;
 }
@@ -145,14 +145,14 @@ footer a:hover {
   visibility: hidden;
 }
 
-#min {
+#toggle {
   position: absolute;
   right: 10px;
   line-height: 48px;
-  transform: rotateZ(-180deg);
+  transform: rotateZ(180deg);
 }
 
-#min:hover {
+#toggle:hover {
   color: #27ae60;
 }
 
