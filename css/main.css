@@ -158,7 +158,7 @@ footer a:hover {
   display: none;
   opacity: 0;
   position: absolute;
-  right: 50px;
+  right: 45px;
   line-height: 48px;
 }
 
@@ -174,7 +174,7 @@ footer a:hover {
 }
 
 #currentSong {
-  max-width: 250px;
+  max-width: 200px;
   max-height: 24px;
   line-height: 24px;
   font-size: .75em;
@@ -537,6 +537,13 @@ footer span {
 .key {
   transition: all 0.3s ease;
 }
+
+@media (max-width: 359px) {
+  #currentSong {
+    max-width: 170px;
+  }
+}
+
 @media (min-width: 500px) {
   .container-main {
     padding-left : 0;
@@ -544,7 +551,7 @@ footer span {
   }
 
   #currentSong {
-    max-width: 300px;
+    max-width: 290px;
   }
 
   .gallery-item {

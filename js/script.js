@@ -10,10 +10,16 @@ var currentSrc,
     $controls   = $( '#controls' ),
     $mainSearch = $( '#main-search' ),
     $toggle =     $( '#toggle' ),
+    $songBar = $('#song-container'),
     lightboxIsActive = false,
     prevClicked = false,
     nextClicked = false,
-    videoPaused = false;
+    videoPaused = false,
+    animLength = 350,
+    barCheck = setInterval( mobileSizing, 1000);
+
+// Animations
+
 
 // Load our YouTube Videos to the page when the IFrame API is ready.
 
@@ -48,16 +54,14 @@ function onYouTubeIframeAPIReady() {
 }
 
 function onPlayerStateChange(event) {
-
   var hidePlayButton = [
-    { e: $('#play'), p: { opacity: 0 }, o: { duration: 100, visibility: 'hidden' } },
-    { e: $('#pause'), p: { opacity: 1 }, o: { duration: 100, visibility: 'visible' } }
+  { e: $('#play'), p: { opacity: 0 }, o: { duration: 100, visibility: 'hidden' } },
+  { e: $('#pause'), p: { opacity: 1 }, o: { duration: 100, visibility: 'visible' } }
   ],
       showPlayButton = [
-    { e: $('#pause'), p: { opacity: 0 }, o: { duration: 100, visibility: 'hidden' } },
-    { e: $('#play'), p: { opacity: 1 }, o: { duration: 100, visibility: 'visible' } }
+  { e: $('#pause'), p: { opacity: 0 }, o: { duration: 100, visibility: 'hidden' } },
+  { e: $('#play'), p: { opacity: 1 }, o: { duration: 100, visibility: 'visible' } }
   ];
-
 
   currentVideo = event.target;
   videoTitle = currentVideo.getVideoData().title;
@@ -75,20 +79,19 @@ function onPlayerStateChange(event) {
 
 // Minimize Currently Playing Bar
 $toggle.on("click", function() {
-  var $songBar = $('#song-container'),
-      animLength = 350,
-      showContolBar = [
-        { e: $songBar, p: { width: adjustLength() }, o: { duration: animLength } },
-        { e: $songBar.children('span'), p: { opacity: 1 }, o: { duration: animLength, display: 'block', sequenceQueue: false } },
-        { e: $('#replay'), p: { opacity: 1 }, o: { duration: animLength - 100, display: 'block', sequenceQueue: false } },
-        { e: $toggle, p: { rotateZ: 360 }, o: { duration: animLength, sequenceQueue: false } }
-      ],
+  var showContolBar = [
+  { e: $songBar, p: { width: adjustLength() }, o: { duration: animLength } },
+  { e: $songBar.children('span'), p: { opacity: 1 }, o: { duration: animLength, display: 'block', sequenceQueue: false } },
+  { e: $('#replay'), p: { opacity: 1 }, o: { duration: animLength - 100, display: 'block', sequenceQueue: false } },
+  { e: $toggle, p: { rotateZ: 360 }, o: { duration: animLength, sequenceQueue: false } }
+  ],
       hideControlBar = [
-        { e: $songBar, p: { width: 97 }, o: { duration: animLength } },
-        { e: $songBar.children('span'), p: { opacity: 0 }, o: { duration: animLength, display: 'none', sequenceQueue: false } },
-        { e: $('#replay'), p: { opacity: 0 }, o: { duration: animLength - 100, display: 'none', sequenceQueue: false } },
-        { e: $toggle, p: { rotateZ: 180 }, o: { duration: animLength, sequenceQueue: false } }
-      ];
+  { e: $songBar, p: { width: 97 }, o: { duration: animLength } },
+  { e: $songBar.children('span'), p: { opacity: 0 }, o: { duration: animLength, display: 'none', sequenceQueue: false } },
+  { e: $('#replay'), p: { opacity: 0 }, o: { duration: animLength - 100, display: 'none', sequenceQueue: false } },
+  { e: $toggle, p: { rotateZ: 180 }, o: { duration: animLength, sequenceQueue: false } }
+  ];
+
   if ( controlBarExtended ) {
     $.Velocity.RunSequence( hideControlBar );
     controlBarExtended = false;
@@ -99,16 +102,25 @@ $toggle.on("click", function() {
 });
 
 function adjustLength() {
-  console.log($(window).width());
   var barLength;
-  if ($(window).width() < 950) {
+  if ( $(window).width() < 950) {
     barLength = $(window).width() - 4;
     return barLength;
   } else {
     barLength = 485;
     return barLength;
   }
-};
+}
+
+function mobileSizing() {
+  if ( controlBarExtended && $(window).width() < 1024) {
+    if ( $songBar.width() > $(window).width() || $(window).width() > $(window).height() && $songBar.width() < $(window).width() - 7) {
+      console.log('Adjusting control bar sizing.');
+      $('#toggle').trigger('click').trigger('click');
+    }
+    console.log('Currently Checking bar width for changes.');
+  }
+}
 
 /* When an image object is passed into the function..
     1. Create a div to hold the image and title
@@ -202,25 +214,13 @@ function filterResults(index) {
 
   if ( imgDatabase[index].isMatched ) {
       galleryItem.velocity(
-        {
-          bottom: 0
-        },
-        {
-          duration: 300,
-          display: "inline-block"
-        }
-      );
+        { bottom: 0 },
+        { duration: 300, display: "inline-block" } );
   } else {
       galleryItem.velocity(
-        {
-          bottom: -204
-        },
-        {
-          duration: 300,
-          display: "none"
-        }
-      );
-  }
+        { bottom: -204 },
+        { duration: 300, display: "none" } );
+    }
 }
 
 function resetFilter() {
@@ -329,26 +329,14 @@ $( document ).ready(function() {
   $( '#help' ).on( 'click', function()  {
     if ( $('#hotkey-info').css('visibility') === 'visible' ) {
       $( '#hotkey-info' ).velocity(
-        {
-          marginTop: -53,
-        },
-        {
-          duration: 350,
-          visibility: "hidden"
-        }
-      );
+        { marginTop: -53 },
+        { duration: 350, visibility: "hidden" } );
     } else {
       $( '#hotkey-info' ).velocity(
-        {
-          marginTop: 4,
-        },
-        {
-          duration: 350,
-          visibility: "visible"
-        }
-      );
-    }
-  } );
+        { marginTop: 4,},
+        { duration: 350, visibility: "visible" } );
+      }
+   } );
 
   /* Keyboard Controls for Lightbox
       a. Store a reference to most recent key press in keyPressed.
