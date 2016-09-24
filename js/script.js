@@ -91,15 +91,13 @@ $toggle.on("click", function() {
 });
 
 function adjustLength() {
+  console.log($(window).width());
   var barLength;
-  if ($(window).width() < 800) {
+  if ($(window).width() < 950) {
     barLength = $(window).width() - 4;
     return barLength;
-  } else if ($(window).width() < 1500) {
-    barLength = $(window).width() / 2;
-    return barLength;
   } else {
-    barLength = $(window).width() / 3;
+    barLength = 486;
     return barLength;
   }
 };

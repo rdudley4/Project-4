@@ -163,8 +163,10 @@ footer a:hover {
 
 #currentSong {
   max-width: 250px;
-  max-height: 18px;
+  max-height: 24px;
+  line-height: 24px;
   font-size: .75em;
+
   overflow: hidden;
   text-align: left;
 }
@@ -530,7 +532,7 @@ footer span {
   }
 
   #currentSong {
-    max-width: 100%;
+    max-width: 300px;
   }
 
   .gallery-item {
