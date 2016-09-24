@@ -115,14 +115,14 @@ var imgDatabase = [
   },
   {
     type: 'yt',
-    title: 'Vanic - Samurai (ft. Katy Tiz)',
-    videoID: 'drcCOc2v80o',
+    title: 'Matoma - Running Out (ft. Astrid S)',
+    videoID: 'fEjqAkBWO8w',
     isMatched: false,
   },
   {
     type: 'yt',
-    title: 'Flybear - Soon...',
-    videoID: 'GXNGjs5WMGk',
+    title: 'Filous - Feel Good Inc. (ft. LissA)',
+    videoID: '_qrsh3huKs4',
     isMatched: false,
   },
   {

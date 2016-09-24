@@ -120,7 +120,9 @@ footer a:hover {
 #play,
 #play:hover,
 #toggle,
-#toggle:hover {
+#toggle:hover,
+#replay,
+#replay:hover {
   transition: all .2s ease;
 }
 
@@ -134,7 +136,8 @@ footer a:hover {
 
 #pause:hover,
 #play:hover,
-#toggle:hover {
+#toggle:hover,
+#replay:hover {
   color: #e0e0e0;
   cursor: pointer;
 }
@@ -151,7 +154,16 @@ footer a:hover {
   transform: rotateZ(180deg);
 }
 
-#toggle:hover {
+#replay {
+  display: none;
+  opacity: 0;
+  position: absolute;
+  right: 50px;
+  line-height: 48px;
+}
+
+#toggle:hover,
+#replay:hover {
   color: #27ae60;
 }
 

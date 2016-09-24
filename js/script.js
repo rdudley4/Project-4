@@ -29,6 +29,22 @@ function onYouTubeIframeAPIReady() {
       videoCount++;
     }
   }
+
+  //bind events
+  var pauseButton = document.getElementById("pause");
+  pauseButton.addEventListener("click", function() {
+    currentVideo.pauseVideo();
+  });
+
+  var playButton = document.getElementById("play");
+  playButton.addEventListener("click", function() {
+    currentVideo.playVideo();
+  });
+
+  var playButton = document.getElementById("replay");
+  playButton.addEventListener("click", function() {
+    currentVideo.seekTo(0);
+  });
 }
 
 function onPlayerStateChange(event) {
@@ -42,20 +58,10 @@ function onPlayerStateChange(event) {
     { e: $('#play'), p: { opacity: 1 }, o: { duration: 100, visibility: 'visible' } }
   ];
 
+
   currentVideo = event.target;
   videoTitle = currentVideo.getVideoData().title;
   videoId = currentVideo.getVideoData().video_id;
-
-  //bind events
-  var pauseButton = document.getElementById("pause");
-  pauseButton.addEventListener("click", function() {
-    currentVideo.pauseVideo();
-  });
-
-  var playButton = document.getElementById("play");
-  playButton.addEventListener("click", function() {
-    currentVideo.playVideo();
-  });
 
   $('#currentThumbnail').attr("src", 'https://img.youtube.com/vi/' + videoId + '/mqdefault.jpg');
   $('#currentSong').text(videoTitle);
@@ -74,11 +80,13 @@ $toggle.on("click", function() {
       showContolBar = [
         { e: $songBar, p: { width: adjustLength() }, o: { duration: animLength } },
         { e: $songBar.children('span'), p: { opacity: 1 }, o: { duration: animLength, display: 'block', sequenceQueue: false } },
+        { e: $('#replay'), p: { opacity: 1 }, o: { duration: animLength - 100, display: 'block', sequenceQueue: false } },
         { e: $toggle, p: { rotateZ: 360 }, o: { duration: animLength, sequenceQueue: false } }
       ],
       hideControlBar = [
         { e: $songBar, p: { width: 97 }, o: { duration: animLength } },
         { e: $songBar.children('span'), p: { opacity: 0 }, o: { duration: animLength, display: 'none', sequenceQueue: false } },
+        { e: $('#replay'), p: { opacity: 0 }, o: { duration: animLength - 100, display: 'none', sequenceQueue: false } },
         { e: $toggle, p: { rotateZ: 180 }, o: { duration: animLength, sequenceQueue: false } }
       ];
   if ( controlBarExtended ) {
@@ -97,7 +105,7 @@ function adjustLength() {
     barLength = $(window).width() - 4;
     return barLength;
   } else {
-    barLength = 486;
+    barLength = 485;
     return barLength;
   }
 };
@@ -231,8 +239,6 @@ $( document ).ready(function() {
     // Pass object into assembleImage to build gallery.
     assembleImage( imgDatabase[i] );
   }
-
-
 
   /*  Image Filtering - Main Search on keyup.
         a. Store users input converted to lower case in userInput.
