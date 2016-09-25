@@ -109,32 +109,8 @@ var imgDatabase = [
   },
   {
     type: 'yt',
-    title: 'Ether - With You',
-    videoID: 'Bbolp_zGM6s',
-    isMatched: false,
-  },
-  {
-    type: 'yt',
-    title: 'Final Fantasy VII - Tifa\'s Theme (Piano Collections)',
-    videoID: 'Qf09pnir9nw',
-    isMatched: false,
-  },
-  {
-    type: 'yt',
-    title: 'A Breathtaking Piano Piece - Jervy Hou',
-    videoID: 'zRvhQ5Rf6-U',
-    isMatched: false,
-  },
-  {
-    type: 'yt',
-    title: 'Frank Sinatra - Thats Life',
-    videoID: 'cqhYchnDNfA',
-    isMatched: false,
-  },
-  {
-    type: 'yt',
-    title: 'Creedence Clearwater Revival - "Travelin Band"',
-    videoID: '4JoeGMazX4o',
+    title: 'Bill Withers - Ain\'t No Sunshine',
+    videoID: 'tIdIqbv7SPo',
     isMatched: false,
   },
   {
@@ -145,14 +121,26 @@ var imgDatabase = [
   },
   {
     type: 'yt',
-    title: 'Bill Withers - Ain\'t No Sunshine',
-    videoID: 'tIdIqbv7SPo',
+    title: 'A Breathtaking Piano Piece - Jervy Hou',
+    videoID: 'zRvhQ5Rf6-U',
     isMatched: false,
   },
   {
     type: 'yt',
-    title: 'Paul Gilbert - Technical Difficulties (Racer X)',
-    videoID: 'rn-wj4pRpIE',
+    title: 'Kingdom Hearts - Utada Hikaru - Hikari (piano cover)',
+    videoID: 'YUOYZbDhfos',
     isMatched: false,
-  }
+  },
+  {
+    type: 'yt',
+    title: 'Zakk Wylde - Farewell Ballad',
+    videoID: 'rYMupc564zE',
+    isMatched: false,
+  },
+  {
+    type: 'yt',
+    title: 'Creedence Clearwater Revival - "Travelin Band"',
+    videoID: '4JoeGMazX4o',
+    isMatched: false,
+  },
 ];

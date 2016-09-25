@@ -109,8 +109,8 @@ footer a:hover {
   text-align      : center;
 }
 
-#currentThumbnail,
 #currentSong,
+#currentThumbnail,
 #song-container span {
   float: left;
 }
@@ -119,52 +119,56 @@ footer a:hover {
 #pause:hover,
 #play,
 #play:hover,
-#toggle,
-#toggle:hover,
 #replay,
-#replay:hover {
-  transition: all .2s ease;
+#replay:hover,
+#toggle,
+#toggle:hover {
+  transition: all 0.2s ease;
 }
 
 #pause,
 #play {
-  position: absolute;
-  left: 18px;
+  position   : absolute;
+  left       : 18px;
   line-height: 50px;
-  color: rgba(33, 33, 33, .9);
+  color      : rgba(224, 224, 224, .5);
 }
 
 #pause:hover,
 #play:hover,
-#toggle:hover,
-#replay:hover {
-  color: #e0e0e0;
+#replay:hover,
+#toggle:hover {
   cursor: pointer;
 }
 
 #play {
-  opacity: 0;
+  opacity   : 0;
   visibility: hidden;
 }
 
 #toggle {
-  position: absolute;
-  right: 10px;
+  position   : absolute;
+  right      : 10px;
   line-height: 48px;
-  transform: rotateZ(180deg);
+  transform  : rotateZ(180deg);
+}
+
+.fa-angle-double-left:before {
+  padding: 5px 5px 5px 0;
 }
 
 #replay {
-  display: none;
-  opacity: 0;
-  position: absolute;
-  right: 45px;
+  display    : none;
+  opacity    : 0;
+  position   : absolute;
+  right      : 45px;
   line-height: 48px;
 }
-
-#toggle:hover,
-#replay:hover {
-  color: #27ae60;
+#pause:hover,
+#play:hover,
+#replay:hover,
+#toggle:hover {
+  color: #D64541;
 }
 
 #currentThumbnail {
@@ -174,13 +178,13 @@ footer a:hover {
 }
 
 #currentSong {
-  max-width: 200px;
-  max-height: 24px;
+  max-width  : 200px;
+  max-height : 24px;
   line-height: 24px;
-  font-size: .75em;
+  font-size  : 0.75em;
 
-  overflow: hidden;
-  text-align: left;
+  overflow   : hidden;
+  text-align : left;
 }
 
 /* Search box */
@@ -341,9 +345,9 @@ footer a:hover {
   z-index         : 1001;
 }
 
+#song-container,
 .lb-control-box,
-.shadow,
-#song-container {
+.shadow {
   border : 1px solid #444;
   outline: 1px solid #000;
 }
@@ -537,13 +541,11 @@ footer span {
 .key {
   transition: all 0.3s ease;
 }
-
 @media (max-width: 359px) {
   #currentSong {
     max-width: 170px;
   }
 }
-
 @media (min-width: 500px) {
   .container-main {
     padding-left : 0;
@@ -551,7 +553,7 @@ footer span {
   }
 
   #currentSong {
-    max-width: 290px;
+    max-width: 295px;
   }
 
   .gallery-item {
@@ -578,7 +580,6 @@ footer span {
     width: 60%;
   }
 }
-
 @media (min-width: 1000px) {
   #search label {
     display: inline-block;
