@@ -113,18 +113,14 @@ function adjustLength() {
 }
 
 function mobileSizing() {
-  var showContolBarM = [
-  { e: $songBar, p: { width: adjustLength() }, o: { duration: animLength - 100} },
-  { e: $songBar.children('span'), p: { opacity: 1 }, o: { duration: animLength, display: 'block', sequenceQueue: false } },
-  { e: $('#replay'), p: { opacity: 1 }, o: { duration: animLength - 100, display: 'block', sequenceQueue: false } },
-  { e: $toggle, p: { rotateZ: 360 }, o: { duration: animLength, sequenceQueue: false } }
-];
   if ( controlBarExtended && $(window).width() < 1024) {
     if ( $songBar.width() > $(window).width() || $(window).width() > $(window).height() && $songBar.width() < $(window).width() - 7) {
       console.log('Adjusting control bar sizing.');
-      $.Velocity.RunSequence( showContolBarM );
+      $songBar.velocity({ width: adjustLength() }, { duration: animLength });
     }
     console.log('Currently Checking bar width for changes.');
+  } else if ( $(window).width() > 1024 && $songBar.width() > 485 ) {
+    $songBar.velocity({ width: 485 }, { duration: animLength });
   }
 }
 
