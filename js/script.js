@@ -103,7 +103,7 @@ $toggle.on("click", function() {
 
 function adjustLength() {
   var barLength;
-  if ( $(window).width() < 950) {
+  if ( $(window).width() < 1024 ) {
     barLength = $(window).width() - 4;
     return barLength;
   } else {
@@ -113,10 +113,16 @@ function adjustLength() {
 }
 
 function mobileSizing() {
+  var showContolBarM = [
+  { e: $songBar, p: { width: adjustLength() }, o: { duration: animLength - 100} },
+  { e: $songBar.children('span'), p: { opacity: 1 }, o: { duration: animLength, display: 'block', sequenceQueue: false } },
+  { e: $('#replay'), p: { opacity: 1 }, o: { duration: animLength - 100, display: 'block', sequenceQueue: false } },
+  { e: $toggle, p: { rotateZ: 360 }, o: { duration: animLength, sequenceQueue: false } }
+];
   if ( controlBarExtended && $(window).width() < 1024) {
     if ( $songBar.width() > $(window).width() || $(window).width() > $(window).height() && $songBar.width() < $(window).width() - 7) {
       console.log('Adjusting control bar sizing.');
-      $('#toggle').trigger('click').trigger('click');
+      $.Velocity.RunSequence( showContolBarM );
     }
     console.log('Currently Checking bar width for changes.');
   }
