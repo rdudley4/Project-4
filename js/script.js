@@ -103,8 +103,10 @@ function onPlayerStateChange(event) {
         if (recentlyPlayed.length > 2) {
             recentlyPlayed.pop();
         }
-    } else if (currentVideo.getPlayerState() === 2 || currentVideo.getPlayerState() === 0) {
-        $.Velocity.RunSequence(showPlayButton);
+    } else if (currentVideo != null) {
+      if (currentVideo.getPlayerState() === 2 || currentVideo.getPlayerState() === 0) {
+          $.Velocity.RunSequence(showPlayButton);
+      }
     }
 
     if (recentlyPlayed.length === 2) {
@@ -501,6 +503,7 @@ $(document).ready(function() {
                     break;
                 case 73: // 'i'
                     $('#help').trigger('click');
+                    break;
             }
         } else {
             switch (keyPressed) {

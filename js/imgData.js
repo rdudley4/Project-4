@@ -130,17 +130,5 @@ var imgDatabase = [
     title: 'Kingdom Hearts - Utada Hikaru - Hikari (piano cover)',
     videoID: 'YUOYZbDhfos',
     isMatched: false,
-  },
-  {
-    type: 'yt',
-    title: 'Zakk Wylde - Farewell Ballad',
-    videoID: 'rYMupc564zE',
-    isMatched: false,
-  },
-  {
-    type: 'yt',
-    title: 'Creedence Clearwater Revival - "Travelin Band"',
-    videoID: '4JoeGMazX4o',
-    isMatched: false,
-  },
+  }
 ];

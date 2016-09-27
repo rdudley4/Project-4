@@ -226,7 +226,7 @@ footer a:hover {
   overflow     : hidden;
   margin-top   : 45px;
   margin-bottom: 20px;
-  padding      : 5px;
+  padding      : 1px;
 }
 
 #gallery img {
@@ -546,7 +546,7 @@ footer span {
     max-width: 170px;
   }
 }
-@media (min-width: 500px) {
+@media (min-width: 457px) {
   .container-main {
     padding-left : 0;
     padding-right: 0;
@@ -563,7 +563,7 @@ footer span {
   }
 
   iframe.gallery-item {
-    width: 429px;
+    width: 442px;
   }
 
   #controls {
