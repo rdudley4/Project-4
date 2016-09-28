@@ -11,7 +11,7 @@ body {
 iframe.gallery-item {
   width    : 100%;
   max-width: 960px;
-  height   : 240.9px;
+  height   : 249px;
 }
 
 img {
@@ -92,8 +92,14 @@ footer a:hover {
   cursor: pointer;
 }
 
-#logo {
-  margin-bottom: 20px;
+#results {
+  visibility: hidden;
+  display: block;
+  opacity: 0;
+  margin: 10px auto;
+  width: 440px;
+  padding: 3px;
+  font-family: 'Roboto', sans-serif;
 }
 
 /* Current Song */

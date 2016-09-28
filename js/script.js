@@ -104,15 +104,15 @@ function onPlayerStateChange(event) {
             recentlyPlayed.pop();
         }
     } else if (currentVideo != null) {
-      if (currentVideo.getPlayerState() === 2 || currentVideo.getPlayerState() === 0) {
-          $.Velocity.RunSequence(showPlayButton);
-      }
+        if (currentVideo.getPlayerState() === 2 || currentVideo.getPlayerState() === 0) {
+            $.Velocity.RunSequence(showPlayButton);
+        }
     }
 
     if (recentlyPlayed.length === 2) {
-      if (recentlyPlayed[0].getPlayerState() === 1 && recentlyPlayed[1].getPlayerState() === 1 && recentlyPlayed[0].getVideoData().video_id != recentlyPlayed[1].getVideoData().video_id) {
-          recentlyPlayed[1].pauseVideo();
-      }
+        if (recentlyPlayed[0].getPlayerState() === 1 && recentlyPlayed[1].getPlayerState() === 1 && recentlyPlayed[0].getVideoData().video_id != recentlyPlayed[1].getVideoData().video_id) {
+            recentlyPlayed[1].pauseVideo();
+        }
     }
 }
 
@@ -353,6 +353,7 @@ function resetFilter() {
 }
 
 $(document).ready(function() {
+
     $('body').append($lightbox);
 
     for (var i = 0; i < imgDatabase.length; i++) {
@@ -374,21 +375,34 @@ $(document).ready(function() {
 
     $mainSearch.on('keyup', function() {
         var userInput = $mainSearch.val().toLowerCase(),
-            results = "The following images match the search query: ";
+            results = 0;
 
         if (userInput.length > 0) {
             for (var i = 0; i < imgDatabase.length; i++) {
                 if (imgDatabase[i].title.toLowerCase().indexOf(userInput) !== -1 || parseInt(userInput) === imgDatabase[i].id || imgDatabase[i].type === userInput) {
-                    results += imgDatabase[i].src + ", ";
+                    results++;
                     imgDatabase[i].isMatched = true;
                 } else {
                     imgDatabase[i].isMatched = false;
                 }
                 filterResults(i);
             }
+            $('#results').text( results + ' result(s) found.').velocity({
+                opacity: 1,
+            }, {
+                visibility: 'visible',
+                duration: 250
+            });
             console.log(results);
         } else {
             resetFilter();
+            results = 0;
+            $('#results').velocity( {
+              opacity: 0,
+            }, {
+              visibility: 'hidden',
+              duration: 250
+            } );
             console.log('Search filter has been reset.');
         }
     });

@@ -109,6 +109,12 @@ var imgDatabase = [
   },
   {
     type: 'yt',
+    title: 'The Passion Hifi - Mo Blues',
+    videoID: 'o9C1SmYGqUM',
+    isMatched: false,
+  },
+  {
+    type: 'yt',
     title: 'Bill Withers - Ain\'t No Sunshine',
     videoID: 'tIdIqbv7SPo',
     isMatched: false,
@@ -121,14 +127,8 @@ var imgDatabase = [
   },
   {
     type: 'yt',
-    title: 'A Breathtaking Piano Piece - Jervy Hou',
-    videoID: 'zRvhQ5Rf6-U',
-    isMatched: false,
-  },
-  {
-    type: 'yt',
-    title: 'Kingdom Hearts - Utada Hikaru - Hikari (piano cover)',
-    videoID: 'YUOYZbDhfos',
+    title: 'Bay Breeze - FortyThr33',
+    videoID: 'XER8Zg0ExKU',
     isMatched: false,
   }
 ];
