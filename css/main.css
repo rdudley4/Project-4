@@ -93,25 +93,28 @@ footer a:hover {
 }
 
 #results {
-  visibility: hidden;
-  display: block;
-  opacity: 0;
-  margin: 10px auto;
-  max-width: 440px;
-  padding: 3px;
+  visibility : hidden;
+  display    : block;
+  opacity    : 0;
+  margin     : 10px auto;
+  max-width  : 440px;
+  padding    : 3px;
   font-family: 'Roboto', sans-serif;
 }
 
 /* Current Song */
 #song-container {
   position        : fixed;
-  bottom          : 2px;
-  left            : 2px;
+  bottom          : -2px;
+  left            : 50%;
+  transform       : translate(-50%, 0);
   height          : 50px;
-  width           : 97px;
+  width           : 100%;
+  max-width       : 928px;
+  font-family     : 'Roboto', sans-serif;
+  box-shadow      : 0 -5px 5px -5px #444;
   z-index         : 1002;
-  background-color: rgba(33, 33, 33, .9);
-  color           : #e0e0e0;
+  background-color: #e0e0e0;
   text-align      : center;
 }
 
@@ -154,22 +157,23 @@ footer a:hover {
 
 #toggle {
   position   : absolute;
-  right      : 10px;
+  right      : 15px;
   line-height: 48px;
-  transform  : rotateZ(180deg);
+  transform  : rotateZ(270deg);
 }
 
-.fa-angle-double-left:before {
+/*.fa-angle-double-left:before {
   padding: 5px 5px 5px 0;
-}
+}*/
 
 #replay {
-  display    : none;
-  opacity    : 0;
+  display    : block;
+  opacity    : 1;
   position   : absolute;
   right      : 45px;
   line-height: 48px;
 }
+
 #pause:hover,
 #play:hover,
 #replay:hover,
@@ -351,7 +355,6 @@ footer a:hover {
   z-index         : 1001;
 }
 
-#song-container,
 .lb-control-box,
 .shadow {
   border : 1px solid #444;
@@ -366,7 +369,7 @@ footer a:hover {
 }
 
 .selected-container {
-  position: relative;
+  position        : relative;
   background-color: #222;
 }
 

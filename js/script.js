@@ -3,7 +3,7 @@ var currentSrc,
     videoTitle,
     currentVideo,
     player,
-    controlBarExtended = false,
+    controlBarExtended = true,
     videoCount = 0,
     $lightbox = $('#lightbox'),
     $lbImage = $('.selected'),
@@ -15,7 +15,6 @@ var currentSrc,
     prevClicked = false,
     nextClicked = false,
     animLength = 350,
-    barCheck = setInterval(mobileSizing, 1000),
     recentlyPlayed = [];
 
 // Load our YouTube Videos to the page when the IFrame API is ready.
@@ -137,7 +136,8 @@ $toggle.on("click", function() {
     var showContolBar = [{
             e: $songBar,
             p: {
-                width: adjustLength()
+                height: 50,
+                bottom: -2
             },
             o: {
                 duration: animLength
@@ -165,17 +165,21 @@ $toggle.on("click", function() {
         }, {
             e: $toggle,
             p: {
-                rotateZ: 360
+                rotateZ: 270,
+                scaleX: 1,
+                scaleY: 1,
+                top: 0
             },
             o: {
-                duration: animLength,
+                duration: animLength - 100,
                 sequenceQueue: false
             }
         }],
         hideControlBar = [{
             e: $songBar,
             p: {
-                width: 97
+                height: 0,
+                bottom: -3
             },
             o: {
                 duration: animLength
@@ -203,10 +207,13 @@ $toggle.on("click", function() {
         }, {
             e: $toggle,
             p: {
-                rotateZ: 180
+                rotateZ: 90,
+                scaleX: 2,
+                scaleY: 2,
+                top: -40
             },
             o: {
-                duration: animLength,
+                duration: animLength - 100,
                 sequenceQueue: false
             }
         }];
@@ -219,37 +226,6 @@ $toggle.on("click", function() {
         controlBarExtended = true;
     }
 });
-
-function adjustLength() {
-    var barLength;
-    var width = $(window).width();
-    if (width < 1024) {
-        barLength = width - 4;
-        return barLength;
-    } else {
-        barLength = 485;
-        return barLength;
-    }
-}
-
-function mobileSizing() {
-    var contentWidth = $(window).width();
-    if (controlBarExtended && contentWidth < 1024) {
-        if ($songBar.width() > contentWidth || contentWidth > $(window).height() && $songBar.width() < contentWidth - 7) {
-            $songBar.velocity({
-                width: adjustLength()
-            }, {
-                duration: animLength
-            });
-        }
-    } else if (contentWidth > 1024 && $songBar.width() > 485) {
-        $songBar.velocity({
-            width: 485
-        }, {
-            duration: animLength
-        });
-    }
-}
 
 /* When an image object is passed into the function..
     1. Create a div to hold the image and title

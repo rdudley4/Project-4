@@ -107,7 +107,7 @@ var imgDatabase = [
   },
   {
     type: 'yt',
-    videoID: 'wyPKRcBTsFQ', // otis redding
+    videoID: '8MWBWrqaNdQ', // otis redding
     isMatched: false,
   },
   {
