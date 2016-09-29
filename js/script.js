@@ -26,8 +26,8 @@ function onYouTubeIframeAPIReady() {
             player = new YT.Player('item' + imgDatabase[i].id, {
                 videoId: imgDatabase[i].videoID,
                 events: {
-                    'onStateChange': onPlayerStateChange,
-                    'onReady': onPlayerReady
+                    'onReady': onPlayerReady,
+                    'onStateChange': onPlayerStateChange
                 }
             });
             videoCount++;
@@ -51,21 +51,21 @@ function onYouTubeIframeAPIReady() {
     });
 }
 
-function updatePlayerReference( e ) {
-  currentVideo = e.target;
-  videoTitle = currentVideo.getVideoData().title;
-  videoId = currentVideo.getVideoData().video_id;
+function updatePlayerReference(e) {
+    currentVideo = e.target;
+    videoTitle = currentVideo.getVideoData().title;
+    videoId = currentVideo.getVideoData().video_id;
 }
 
 function onPlayerReady(event) {
-  // Grab video title from YT and set this to the corresponding object title in imgData.js this is so we don't have to set it manually, and we can still search based off video title.
-  updatePlayerReference(event);
+    // Grab video title from YT and set this to the corresponding object title in imgData.js this is so we don't have to set it manually, and we can still search based off video title.
+    updatePlayerReference(event);
 
-  for (var i = 0; i < imgDatabase.length; i++) {
-    if (imgDatabase[i].videoID === videoId) {
-      imgDatabase[i].caption = videoTitle;
+    for (var i = 0; i < imgDatabase.length; i++) {
+        if (imgDatabase[i].videoID === videoId) {
+            imgDatabase[i].caption = videoTitle;
+        }
     }
-  }
 }
 
 function onPlayerStateChange(event) {
@@ -330,8 +330,7 @@ function updateImage() {
         $lbImage.velocity({
             opacity: 1
         }, 150).attr('src', currentSrc);
-    }
-  );
+    });
 }
 
 function updateDescription() {
@@ -349,14 +348,14 @@ function filterResults(index) {
         galleryItem.velocity({
             bottom: 0
         }, {
-            duration: 300,
+            duration: 250,
             display: "inline-block"
         });
     } else {
         galleryItem.velocity({
             bottom: -204
         }, {
-            duration: 300,
+            duration: 250,
             display: "none"
         });
     }
@@ -404,21 +403,36 @@ $(document).ready(function() {
                 }
                 filterResults(i);
             }
-            $('#results').text( results + ' result(s) found.').velocity({
-                opacity: 1,
-            }, {
-                visibility: 'visible',
-                duration: 250
-            });
+            if (results === 0) {
+                $('#results').text('No results found.');
+            } else if (results === 1) {
+                if ($('#results').css('visibility') === 'hidden') {
+                    // This only occurs if the user is searching by id.
+                    $('#results').velocity({
+                        opacity: 1,
+                    }, {
+                        visibility: 'visible',
+                        duration: 250
+                    });
+                }
+                $('#results').text('Is this what you were looking for?');
+            } else {
+                $('#results').text(results + ' results found.').velocity({
+                    opacity: 1,
+                }, {
+                    visibility: 'visible',
+                    duration: 250
+                });
+            }
         } else {
             resetFilter();
             results = 0;
-            $('#results').velocity( {
-              opacity: 0,
+            $('#results').velocity({
+                opacity: 0,
             }, {
-              visibility: 'hidden',
-              duration: 250
-            } );
+                visibility: 'hidden',
+                duration: 250
+            });
             console.log('Search filter has been reset.');
         }
     });

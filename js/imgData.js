@@ -97,22 +97,22 @@ var imgDatabase = [
   },
   {
     type: 'yt',
-    videoID: 'o9C1SmYGqUM',
+    videoID: 'o9C1SmYGqUM', // the passion hifi
     isMatched: false,
   },
   {
     type: 'yt',
-    videoID: 'tIdIqbv7SPo',
+    videoID: 'tIdIqbv7SPo', // bill withers
     isMatched: false,
   },
   {
     type: 'yt',
-    videoID: 'wyPKRcBTsFQ',
+    videoID: 'wyPKRcBTsFQ', // otis redding
     isMatched: false,
   },
   {
     type: 'yt',
-    videoID: 'XER8Zg0ExKU',
+    videoID: 'hdYEF6AhAss', // scuba
     isMatched: false,
   }
 ];
