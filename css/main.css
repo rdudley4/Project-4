@@ -367,6 +367,7 @@ footer a:hover {
 
 .selected-container {
   position: relative;
+  background-color: #222;
 }
 
 .shadow {

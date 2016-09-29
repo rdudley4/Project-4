@@ -329,8 +329,9 @@ function updateImage() {
     }, 150, function() {
         $lbImage.velocity({
             opacity: 1
-        }).attr('src', currentSrc);
-    }, 150);
+        }, 150).attr('src', currentSrc);
+    }
+  );
 }
 
 function updateDescription() {
