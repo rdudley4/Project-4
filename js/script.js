@@ -26,7 +26,8 @@ function onYouTubeIframeAPIReady() {
             player = new YT.Player('item' + imgDatabase[i].id, {
                 videoId: imgDatabase[i].videoID,
                 events: {
-                    'onStateChange': onPlayerStateChange
+                    'onStateChange': onPlayerStateChange,
+                    'onReady': onPlayerReady
                 }
             });
             videoCount++;
@@ -48,6 +49,23 @@ function onYouTubeIframeAPIReady() {
     playButton.addEventListener("click", function() {
         currentVideo.seekTo(0);
     });
+}
+
+function updatePlayerReference( e ) {
+  currentVideo = e.target;
+  videoTitle = currentVideo.getVideoData().title;
+  videoId = currentVideo.getVideoData().video_id;
+}
+
+function onPlayerReady(event) {
+  // Grab video title from YT and set this to the corresponding object title in imgData.js this is so we don't have to set it manually, and we can still search based off video title.
+  updatePlayerReference(event);
+
+  for (var i = 0; i < imgDatabase.length; i++) {
+    if (imgDatabase[i].videoID === videoId) {
+      imgDatabase[i].caption = videoTitle;
+    }
+  }
 }
 
 function onPlayerStateChange(event) {
@@ -91,14 +109,12 @@ function onPlayerStateChange(event) {
         }];
 
     if (event.data == YT.PlayerState.PLAYING) {
-        currentVideo = event.target;
-        videoTitle = currentVideo.getVideoData().title;
-        videoId = currentVideo.getVideoData().video_id;
+        updatePlayerReference(event);
 
         $('#currentThumbnail').attr("src", 'https://img.youtube.com/vi/' + videoId + '/mqdefault.jpg');
         $('#currentSong').text(videoTitle);
-
         $.Velocity.RunSequence(showPauseButton);
+
         recentlyPlayed.unshift(currentVideo);
         if (recentlyPlayed.length > 2) {
             recentlyPlayed.pop();
@@ -249,20 +265,20 @@ function assembleImage(imageObject) {
     if (imageObject.type === 'img') {
         var $top = $('<div class="layer-top"></div>'),
             $bottom = $('<div class="layer-bottom"></div>'),
-            thumbnail = $('<img src="' + imageObject.thumbnail + '">'),
-            link = $('<a href="' + imageObject.src + '"></a>'),
-            details = $('<div class="details"></div>'),
+            $thumbnail = $('<img src="' + imageObject.thumbnail + '">'),
+            $link = $('<a href="' + imageObject.src + '"></a>'),
+            $details = $('<div class="details"></div>'),
             $title = $('<span class="title"></span>'),
             $icon = $('<i class="fa fa-expand fa-3x" aria-hidden="true"></i>'),
             $resolution = $('<span class="resolution">' + imageObject.resolution + '</span>'),
             $id = $('<span class="image-id">ID - ' + imageObject.id + '</span>');
 
         // Populate front and back of card
-        $top.append(thumbnail);
-        $title.append(imageObject.title);
-        details.append($icon, $title, $resolution, $id);
-        link.append(details);
-        $bottom.append(link);
+        $top.append($thumbnail);
+        $title.append(imageObject.caption);
+        $details.append($icon, $title, $resolution, $id);
+        $link.append($details);
+        $bottom.append($link);
         $galleryItem.append($top, $bottom);
     } else if (imageObject.type === 'yt') {
         console.log('Video stuff fired.');
@@ -379,7 +395,7 @@ $(document).ready(function() {
 
         if (userInput.length > 0) {
             for (var i = 0; i < imgDatabase.length; i++) {
-                if (imgDatabase[i].title.toLowerCase().indexOf(userInput) !== -1 || parseInt(userInput) === imgDatabase[i].id || imgDatabase[i].type === userInput) {
+                if (imgDatabase[i].caption.toLowerCase().indexOf(userInput) !== -1 || parseInt(userInput) === imgDatabase[i].id || imgDatabase[i].type === userInput) {
                     results++;
                     imgDatabase[i].isMatched = true;
                 } else {
@@ -393,7 +409,6 @@ $(document).ready(function() {
                 visibility: 'visible',
                 duration: 250
             });
-            console.log(results);
         } else {
             resetFilter();
             results = 0;

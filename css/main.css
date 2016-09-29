@@ -97,7 +97,7 @@ footer a:hover {
   display: block;
   opacity: 0;
   margin: 10px auto;
-  width: 440px;
+  max-width: 440px;
   padding: 3px;
   font-family: 'Roboto', sans-serif;
 }

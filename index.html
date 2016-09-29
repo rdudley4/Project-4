@@ -21,7 +21,7 @@
       <i id="replay" class="fa fa-retweet" aria-hidden="true"></i>
       <i id="toggle" class="fa fa-angle-double-left" aria-hidden="true"></i>
       <span id="cp">Currently Playing</span><br />
-      <span id="currentSong"></span>
+      <span id="currentSong">No song currently playing</span>
     </div>
     <!-- Main Container -->
     <div class="container-main">
@@ -33,7 +33,7 @@
           <img id="logo" src="img/logo.png" alt="Site Logo" />
         </a>
         <span id="results">Placeholder Text</span>
-        <input id="main-search" type="text" name="search" placeholder=" Search by Title, Caption, ID, or Type ( 'yt' or 'img')">
+        <input id="main-search" type="text" name="search" placeholder=" Search by Caption, ID, or Type ( 'yt' or 'img')">
       </section>
 
       <!-- Photo Gallery -->
@@ -95,29 +95,6 @@
     <script src="https://cdn.jsdelivr.net/velocity/1.2.3/velocity.min.js"></script>
     <script src="js/velocity.ui.js"></script>
     <script type="text/javascript">
-		// Preload our gallery images
-			var images = new Array()
-			function preload() {
-				for (i = 0; i < preload.arguments.length; i++) {
-					images[i] = new Image()
-					images[i].src = preload.arguments[i]
-				}
-			}
-			preload(
-				"img/01.jpg",
-				"img/02.jpg",
-        "img/03.jpg",
-        "img/04.jpg",
-        "img/05.jpg",
-        "img/06.jpg",
-        "img/07.jpg",
-        "img/08.jpg",
-        "img/09.jpg",
-        "img/10.jpg",
-        "img/11.jpg",
-        "img/12.jpg"
-			) // END PRELOAD
-
       // Load YouTube IFrame Player API
       var tag = document.createElement('script');
 
