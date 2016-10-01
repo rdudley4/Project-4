@@ -172,7 +172,6 @@ $toggle.on("click", function() {
             },
             o: {
                 duration: animLength - 100,
-                sequenceQueue: false
             }
         }],
         hideControlBar = [{
@@ -214,7 +213,6 @@ $toggle.on("click", function() {
             },
             o: {
                 duration: 100,
-                sequenceQueue: false
             }
         }];
 
