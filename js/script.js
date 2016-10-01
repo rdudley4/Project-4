@@ -136,8 +136,8 @@ $toggle.on("click", function() {
     var showContolBar = [{
             e: $songBar,
             p: {
-                height: 50,
-                bottom: -2
+                height: 48,
+                bottom: 0
             },
             o: {
                 duration: animLength
@@ -213,16 +213,18 @@ $toggle.on("click", function() {
                 top: -40
             },
             o: {
-                duration: animLength - 100,
+                duration: 100,
                 sequenceQueue: false
             }
         }];
 
     if (controlBarExtended) {
         $.Velocity.RunSequence(hideControlBar);
+        $('#toggle').addClass('showbar');
         controlBarExtended = false;
     } else {
         $.Velocity.RunSequence(showContolBar);
+        $('#toggle').removeClass('showbar');
         controlBarExtended = true;
     }
 });

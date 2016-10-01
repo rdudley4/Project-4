@@ -105,10 +105,10 @@ footer a:hover {
 /* Current Song */
 #song-container {
   position        : fixed;
-  bottom          : -2px;
+  bottom          : 0;
   left            : 50%;
   transform       : translate(-50%, 0);
-  height          : 50px;
+  height          : 48px;
   width           : 100%;
   max-width       : 928px;
   font-family     : 'Roboto', sans-serif;
@@ -117,6 +117,11 @@ footer a:hover {
   background-color: #fff;
   text-align      : center;
 }
+
+.showbar {
+  color: #f1a9a0;
+}
+
 
 #currentSong,
 #currentThumbnail,
@@ -132,7 +137,7 @@ footer a:hover {
 #replay:hover,
 #toggle,
 #toggle:hover {
-  transition: all 0.2s ease;
+  transition: all 0.5s ease;
 }
 
 #pause,
