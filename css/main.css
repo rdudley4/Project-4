@@ -114,7 +114,7 @@ footer a:hover {
   font-family     : 'Roboto', sans-serif;
   box-shadow      : 0 -5px 5px -5px #444;
   z-index         : 1002;
-  background-color: #e0e0e0;
+  background-color: #fff;
   text-align      : center;
 }
 
@@ -140,7 +140,7 @@ footer a:hover {
   position   : absolute;
   left       : 18px;
   line-height: 50px;
-  color      : rgba(224, 224, 224, .5);
+  color      : #222;
 }
 
 #pause:hover,
