@@ -88,35 +88,78 @@
 
     </div>
     <!-- End container-main  -->
-    <!-- <div id="preload">
-      <img src="img/01.jpg" />
-      <img src="img/02.jpg" />
-      <img src="img/03.jpg" />
-      <img src="img/04.jpg" />
-      <img src="img/05.jpg" />
-      <img src="img/06.jpg" />
-      <img src="img/07.jpg" />
-      <img src="img/08.jpg" />
-      <img src="img/09.jpg" />
-      <img src="img/10.jpg" />
-      <img src="img/11.jpg" />
-      <img src="img/12.jpg" />
-    </div> -->
 
     <!-- JavaScript Includes -->
+    <script src="js/imgData.js"></script>
     <script type="text/javascript">
+    // Preload our gallery images
+    var images = new Array()
+    function preload() {
+      for (i = 0; i < preload.arguments.length; i++) {
+        images[i] = new Image()
+        images[i].src = preload.arguments[i]
+      }
+    }
+    preload(
+      "img/01.jpg",
+      "img/02.jpg",
+      "img/03.jpg",
+      "img/04.jpg",
+      "img/05.jpg",
+      "img/06.jpg",
+      "img/07.jpg",
+      "img/08.jpg",
+      "img/09.jpg",
+      "img/10.jpg",
+      "img/11.jpg",
+      "img/12.jpg"
+    ) // END PRELOAD
+
       // Load YouTube IFrame Player API
       var tag = document.createElement('script');
 
       tag.src = "https://www.youtube.com/iframe_api";
       var firstScriptTag = document.getElementsByTagName('script')[0];
       firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
+
+      // Load our YouTube Videos to the page when the IFrame API is ready.
+
+      function onYouTubeIframeAPIReady() {
+          for (var i = 0; i < imgDatabase.length; i++) {
+              if (imgDatabase[i].type === 'yt') {
+                  player = new YT.Player('item' + imgDatabase[i].id, {
+                      videoId: imgDatabase[i].videoID,
+                      events: {
+                          'onReady': onPlayerReady,
+                          'onStateChange': onPlayerStateChange
+                      }
+                  });
+                  videoCount++;
+              }
+          }
+
+          //bind events
+          var pauseButton = document.getElementById("pause");
+          pauseButton.addEventListener("click", function() {
+              currentVideo.pauseVideo();
+          });
+
+          var playButton = document.getElementById("play");
+          playButton.addEventListener("click", function() {
+              currentVideo.playVideo();
+          });
+
+          var playButton = document.getElementById("replay");
+          playButton.addEventListener("click", function() {
+              currentVideo.seekTo(0);
+          });
+      }
+
 	  </script>
-    <script src="https://code.jquery.com/jquery-3.1.0.min.js"   integrity="sha256-cCueBR6CsyA4/9szpPfrX3s49M9vUU5BgtiJj06wt/s="   crossorigin="anonymous" defer></script>
-    <script src="https://cdn.jsdelivr.net/velocity/1.2.3/velocity.min.js" defer></script>
-    <script src="js/velocity.ui.js" defer></script>
-    <script src="js/imgData.js" defer></script>
-    <script src="js/script.min.js" defer></script>
+    <script src="https://code.jquery.com/jquery-3.1.0.min.js"   integrity="sha256-cCueBR6CsyA4/9szpPfrX3s49M9vUU5BgtiJj06wt/s="   crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/velocity/1.2.3/velocity.min.js"></script>
+    <script src="js/velocity.ui.js"></script>
+    <script src="js/script.min.js"></script>
 
   </body>
 </html>

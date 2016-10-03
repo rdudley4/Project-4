@@ -17,38 +17,6 @@ var currentSrc,
     animLength = 350,
     recentlyPlayed = [];
 
-// Load our YouTube Videos to the page when the IFrame API is ready.
-
-function onYouTubeIframeAPIReady() {
-    for (var i = 0; i < imgDatabase.length; i++) {
-        if (imgDatabase[i].type === 'yt') {
-            player = new YT.Player('item' + imgDatabase[i].id, {
-                videoId: imgDatabase[i].videoID,
-                events: {
-                    'onReady': onPlayerReady,
-                    'onStateChange': onPlayerStateChange
-                }
-            });
-            videoCount++;
-        }
-    }
-
-    //bind events
-    var pauseButton = document.getElementById("pause");
-    pauseButton.addEventListener("click", function() {
-        currentVideo.pauseVideo();
-    });
-
-    var playButton = document.getElementById("play");
-    playButton.addEventListener("click", function() {
-        currentVideo.playVideo();
-    });
-
-    var playButton = document.getElementById("replay");
-    playButton.addEventListener("click", function() {
-        currentVideo.seekTo(0);
-    });
-}
 
 function updatePlayerReference(e) {
     currentVideo = e.target;
