@@ -1,4 +1,4 @@
-var imgDatabase = [
+var galleryDB = [
   {
     type: 'img',
     src: 'img/01.jpg',

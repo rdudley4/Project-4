@@ -1,165 +1,167 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
+
+<head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Photo Gallery</title>
-    <link rel="icon"
-      type="image/png"
-      href="img/favicon.png">
+    <link rel="icon" type="image/png" href="img/favicon.png">
     <link href="https://fonts.googleapis.com/css?family=Nunito%7CRoboto:300" rel="stylesheet">
-    <link rel="stylesheet" href="fa-4.6.3/css/font-awesome.min.css"/>
-    <link rel="stylesheet" href="css/normalize.css"/>
-    <link rel="stylesheet" href="css/main.min.css"/>
-  </head>
-  <body>
+    <link rel="stylesheet" href="fa-4.6.3/css/font-awesome.min.css" />
+    <link rel="stylesheet" href="css/normalize.css" />
+    <link rel="stylesheet" href="css/main.min.css" />
+</head>
+
+<body>
     <!-- Main Container -->
     <div class="container-main">
 
-      <!-- Search Box  -->
-      <section id="search">
-        <h2 class="crawler">Main Search Box</h2>
-        <img id="logo" src="img/logo.png" alt="Site Logo" />
-        <span id="results">Placeholder Text</span>
-        <input id="main-search" type="text" name="search" placeholder=" Search by Caption, ID, or Type ( 'yt' or 'img')">
-      </section>
+        <!-- Search Box  -->
+        <section id="search">
+            <h2 class="crawler">Main Search Box</h2>
+            <img id="logo" src="img/logo.png" alt="Site Logo" />
+            <span id="results">Placeholder Text</span>
+            <input id="main-search" type="text" name="search" placeholder=" Search by Caption, ID, or Type ( 'yt' or 'img')">
+        </section>
 
-      <!-- Photo Gallery -->
-      <section id="gallery">
-        <h2 class="crawler">Photo Gallery</h2>
-      </section>
+        <!-- Photo Gallery -->
+        <section id="gallery">
+            <h2 class="crawler">Photo Gallery</h2>
+        </section>
 
-      <!-- Lightbox -->
-      <div id="lightbox">
-        <div class="lightbox-container">
+        <!-- Lightbox -->
+        <div id="lightbox">
+            <div class="lightbox-container">
 
-          <!-- Selected Image -->
-          <div class="selected-container">
-            <img class="selected" src="img/01.jpg" alt="Current Image" />
+                <!-- Selected Image -->
+                <div class="selected-container">
+                    <img class="selected" src="img/01.jpg" alt="Current Image" />
 
-            <div class="shadow"></div>
-          </div>
+                    <div class="shadow"></div>
+                </div>
 
-          <!-- Lightbox Control & Info Box -->
-          <div class="lb-control-box">
+                <!-- Lightbox Control & Info Box -->
+                <div class="lb-control-box">
 
-            <!-- Selected Image Info -->
-            <p class="image-description">Info Goes Here</p>
+                    <!-- Selected Image Info -->
+                    <p class="image-description">Info Goes Here</p>
 
-            <!-- Lightbox Controls -->
-            <div id="controls">
-              <i id="prev" class="fa fa-arrow-left fa-2x" aria-hidden="true"></i>
-              <i id="next" class="fa fa-arrow-right fa-2x" aria-hidden="true"></i>
-              <i id="close" class="fa fa-times-circle fa-2x" aria-hidden="true"></i>
-              <i id="download" class="fa fa-plus-square fa-2x" aria-hidden="true"></i>
-            </div>
+                    <!-- Lightbox Controls -->
+                    <div id="controls">
+                        <i id="prev" class="fa fa-arrow-left fa-2x" aria-hidden="true"></i>
+                        <i id="next" class="fa fa-arrow-right fa-2x" aria-hidden="true"></i>
+                        <i id="close" class="fa fa-times-circle fa-2x" aria-hidden="true"></i>
+                        <i id="download" class="fa fa-plus-square fa-2x" aria-hidden="true"></i>
+                    </div>
 
-            <!-- Hotkey Information  -->
-            <span id="hotkey-info">
+                    <!-- Hotkey Information  -->
+                    <span id="hotkey-info">
               <span class="key esc">ESC</span>
-              <span class="key left-arrow">⬅</span>
-              <span class="key right-arrow">➡</span>
-              <span class="key key-I">i</span>
-            </span>
+                    <span class="key left-arrow">⬅</span>
+                    <span class="key right-arrow">➡</span>
+                    <span class="key key-I">i</span>
+                    </span>
 
-            <i id="help" class="fa fa-info-circle fa-2x" aria-hidden="true"> HOTKEY INFO</i>
+                    <i id="help" class="fa fa-info-circle fa-2x" aria-hidden="true"> HOTKEY INFO</i>
 
-          </div>
+                </div>
+            </div>
         </div>
-      </div>
-      <!-- End Lightbox -->
+        <!-- End Lightbox -->
 
-      <!-- Page Footer -->
-      <footer>
-        <span>Copyright PewPew Lazurs Designs &copy;</span>
-        <span>Logo was <a target="_blank" href="http://www.freepik.com/free-vector/set-of-abstract-and-modern-logotypes_866015.htm">Designed by Freepik</a></span>
-      </footer>
+        <!-- Page Footer -->
+        <footer>
+            <span>Copyright PewPew Lazurs Designs &copy;</span>
+            <span>Logo was <a target="_blank" href="http://www.freepik.com/free-vector/set-of-abstract-and-modern-logotypes_866015.htm">Designed by Freepik</a></span>
+        </footer>
 
-      <!-- Currently Listening To -->
-      <div id="song-container">
-        <img id="currentThumbnail" src="img/placeholder.png" />
-        <i  id="pause" class="fa fa-pause-circle-o fa-2x" aria-hidden="true"></i>
-        <i id="play" class="fa fa-play-circle-o fa-2x" aria-hidden="true"></i>
-        <i id="replay" class="fa fa-retweet" aria-hidden="true"></i>
-        <i id="toggle" class="fa fa-angle-double-left" aria-hidden="true"></i>
-        <span id="cp">Currently Playing</span><br />
-        <span id="currentSong">No video currently playing</span>
-      </div>
+        <!-- Currently Listening To -->
+        <div id="song-container">
+            <img id="currentThumbnail" src="img/placeholder.png" />
+            <i id="pause" class="fa fa-pause-circle-o fa-2x" aria-hidden="true"></i>
+            <i id="play" class="fa fa-play-circle-o fa-2x" aria-hidden="true"></i>
+            <i id="replay" class="fa fa-retweet" aria-hidden="true"></i>
+            <i id="toggle" class="fa fa-angle-double-left" aria-hidden="true"></i>
+            <span id="cp">Currently Playing</span>
+            <br />
+            <span id="currentSong">No video currently playing</span>
+        </div>
 
     </div>
     <!-- End container-main  -->
 
     <!-- JavaScript Includes -->
-    <script src="js/imgData.js"></script>
+    <script src="js/galleryData.min.js"></script>
     <script type="text/javascript">
-    // Preload our gallery images
-    var images = new Array()
-    function preload() {
-      for (i = 0; i < preload.arguments.length; i++) {
-        images[i] = new Image()
-        images[i].src = preload.arguments[i]
-      }
-    }
-    preload(
-      "img/01.jpg",
-      "img/02.jpg",
-      "img/03.jpg",
-      "img/04.jpg",
-      "img/05.jpg",
-      "img/06.jpg",
-      "img/07.jpg",
-      "img/08.jpg",
-      "img/09.jpg",
-      "img/10.jpg",
-      "img/11.jpg",
-      "img/12.jpg"
-    ) // END PRELOAD
+        // Preload our gallery images
+        var images = new Array()
 
-      // Load YouTube IFrame Player API
-      var tag = document.createElement('script');
+        function preload() {
+            for (i = 0; i < preload.arguments.length; i++) {
+                images[i] = new Image()
+                images[i].src = preload.arguments[i]
+            }
+        }
+        preload(
+                "img/01.jpg",
+                "img/02.jpg",
+                "img/03.jpg",
+                "img/04.jpg",
+                "img/05.jpg",
+                "img/06.jpg",
+                "img/07.jpg",
+                "img/08.jpg",
+                "img/09.jpg",
+                "img/10.jpg",
+                "img/11.jpg",
+                "img/12.jpg"
+            ) // END PRELOAD
 
-      tag.src = "https://www.youtube.com/iframe_api";
-      var firstScriptTag = document.getElementsByTagName('script')[0];
-      firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
+        // Load YouTube IFrame Player API
+        var tag = document.createElement('script');
 
-      // Load our YouTube Videos to the page when the IFrame API is ready.
+        tag.src = "https://www.youtube.com/iframe_api";
+        var firstScriptTag = document.getElementsByTagName('script')[0];
+        firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
 
-      function onYouTubeIframeAPIReady() {
-          for (var i = 0; i < imgDatabase.length; i++) {
-              if (imgDatabase[i].type === 'yt') {
-                  player = new YT.Player('item' + imgDatabase[i].id, {
-                      videoId: imgDatabase[i].videoID,
-                      events: {
-                          'onReady': onPlayerReady,
-                          'onStateChange': onPlayerStateChange
-                      }
-                  });
-                  videoCount++;
-              }
-          }
+        // Load our YouTube Videos to the page when the IFrame API is ready.
 
-          //bind events
-          var pauseButton = document.getElementById("pause");
-          pauseButton.addEventListener("click", function() {
-              currentVideo.pauseVideo();
-          });
+        function onYouTubeIframeAPIReady() {
+            for (var i = 0; i < galleryDB.length; i++) {
+                if (galleryDB[i].type === 'yt') {
+                    player = new YT.Player('item' + galleryDB[i].id, {
+                        videoId: galleryDB[i].videoID,
+                        events: {
+                            'onReady': onPlayerReady,
+                            'onStateChange': onPlayerStateChange
+                        }
+                    });
+                    videoCount++;
+                }
+            }
 
-          var playButton = document.getElementById("play");
-          playButton.addEventListener("click", function() {
-              currentVideo.playVideo();
-          });
+            //bind events
+            var pauseButton = document.getElementById("pause");
+            pauseButton.addEventListener("click", function() {
+                currentVideo.pauseVideo();
+            });
 
-          var playButton = document.getElementById("replay");
-          playButton.addEventListener("click", function() {
-              currentVideo.seekTo(0);
-          });
-      }
+            var playButton = document.getElementById("play");
+            playButton.addEventListener("click", function() {
+                currentVideo.playVideo();
+            });
 
-	  </script>
-    <script src="https://code.jquery.com/jquery-3.1.0.min.js"   integrity="sha256-cCueBR6CsyA4/9szpPfrX3s49M9vUU5BgtiJj06wt/s="   crossorigin="anonymous"></script>
+            var playButton = document.getElementById("replay");
+            playButton.addEventListener("click", function() {
+                currentVideo.seekTo(0);
+            });
+        }
+    </script>
+    <script src="https://code.jquery.com/jquery-3.1.0.min.js" integrity="sha256-cCueBR6CsyA4/9szpPfrX3s49M9vUU5BgtiJj06wt/s=" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/velocity/1.2.3/velocity.min.js"></script>
     <script src="js/velocity.ui.js"></script>
     <script src="js/script.min.js"></script>
 
-  </body>
+</body>
+
 </html>

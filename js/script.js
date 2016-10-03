@@ -28,9 +28,9 @@ function onPlayerReady(event) {
     // Grab video title from YT and set this to the corresponding object title in imgData.js this is so we don't have to set it manually, and we can still search based off video title.
     updatePlayerReference(event);
 
-    for (var i = 0; i < imgDatabase.length; i++) {
-        if (imgDatabase[i].videoID === videoId) {
-            imgDatabase[i].caption = videoTitle;
+    for (var i = 0; i < galleryDB.length; i++) {
+        if (galleryDB[i].videoID === videoId) {
+            galleryDB[i].caption = videoTitle;
         }
     }
 }
@@ -233,7 +233,7 @@ function assembleImage(imageObject) {
     $('#gallery').append($galleryItem);
 }
 
-/* Loop through our imgDatabase array and..
+/* Loop through our galleryDB array and..
     1. Detect if previous or next is clicked.
     2. If previous, get src value for previous object. If next, get src value of the next object.
       2a. If we hit previous & we are on first image, set src to the value of the previous index src.
@@ -243,25 +243,25 @@ function assembleImage(imageObject) {
 
 // TODO: Fix the logic here to work with YT Videos.
 function nextImage() {
-    for (i = 0; i < imgDatabase.length; i++) {
-        var firstImage = imgDatabase[0].src,
-            lastImage = imgDatabase[imgDatabase.length - (videoCount + 1)].src;
-        if (prevClicked && currentSrc === imgDatabase[i].src) {
+    for (i = 0; i < galleryDB.length; i++) {
+        var firstImage = galleryDB[0].src,
+            lastImage = galleryDB[galleryDB.length - (videoCount + 1)].src;
+        if (prevClicked && currentSrc === galleryDB[i].src) {
             if (currentSrc === firstImage) {
                 currentSrc = lastImage;
                 console.log('First image detected, going to end of series.');
                 return currentSrc;
             } else {
-                currentSrc = imgDatabase[(i - 1)].src;
+                currentSrc = galleryDB[(i - 1)].src;
                 return currentSrc;
             }
-        } else if (nextClicked && currentSrc === imgDatabase[i].src) {
+        } else if (nextClicked && currentSrc === galleryDB[i].src) {
             if (currentSrc === lastImage) {
                 currentSrc = firstImage;
                 console.log('Last image detected, going to start of series.');
                 return currentSrc;
             } else {
-                currentSrc = imgDatabase[(i + 1)].src;
+                currentSrc = galleryDB[(i + 1)].src;
                 return currentSrc;
             }
         }
@@ -280,9 +280,9 @@ function updateImage() {
 }
 
 function updateDescription() {
-    for (i = 0; i < imgDatabase.length; i++) {
-        if (currentSrc === imgDatabase[i].src) {
-            $('.image-description').text(imgDatabase[i].caption);
+    for (i = 0; i < galleryDB.length; i++) {
+        if (currentSrc === galleryDB[i].src) {
+            $('.image-description').text(galleryDB[i].caption);
         }
     }
 }
@@ -290,7 +290,7 @@ function updateDescription() {
 function filterResults(index) {
     var galleryItem = $('#item' + (index + 1));
 
-    if (imgDatabase[index].isMatched) {
+    if (galleryDB[index].isMatched) {
         galleryItem.velocity({
             bottom: 0
         }, {
@@ -308,8 +308,8 @@ function filterResults(index) {
 }
 
 function resetFilter() {
-    for (var i = 0; i < imgDatabase.length; i++) {
-        imgDatabase[i].isMatched = true;
+    for (var i = 0; i < galleryDB.length; i++) {
+        galleryDB[i].isMatched = true;
         filterResults(i);
     }
 }
@@ -318,19 +318,19 @@ $(document).ready(function() {
 
     $('body').append($lightbox);
 
-    for (var i = 0; i < imgDatabase.length; i++) {
+    for (var i = 0; i < galleryDB.length; i++) {
         // Give each of our objects an ID.
-        imgDatabase[i].id = i + 1;
+        galleryDB[i].id = i + 1;
         // Pass object into assembleImage to build gallery.
-        assembleImage(imgDatabase[i]);
+        assembleImage(galleryDB[i]);
     }
 
     /*  Image Filtering - Main Search on keyup.
           a. Store users input converted to lower case in userInput.
           b. Test if userInput.length is > 0, so we can be sure the user has entered some text.
-          c. Loop through imgDatabase and test the following:
-              1. If any of the imgDatabase.title's contain the userInput.
-              2. If userInput parsed as an integer matches any of the imgDatabase.id's.
+          c. Loop through galleryDB and test the following:
+              1. If any of the galleryDB.title's contain the userInput.
+              2. If userInput parsed as an integer matches any of the galleryDB.id's.
               3. When match is found, set isMatched = true. Else set it to false.
           d. Call filterResults if search field contains input, else call resetFilter. */
 
@@ -340,12 +340,12 @@ $(document).ready(function() {
             results = 0;
 
         if (userInput.length > 0) {
-            for (var i = 0; i < imgDatabase.length; i++) {
-                if (imgDatabase[i].caption.toLowerCase().indexOf(userInput) !== -1 || parseInt(userInput) === imgDatabase[i].id || imgDatabase[i].type === userInput) {
+            for (var i = 0; i < galleryDB.length; i++) {
+                if (galleryDB[i].caption.toLowerCase().indexOf(userInput) !== -1 || parseInt(userInput) === galleryDB[i].id || galleryDB[i].type === userInput) {
                     results++;
-                    imgDatabase[i].isMatched = true;
+                    galleryDB[i].isMatched = true;
                 } else {
-                    imgDatabase[i].isMatched = false;
+                    galleryDB[i].isMatched = false;
                 }
                 filterResults(i);
             }
