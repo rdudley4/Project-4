@@ -10,7 +10,7 @@
     <link href="https://fonts.googleapis.com/css?family=Nunito%7CRoboto:300" rel="stylesheet">
     <link rel="stylesheet" href="fa-4.6.3/css/font-awesome.min.css" />
     <link rel="stylesheet" href="css/normalize.css" />
-    <link rel="stylesheet" href="css/main.css" />
+    <link rel="stylesheet" href="css/main.min.css" />
   </head>
   <body>
     <!-- Main Container -->
@@ -19,9 +19,7 @@
       <!-- Search Box  -->
       <section id="search">
         <h2 class="crawler">Main Search Box</h2>
-        <a href="index.html">
-          <img id="logo" src="img/logo.png" alt="Site Logo" />
-        </a>
+        <img id="logo" src="img/logo.png" alt="Site Logo" />
         <span id="results">Placeholder Text</span>
         <input id="main-search" type="text" name="search" placeholder=" Search by Caption, ID, or Type ( 'yt' or 'img')">
       </section>
@@ -90,6 +88,20 @@
 
     </div>
     <!-- End container-main  -->
+    <!-- <div id="preload">
+      <img src="img/01.jpg" />
+      <img src="img/02.jpg" />
+      <img src="img/03.jpg" />
+      <img src="img/04.jpg" />
+      <img src="img/05.jpg" />
+      <img src="img/06.jpg" />
+      <img src="img/07.jpg" />
+      <img src="img/08.jpg" />
+      <img src="img/09.jpg" />
+      <img src="img/10.jpg" />
+      <img src="img/11.jpg" />
+      <img src="img/12.jpg" />
+    </div> -->
 
     <!-- JavaScript Includes -->
     <script type="text/javascript">
@@ -100,11 +112,11 @@
       var firstScriptTag = document.getElementsByTagName('script')[0];
       firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
 	  </script>
-    <script src="https://code.jquery.com/jquery-3.1.0.min.js"   integrity="sha256-cCueBR6CsyA4/9szpPfrX3s49M9vUU5BgtiJj06wt/s="   crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/velocity/1.2.3/velocity.min.js"></script>
-    <script src="js/velocity.ui.js"></script>
-    <script src="js/imgData.js"></script>
-    <script src="js/script.js"></script>
+    <script src="https://code.jquery.com/jquery-3.1.0.min.js"   integrity="sha256-cCueBR6CsyA4/9szpPfrX3s49M9vUU5BgtiJj06wt/s="   crossorigin="anonymous" defer></script>
+    <script src="https://cdn.jsdelivr.net/velocity/1.2.3/velocity.min.js" defer></script>
+    <script src="js/velocity.ui.js" defer></script>
+    <script src="js/imgData.js" async></script>
+    <script src="js/script.min.js" defer></script>
 
   </body>
 </html>

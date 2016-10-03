@@ -38,6 +38,10 @@ footer a:hover {
   color: #c0392b;
 }
 
+div#preload {
+  display: none;
+}
+
 .crawler {
   display: none;
 }
