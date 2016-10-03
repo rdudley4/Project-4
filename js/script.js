@@ -17,6 +17,46 @@ var currentSrc,
     animLength = 350,
     recentlyPlayed = [];
 
+// Load YouTube IFrame Player API
+var tag = document.createElement('script');
+
+tag.src = "https://www.youtube.com/iframe_api";
+var firstScriptTag = document.getElementsByTagName('script')[0];
+firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
+
+// Load our YouTube Videos to the page when the IFrame API is ready.
+
+function onYouTubeIframeAPIReady() {
+    for (var i = 0; i < galleryDB.length; i++) {
+        if (galleryDB[i].type === 'yt') {
+            player = new YT.Player('item' + galleryDB[i].id, {
+                videoId: galleryDB[i].videoID,
+                events: {
+                    'onReady': onPlayerReady,
+                    'onStateChange': onPlayerStateChange
+                }
+            });
+            videoCount++;
+        }
+    }
+
+    //bind events
+    var pauseButton = document.getElementById("pause");
+    pauseButton.addEventListener("click", function() {
+        currentVideo.pauseVideo();
+    });
+
+    var playButton = document.getElementById("play");
+    playButton.addEventListener("click", function() {
+        currentVideo.playVideo();
+    });
+
+    var playButton = document.getElementById("replay");
+    playButton.addEventListener("click", function() {
+        currentVideo.seekTo(0);
+    });
+}
+
 
 function updatePlayerReference(e) {
     currentVideo = e.target;
