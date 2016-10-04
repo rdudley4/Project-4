@@ -366,30 +366,6 @@ $(document).ready(function() {
         assembleImage(galleryDB[i]);
     }
 
-    $(window).scroll(function() {
-        if (!timeout) {
-            timeout = setTimeout(function() {
-                clearTimeout(timeout);
-                timeout = null;
-                if ($(window).scrollTop() >= scrollTarget) {
-                    $('#search').velocity({
-                        boxShadowX: 0,
-                        boxShadowY: 5,
-                        boxShadowBlur: 5,
-                        boxShadowSpread: -5
-                    }, 100);
-                } else if ($(window).scrollTop() <= scrollTarget) {
-                    $('#search').velocity({
-                        boxShadowX: 0,
-                        boxShadowY: 0,
-                        boxShadowBlur: 0,
-                        boxShadowSpread: 0
-                    }, 100);
-                }
-            }, 250);
-        }
-    });
-
     /*  Image Filtering - Main Search on keyup.
           a. Store users input converted to lower case in userInput.
           b. Test if userInput.length is > 0, so we can be sure the user has entered some text.
@@ -435,6 +411,7 @@ $(document).ready(function() {
                     duration: 250
                 });
             }
+            $('#rsltimg').css("filter", "grayscale(0)");
         } else {
             resetFilter();
             results = 0;
@@ -444,6 +421,7 @@ $(document).ready(function() {
                 visibility: 'hidden',
                 duration: 250
             });
+            $('#rsltimg').css("filter", "grayscale(80%)");
             console.log('Search filter has been reset.');
         }
     });

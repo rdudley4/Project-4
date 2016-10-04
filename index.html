@@ -21,6 +21,7 @@
             <h2 class="crawler">Main Search Box</h2>
             <img id="logo" src="img/search.png" alt="Site Logo" />
             <input id="main-search" type="text" name="search" placeholder="Search by Caption, ID, or Type ( 'yt' or 'img')">
+            <img id="rsltimg"src="img/results.png" alt="Search Results" />
             <span id="results">Placeholder Text</span>
         </section>
 
@@ -56,7 +57,7 @@
 
                     <!-- Hotkey Information  -->
                     <span id="hotkey-info">
-              <span class="key esc">ESC</span>
+                    <span class="key esc">ESC</span>
                     <span class="key left-arrow">⬅</span>
                     <span class="key right-arrow">➡</span>
                     <span class="key key-I">i</span>
@@ -72,8 +73,8 @@
         <!-- Page Footer -->
         <footer>
             <div class="copyright">
-              <img id="brain" src="img/cpr.png" />
-              <span>&copy; Pew Pew Designs</span>
+                <img id="brain" src="img/cpr.png" />
+                <span>&copy; Pew Pew Designs</span>
             </div>
         </footer>
 
@@ -93,7 +94,7 @@
     <!-- End container-main  -->
 
     <!-- JavaScript Includes -->
-    <script src="js/galleryData.min.js"></script>
+    <script src="js/galleryData.js"></script>
     <script type="text/javascript">
         // Preload our gallery images
         var images = new Array()
@@ -105,19 +106,19 @@
             }
         }
         preload(
-                "img/01.jpg",
-                "img/02.jpg",
-                "img/03.jpg",
-                "img/04.jpg",
-                "img/05.jpg",
-                "img/06.jpg",
-                "img/07.jpg",
-                "img/08.jpg",
-                "img/09.jpg",
-                "img/10.jpg",
-                "img/11.jpg",
-                "img/12.jpg"
-            ); // END PRELOAD
+            "img/01.jpg",
+            "img/02.jpg",
+            "img/03.jpg",
+            "img/04.jpg",
+            "img/05.jpg",
+            "img/06.jpg",
+            "img/07.jpg",
+            "img/08.jpg",
+            "img/09.jpg",
+            "img/10.jpg",
+            "img/11.jpg",
+            "img/12.jpg"
+        ); // END PRELOAD
     </script>
     <script src="https://code.jquery.com/jquery-3.1.0.min.js" integrity="sha256-cCueBR6CsyA4/9szpPfrX3s49M9vUU5BgtiJj06wt/s=" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/velocity/1.2.3/velocity.min.js"></script>

@@ -42,34 +42,6 @@ footer a:hover {
   display: none;
 }
 
-#logo,
-#main-search {
-  float: left;
-}
-
-#results {
-  float       : right;
-  margin-right: 22px;
-  max-width   : 33%;
-}
-
-#logo {
-  width      : 70px;
-  margin-left: 21px;
-}
-
-#search {
-  overflow        : hidden;
-  position        : fixed;
-  background-color: #fff;
-  padding         : 5px;
-  width           : 100%;
-  max-width       : 980px;
-  z-index         : 1002;
-  top             : 0;
-  /*box-shadow: 0 5px 5px -5px #333;*/
-}
-
 #brain { max-width: 80px }
 
 #controls,
@@ -131,11 +103,9 @@ footer a:hover {
 #song-container {
   position        : fixed;
   bottom          : 0;
-  left            : 50%;
-  transform       : translate(-50%, 0);
+  left            : 0;
   height          : 48px;
   width           : 100%;
-  max-width       : 928px;
   font-family     : 'Roboto', sans-serif;
   box-shadow      : 0 -5px 5px -5px #444;
   z-index         : 1002;
@@ -229,15 +199,49 @@ footer a:hover {
 
 /* Search box */
 #main-search {
-  width        : calc(40% - 24px);
+  width        : 60%;
   text-overflow: ellipsis;
-  margin-top   : .8125rem;
+  margin-top   : .8275rem;
   padding      : 10px 10px 10px 20px;
   font-size    : 16px;
   border       : none;
   outline      : none;
   transition   : all 0.5s ease;
   font-family  : 'FontAwesome', 'Roboto';
+}
+
+#logo,
+#main-search {
+  float: left;
+}
+
+#results {
+  float       : right;
+  margin-right: 27px;
+  max-width   : 33%;
+}
+
+#rsltimg {
+  display: none;
+  float: right;
+  max-width: 70px;
+  -webkit-filter: grayscale(100%); /* Chrome, Safari, Opera */
+  filter: grayscale(80%);
+  transition: all .5s ease;
+}
+
+#logo {
+  width      : 70px;
+}
+
+#search {
+  overflow        : hidden;
+  position        : fixed;
+  background-color: #fff;
+  width           : 100%;
+  z-index         : 1002;
+  top             : 0;
+  box-shadow      :  0 -5px 5px -5px #333, 0 5px 5px -5px #333;
 }
 
 .fa-instagram {
@@ -573,22 +577,20 @@ footer span {
 .key {
   transition: all 0.25s ease;
 }
-@media (max-width: 359px) {
-  #currentSong {
-    max-width: 170px;
-  }
+@media (max-width: 420px) {
+  #results { display: none; }
 }
 
 /* Results */
 @media (max-width: 320px) {
-  #results {
-    max-width: 29%;
+  #main-search {
+    width: 78%;
   }
 }
 
 @media (min-width: 321px) and (max-width: 365px) {
-  #results {
-    max-width: 32%;
+  #main-search {
+    width: 80.5%;
   }
 }
 
@@ -596,10 +598,6 @@ footer span {
   .container-main {
     padding-left : 0;
     padding-right: 0;
-  }
-
-  #currentSong {
-    max-width: 295px;
   }
 
   .gallery-item {
@@ -627,14 +625,32 @@ footer span {
   }
 }
 
-@media (max-width: 980px) {
+@media (min-width: 725px) {
+  #main-search {
+    font-size: 1.5em;
+    width: calc(55% - 20px);
+    margin-top: .4375rem;
+  }
+
+  #rsltimg {
+    display: inline-block;
+  }
+}
+
+@media (max-width: 1023px) {
   #search {
     left: 0;
   }
 }
 
-@media (min-width: 1000px) {
-  #search label {
-    display: inline-block;
+@media (min-width: 1024px) {
+  #search {
+    top      : 5px;
+    max-width: 980px;
+  }
+  #song-container {
+    left     : 50%;
+    transform: translate(-50%, 0);
+    max-width: 928px;
   }
 }
