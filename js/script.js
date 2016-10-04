@@ -14,7 +14,6 @@ var currentSrc,
     lightboxIsActive = false,
     prevClicked = false,
     nextClicked = false,
-    animLength = 350,
     recentlyPlayed = [];
 
 // Load YouTube IFrame Player API
@@ -148,7 +147,7 @@ $toggle.on("click", function() {
                 bottom: 0
             },
             o: {
-                duration: animLength
+                duration: 350
             }
         }, {
             e: $songBar.children('span'),
@@ -156,7 +155,7 @@ $toggle.on("click", function() {
                 opacity: 1
             },
             o: {
-                duration: animLength,
+                duration: 350,
                 display: 'block',
                 sequenceQueue: false
             }
@@ -166,20 +165,20 @@ $toggle.on("click", function() {
                 opacity: 1
             },
             o: {
-                duration: animLength - 100,
+                duration: 100,
                 display: 'block',
                 sequenceQueue: false
             }
         }, {
             e: $toggle,
             p: {
-                rotateZ: 270,
+                rotateZ: 0,
                 scaleX: 1,
                 scaleY: 1,
                 top: 0
             },
             o: {
-                duration: animLength - 100,
+                duration: 100,
                 sequenceQueue: false
             }
         }],
@@ -190,7 +189,7 @@ $toggle.on("click", function() {
                 bottom: -3
             },
             o: {
-                duration: animLength
+                duration: 150
             }
         }, {
             e: $songBar.children('span'),
@@ -198,7 +197,7 @@ $toggle.on("click", function() {
                 opacity: 0
             },
             o: {
-                duration: animLength,
+                duration: 150,
                 display: 'none',
                 sequenceQueue: false
             }
@@ -208,14 +207,14 @@ $toggle.on("click", function() {
                 opacity: 0
             },
             o: {
-                duration: animLength - 100,
+                duration: 100,
                 display: 'none',
                 sequenceQueue: false
             }
         }, {
             e: $toggle,
             p: {
-                rotateZ: 90,
+                rotateZ: 180,
                 scaleX: 2,
                 scaleY: 2,
                 top: -40
