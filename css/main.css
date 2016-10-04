@@ -576,6 +576,19 @@ footer span {
     max-width: 170px;
   }
 }
+
+@media (max-width: 320px) {
+  #results {
+    max-width: 29%;
+  }
+}
+
+@media (min-width: 321px) and (max-width: 365px) {
+  #results {
+    max-width: 32%;
+  }
+}
+
 @media (min-width: 457px) {
   .container-main {
     padding-left : 0;
