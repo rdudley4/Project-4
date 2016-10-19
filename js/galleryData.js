@@ -97,7 +97,7 @@ var galleryDB = [
   },
   {
     type: 'yt',
-    videoID: 'o9C1SmYGqUM', // the passion hifi
+    videoID: 'V1pgSY48mgE', // Chrono Trigger - 600 AD Piano Solo HD
     isMatched: false,
   },
   {
@@ -107,12 +107,12 @@ var galleryDB = [
   },
   {
     type: 'yt',
-    videoID: '8MWBWrqaNdQ', // otis redding
+    videoID: 'NjzRYp1J19k', // Euphoria
     isMatched: false,
   },
   {
     type: 'yt',
-    videoID: 'TS9_ipu9GKw', // ccr
+    videoID: 'YUOYZbDhfos', // KH Cover
     isMatched: false,
   }
 ];

@@ -1,12 +1,16 @@
 # Project-4
-Project #4 : Photo Gallery (WIP)
+Project #4 : Photo Gallery
 
-TODO
------------------
-1. Implement filtering.
-2. Update page styling while still adhering to project specs.
-3. Implement full-screen lightbox functionality.
-4. (Maybe) Add lightbox circles per gallery-item for dots-like nav.
-5. (Maybe) Add gallery-item hover effect, perhaps a semi-transparent div with some imagery and text?
+This is an image gallery for the Treehouse Front-End Web Degree program.
 
-Live Preview: rdudley4.github.io/Project-4
+Hotkey Information
+==================
+`   : Toggle 'Now Playing' bar.
+←   : Move to previous image (While lightbox is active.)
+→   : Move to next image (While lightbox is active.)
+i   : Toggle hotkey information (While lightbox is active.)
+esc : Close lightbox.
+
+Live Preview
+==================
+https://rdudley4.github.io/Project-4
