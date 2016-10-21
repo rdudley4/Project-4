@@ -97,7 +97,7 @@ var galleryDB = [
   },
   {
     type: 'yt',
-    videoID: 'V1pgSY48mgE', // Chrono Trigger - 600 AD Piano Solo HD
+    videoID: 'hGksZyZ6JKM', // Chrono Trigger - To Far Away Times
     isMatched: false,
   },
   {

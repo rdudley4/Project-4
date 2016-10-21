@@ -194,6 +194,10 @@ iframe.gallery-item {
   outline: 1px solid #777;
 }
 
+iframe.gallery-item:hover {
+  outline: 1px solid #cc181e;
+}
+
 .gallery-item div {
   position          : absolute;
   top               : 0;
@@ -377,14 +381,14 @@ iframe.gallery-item {
 
 #hotkey-info {
   max-width  : 60%;
-  margin-top : -53px;
+  margin-top : -49px;
   font-size  : 0.75em;
   font-family: 'Nunito', sans-serif;
   visibility : hidden;
 }
 
 #help {
-  max-width  : 201px;
+  max-width  : 203px;
   padding    : 7px;
   margin     : 10px auto;
   background : #333;
@@ -397,14 +401,9 @@ iframe.gallery-item {
 .key {
   display         : inline-block;
   width           : 48px;
-  line-height     : 36px;
   background-color: #333;
   border          : 1px solid #444;
   outline         : 1px solid #000;
-}
-
-.key:nth-of-type(odd) {
-  margin-right: -1px;
 }
 
 #help:hover,
@@ -542,6 +541,14 @@ footer span {
   max-width: 80px;
 }
 
+.social {
+  margin: 5px 5px 0;
+}
+
+.fa-google-plus { color: #d34836; }
+.fa-twitter     { color: #00aced; }
+.fa-facebook    { color: #3b5998; }
+
 /* Media Queries
   ========================================================================== */
 
@@ -557,11 +564,13 @@ footer span {
     width: 78%;
   }
 }
+
 @media (min-width: 321px) and (max-width: 365px) {
   #main-search {
     width: 80.5%;
   }
 }
+
 @media (min-width: 457px) {
   .container-main {
     padding-left : 0;
@@ -587,17 +596,20 @@ footer span {
     padding: 5px 10px;
   }
 }
+
 @media (min-width: 568px) {
   /* Increase max-width for our song title on landscape and larger screens. */
   #currentSong {
     max-width: 350px;
   }
 }
+
 @media (min-width: 600px) {
   #controls {
     width: 60%;
   }
 }
+
 @media (min-width: 725px) {
   #main-search {
     font-size : 1.5em;
@@ -609,11 +621,13 @@ footer span {
     display: inline-block;
   }
 }
+
 @media (max-width: 1023px) {
   #search {
     left: 0;
   }
 }
+
 @media (min-width: 1024px) {
   #search {
     top      : 5px;

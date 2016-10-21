@@ -15,7 +15,6 @@ var player,
     prevClicked = false,
     nextClicked = false,
     scrollTarget = 50,
-    timeout = null,
     recentlyPlayed = [];
 
 // Load YouTube IFrame Player API
@@ -58,7 +57,6 @@ function onYouTubeIframeAPIReady() {
     });
 }
 
-
 function updatePlayerReference(e) {
     currentVideo = e.target;
     videoTitle = currentVideo.getVideoData().title;
@@ -66,7 +64,7 @@ function updatePlayerReference(e) {
 }
 
 function onPlayerReady(event) {
-    // Grab video title from YT and set this to the corresponding object title in imgData.js this is so we don't have to set it manually, and we can still search based off video title.
+    // Grab video title from YT and set this to the corresponding object's title key in imgData.js. This is so we don't have to set it manually, and we can still search based off video title.
     updatePlayerReference(event);
 
     for (var i = 0; i < galleryDB.length; i++) {
@@ -77,44 +75,48 @@ function onPlayerReady(event) {
 }
 
 function onPlayerStateChange(event) {
-    var showPauseButton = [{
-            e: $('#play'),
-            p: {
-                opacity: 0
-            },
-            o: {
-                duration: 100,
-                visibility: 'hidden'
+    var showPauseButton = [
+            {
+                e: $('#play'),
+                p: {
+                    opacity: 0
+                },
+                o: {
+                    duration: 100,
+                    visibility: 'hidden'
+                }
+            }, {
+                e: $('#pause'),
+                p: {
+                    opacity: 1
+                },
+                o: {
+                    duration: 100,
+                    visibility: 'visible'
+                }
             }
-        }, {
-            e: $('#pause'),
-            p: {
-                opacity: 1
-            },
-            o: {
-                duration: 100,
-                visibility: 'visible'
+        ],
+        showPlayButton = [
+            {
+                e: $('#pause'),
+                p: {
+                    opacity: 0
+                },
+                o: {
+                    duration: 100,
+                    visibility: 'hidden'
+                }
+            }, {
+                e: $('#play'),
+                p: {
+                    opacity: 1
+                },
+                o: {
+                    duration: 100,
+                    visibility: 'visible'
+                }
             }
-        }],
-        showPlayButton = [{
-            e: $('#pause'),
-            p: {
-                opacity: 0
-            },
-            o: {
-                duration: 100,
-                visibility: 'hidden'
-            }
-        }, {
-            e: $('#play'),
-            p: {
-                opacity: 1
-            },
-            o: {
-                duration: 100,
-                visibility: 'visible'
-            }
-        }];
+        ];
 
     if (event.data == YT.PlayerState.PLAYING) {
         updatePlayerReference(event);
@@ -123,6 +125,7 @@ function onPlayerStateChange(event) {
         $('#currentSong').text(videoTitle);
         $.Velocity.RunSequence(showPauseButton);
 
+        /* Add currentVideo object to the recentlyPlayed array. We only want to store the current and previous video, so if the array is longer than 2 objects, remove the last object in the array. */
         recentlyPlayed.unshift(currentVideo);
         if (recentlyPlayed.length > 2) {
             recentlyPlayed.pop();
@@ -133,6 +136,10 @@ function onPlayerStateChange(event) {
         }
     }
 
+    /* Check if our recentlyPlayed array currently holds two player objects, if so..
+          1. Check if both are currently playing.
+          2. Check if both have the same video_id
+          3. If video_id's are not the same, pause the last (previous) video. */
     if (recentlyPlayed.length === 2) {
         if (recentlyPlayed[0].getPlayerState() === 1 && recentlyPlayed[1].getPlayerState() === 1 && recentlyPlayed[0].getVideoData().video_id != recentlyPlayed[1].getVideoData().video_id) {
             recentlyPlayed[1].pauseVideo();
@@ -142,90 +149,94 @@ function onPlayerStateChange(event) {
 
 // Minimize Currently Playing Bar
 $toggle.on("click", function() {
-    var showContolBar = [{
-            e: $songBar,
-            p: {
-                height: 48,
-                bottom: 0
-            },
-            o: {
-                duration: 350
+    var showContolBar = [
+            {
+                e: $songBar,
+                p: {
+                    height: 48,
+                    bottom: 0
+                },
+                o: {
+                    duration: 350
+                }
+            }, {
+                e: $songBar.children('span'),
+                p: {
+                    opacity: 1
+                },
+                o: {
+                    duration: 350,
+                    display: 'block',
+                    sequenceQueue: false
+                }
+            }, {
+                e: $('#replay'),
+                p: {
+                    opacity: 1
+                },
+                o: {
+                    duration: 100,
+                    display: 'block',
+                    sequenceQueue: false
+                }
+            }, {
+                e: $toggle,
+                p: {
+                    rotateZ: 0,
+                    scaleX: 1,
+                    scaleY: 1,
+                    top: 0
+                },
+                o: {
+                    duration: 100,
+                    sequenceQueue: false
+                }
             }
-        }, {
-            e: $songBar.children('span'),
-            p: {
-                opacity: 1
-            },
-            o: {
-                duration: 350,
-                display: 'block',
-                sequenceQueue: false
+        ],
+        hideControlBar = [
+            {
+                e: $songBar,
+                p: {
+                    height: 0,
+                    bottom: -3
+                },
+                o: {
+                    duration: 150
+                }
+            }, {
+                e: $songBar.children('span'),
+                p: {
+                    opacity: 0
+                },
+                o: {
+                    duration: 150,
+                    display: 'none',
+                    sequenceQueue: false
+                }
+            }, {
+                e: $('#replay'),
+                p: {
+                    opacity: 0
+                },
+                o: {
+                    duration: 100,
+                    display: 'none',
+                    sequenceQueue: false
+                }
+            }, {
+                e: $toggle,
+                p: {
+                    rotateZ: 180,
+                    scaleX: 2,
+                    scaleY: 2,
+                    top: -40
+                },
+                o: {
+                    duration: 100,
+                    sequenceQueue: false
+                }
             }
-        }, {
-            e: $('#replay'),
-            p: {
-                opacity: 1
-            },
-            o: {
-                duration: 100,
-                display: 'block',
-                sequenceQueue: false
-            }
-        }, {
-            e: $toggle,
-            p: {
-                rotateZ: 0,
-                scaleX: 1,
-                scaleY: 1,
-                top: 0
-            },
-            o: {
-                duration: 100,
-                sequenceQueue: false
-            }
-        }],
-        hideControlBar = [{
-            e: $songBar,
-            p: {
-                height: 0,
-                bottom: -3
-            },
-            o: {
-                duration: 150
-            }
-        }, {
-            e: $songBar.children('span'),
-            p: {
-                opacity: 0
-            },
-            o: {
-                duration: 150,
-                display: 'none',
-                sequenceQueue: false
-            }
-        }, {
-            e: $('#replay'),
-            p: {
-                opacity: 0
-            },
-            o: {
-                duration: 100,
-                display: 'none',
-                sequenceQueue: false
-            }
-        }, {
-            e: $toggle,
-            p: {
-                rotateZ: 180,
-                scaleX: 2,
-                scaleY: 2,
-                top: -40
-            },
-            o: {
-                duration: 100,
-                sequenceQueue: false
-            }
-        }];
+        ];
 
     if (controlBarExtended) {
         $.Velocity.RunSequence(hideControlBar);
@@ -277,12 +288,11 @@ function assembleImage(imageObject) {
 /* Loop through our galleryDB array and..
     1. Detect if previous or next is clicked.
     2. If previous, get src value for previous object. If next, get src value of the next object.
-      2a. If we hit previous & we are on first image, set src to the value of the previous index src.
+      2a. If we hit previous & we are on first image, set src to the value of the last index src.
       2b. If we hit next & we are on the last image, set src to the value of the first index src.
     3. Check our currentSrc against the current index src value until we get a match.
     4. Return the value of currentSrc */
 
-// TODO: Fix the logic here to work with YT Videos.
 function nextImage() {
     for (i = 0; i < galleryDB.length; i++) {
         var firstImage = galleryDB[0].src,
@@ -309,10 +319,11 @@ function nextImage() {
     }
 }
 
+// Function for updating the currentSrc using nextImage() and animating the transition between images in the lightbox.
 function updateImage() {
     currentSrc = nextImage();
     $lbImage.velocity({
-        opacity: 0,
+        opacity: 0
     }, 150, function() {
         $lbImage.velocity({
             opacity: 1
@@ -331,6 +342,7 @@ function updateDescription() {
 function filterResults(index) {
     var galleryItem = $('#item' + (index + 1));
 
+    // If the index isMatched, return to default values.
     if (galleryDB[index].isMatched) {
         galleryItem.velocity({
             bottom: 0
@@ -339,6 +351,7 @@ function filterResults(index) {
             display: "inline-block"
         });
     } else {
+      // If the index is not matched, slide them downwards and hide the element.
         galleryItem.velocity({
             bottom: -204
         }, {
@@ -375,7 +388,6 @@ $(document).ready(function() {
               3. When match is found, set isMatched = true. Else set it to false.
           d. Call filterResults if search field contains input, else call resetFilter. */
 
-
     $mainSearch.on('keyup', function() {
         var userInput = $mainSearch.val().toLowerCase(),
             results = 0;
@@ -396,7 +408,7 @@ $(document).ready(function() {
                 if ($('#results').css('visibility') === 'hidden') {
                     // This only occurs if the user is searching by id.
                     $('#results').velocity({
-                        opacity: 1,
+                        opacity: 1
                     }, {
                         visibility: 'visible',
                         duration: 250
@@ -405,7 +417,7 @@ $(document).ready(function() {
                 $('#results').text('Found it!');
             } else {
                 $('#results').text(results + ' results found.').velocity({
-                    opacity: 1,
+                    opacity: 1
                 }, {
                     visibility: 'visible',
                     duration: 250
@@ -416,7 +428,7 @@ $(document).ready(function() {
             resetFilter();
             results = 0;
             $('#results').velocity({
-                opacity: 0,
+                opacity: 0
             }, {
                 visibility: 'hidden',
                 duration: 250
@@ -494,14 +506,14 @@ $(document).ready(function() {
     $('#help').on('click', function() {
         if ($('#hotkey-info').css('visibility') === 'visible') {
             $('#hotkey-info').velocity({
-                marginTop: -53
+                marginTop: -49
             }, {
                 duration: 350,
                 visibility: "hidden"
             });
         } else {
             $('#hotkey-info').velocity({
-                marginTop: 4,
+                marginTop: 4
             }, {
                 duration: 350,
                 visibility: "visible"
