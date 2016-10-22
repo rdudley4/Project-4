@@ -288,7 +288,6 @@ iframe.gallery-item:hover {
 
 .selected {
   width        : 100%;
-  max-width    : 1100px;
   margin-bottom: 1px;
   visibility   : visible;
 }
@@ -345,7 +344,8 @@ iframe.gallery-item:hover {
 }
 
 #close,
-#download,
+#maximize,
+#minimize,
 #next,
 #prev {
   position   : absolute;
@@ -371,13 +371,15 @@ iframe.gallery-item:hover {
   box-shadow      : none;
 }
 
+#minimize,
+#maximize { left : 33.3333%; }
+#close    { right: 33.3333%; }
 #prev     { left : 1px; }
 #next     { right: 1px; }
-#close    { right: 33.3333%; }
-#download { left : 33.3333%; }
 
+#maximize:hover,
+#minimize:hover { color: #9575cd; }
 #close:hover    { color: #ef5350; }
-#download:hover { color: #9575cd; }
 
 #hotkey-info {
   max-width  : 60%;
@@ -406,6 +408,11 @@ iframe.gallery-item:hover {
   outline         : 1px solid #000;
 }
 
+#minimize {
+  display: none;
+  opacity: 0;
+}
+
 #help:hover,
 .key:hover {
   color           : #fff;
@@ -420,7 +427,8 @@ iframe.gallery-item:hover {
 }
 
 #close,
-#download,
+#maximize,
+#minimize,
 #help,
 #next,
 #prev,

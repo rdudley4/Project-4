@@ -7,14 +7,15 @@ var player,
     $mainSearch = $('#main-search'),
     $songBar = $('#song-container'),
     $lightbox = $('#lightbox'),
+    $lbContainer = $('.lightbox-container'),
     $lbImage = $('.selected'),
     $controls = $('#controls'),
     $toggle = $('#toggle'),
     controlBarExtended = true,
     lightboxIsActive = false,
+    isMaximized = false,
     prevClicked = false,
     nextClicked = false,
-    scrollTarget = 50,
     recentlyPlayed = [];
 
 // Load YouTube IFrame Player API
@@ -160,26 +161,6 @@ $toggle.on("click", function() {
                     duration: 350
                 }
             }, {
-                e: $songBar.children('span'),
-                p: {
-                    opacity: 1
-                },
-                o: {
-                    duration: 350,
-                    display: 'block',
-                    sequenceQueue: false
-                }
-            }, {
-                e: $('#replay'),
-                p: {
-                    opacity: 1
-                },
-                o: {
-                    duration: 100,
-                    display: 'block',
-                    sequenceQueue: false
-                }
-            }, {
                 e: $toggle,
                 p: {
                     rotateZ: 0,
@@ -202,26 +183,6 @@ $toggle.on("click", function() {
                 },
                 o: {
                     duration: 150
-                }
-            }, {
-                e: $songBar.children('span'),
-                p: {
-                    opacity: 0
-                },
-                o: {
-                    duration: 150,
-                    display: 'none',
-                    sequenceQueue: false
-                }
-            }, {
-                e: $('#replay'),
-                p: {
-                    opacity: 0
-                },
-                o: {
-                    duration: 100,
-                    display: 'none',
-                    sequenceQueue: false
                 }
             }, {
                 e: $toggle,
@@ -249,7 +210,7 @@ $toggle.on("click", function() {
     }
 });
 
-/* When an image object is passed into the function..
+/* When an galleryObject object is passed into the function..
     1. Create a div to hold the image and title
         1a. Create a span for the title
     2. Get title from the objects title key
@@ -257,31 +218,31 @@ $toggle.on("click", function() {
         2b. Get the title text and set it to our image-title text.
     3. Append completed card to the page. */
 
-function assembleImage(imageObject) {
+function assembleImage(galleryObject) {
     var $galleryItem = $('<div class="gallery-item"></div>');
 
-    if (imageObject.type === 'img') {
+    if (galleryObject.type === 'img') {
         var $top = $('<div class="layer-top"></div>'),
             $bottom = $('<div class="layer-bottom"></div>'),
-            $thumbnail = $('<img src="' + imageObject.thumbnail + '">'),
-            $link = $('<a href="' + imageObject.src + '"></a>'),
+            $thumbnail = $('<img src="' + galleryObject.thumbnail + '">'),
+            $link = $('<a href="' + galleryObject.src + '"></a>'),
             $details = $('<div class="details"></div>'),
             $title = $('<span class="title"></span>'),
             $icon = $('<i class="fa fa-expand fa-3x" aria-hidden="true"></i>'),
-            $resolution = $('<span class="resolution">' + imageObject.resolution + '</span>'),
-            $id = $('<span class="image-id">ID - ' + imageObject.id + '</span>');
+            $resolution = $('<span class="resolution">' + galleryObject.resolution + '</span>'),
+            $id = $('<span class="image-id">ID - ' + galleryObject.id + '</span>');
 
         // Populate front and back of card
         $top.append($thumbnail);
-        $title.append(imageObject.caption);
+        $title.append(galleryObject.caption);
         $details.append($icon, $title, $resolution, $id);
         $link.append($details);
         $bottom.append($link);
         $galleryItem.append($top, $bottom);
-    } else if (imageObject.type === 'yt') {
+    } else if (galleryObject.type === 'yt') {
         console.log('Video stuff fired.');
     }
-    $galleryItem.attr('id', 'item' + imageObject.id);
+    $galleryItem.attr('id', 'item' + galleryObject.id);
     $('#gallery').append($galleryItem);
 }
 
@@ -351,7 +312,7 @@ function filterResults(index) {
             display: "inline-block"
         });
     } else {
-      // If the index is not matched, slide them downwards and hide the element.
+        // If the index is not matched, slide them downwards and hide the element.
         galleryItem.velocity({
             bottom: -204
         }, {
@@ -479,9 +440,79 @@ $(document).ready(function() {
         console.log('Moving to next image in series: ' + currentSrc);
     });
 
-    // Download
-    $controls.children('#download').on('click', function() {
-        console.log('Download trigger has fired.');
+    // Maximize
+    $controls.children('#maximize').on('click', function() {
+        var $windowWidth = $(window).width();
+        var maximizeLightbox = [
+            {
+                e: $lbContainer,
+                p: {
+                    maxWidth: $windowWidth
+                },
+                o: {
+                    duration: 500
+                }
+            }, {
+                e: $('#maximize'),
+                p: {
+                    opacity: 0
+                },
+                o: {
+                    duration: 250,
+                    display: 'none',
+                    sequenceQueue: false
+                }
+            }, {
+                e: $('#minimize'),
+                p: {
+                    opacity: 1
+                },
+                o: {
+                    duration: 250,
+                    display: 'inline-block',
+                    sequenceQueue: false
+                }
+            }
+        ];
+        $.Velocity.RunSequence(maximizeLightbox);
+        isMaximized = true;
+    });
+
+    // Minimize
+    $controls.children('#minimize').on('click', function() {
+        var minimizeLightbox = [
+            {
+                e: $lbContainer,
+                p: {
+                    maxWidth: 1000
+                },
+                o: {
+                    duration: 500
+                }
+            }, {
+                e: $('#minimize'),
+                p: {
+                    opacity: 0
+                },
+                o: {
+                    duration: 250,
+                    display: 'none',
+                    sequenceQueue: false
+                }
+            }, {
+                e: $('#maximize'),
+                p: {
+                    opacity: 1
+                },
+                o: {
+                    duration: 250,
+                    display: 'inline-block',
+                    sequenceQueue: false
+                }
+            }
+        ];
+        $.Velocity.RunSequence(minimizeLightbox);
+        isMaximized = false;
     });
 
     // Close
@@ -546,8 +577,12 @@ $(document).ready(function() {
                 case 39: // Right Arrow
                     $controls.children('#next').trigger('click');
                     break;
-                case 73: // 'i'
-                    $('#help').trigger('click');
+                case 77: // 'm'
+                    if (isMaximized) {
+                        $controls.children('#minimize').trigger('click');
+                    } else {
+                        $controls.children('#maximize').trigger('click');
+                    }
                     break;
             }
         } else {
