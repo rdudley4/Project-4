@@ -19,7 +19,7 @@ var galleryDB = [
     type: 'img',
     src: 'img/03.jpg',
     thumbnail: 'img/Thumbnails/03.jpg',
-    caption: 'Green Stuff',
+    caption: 'The Forest',
     resolution: '1920x1200',
     isMatched: false,
   },
@@ -43,7 +43,7 @@ var galleryDB = [
     type: 'img',
     src: 'img/06.jpg',
     thumbnail: 'img/Thumbnails/06.jpg',
-    caption: 'Interesting shrubs',
+    caption: 'Shrubs and Trees',
     resolution: '1920x1200',
     isMatched: false,
   },
@@ -83,7 +83,7 @@ var galleryDB = [
     type: 'img',
     src: 'img/11.jpg',
     thumbnail: 'img/Thumbnails/11.jpg',
-    caption: 'Eye from the Sky',
+    caption: 'Eye in the Sky',
     resolution: '1920x1200',
     isMatched: false,
   },
@@ -107,7 +107,7 @@ var galleryDB = [
   },
   {
     type: 'yt',
-    videoID: 'NjzRYp1J19k', // Euphoria
+    videoID: 'cQywZYoGB1g', // Jimmy Ruffin
     isMatched: false,
   },
   {

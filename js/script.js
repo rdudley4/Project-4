@@ -327,6 +327,14 @@ function resetFilter() {
         galleryDB[i].isMatched = true;
         filterResults(i);
     }
+    results = 0;
+    $('#rsltimg').css("filter", "grayscale(80%)");
+    $('#results').velocity({
+        opacity: 0
+    }, {
+        visibility: 'hidden',
+        duration: 250
+    });
 }
 
 $(document).ready(function() {
@@ -363,38 +371,30 @@ $(document).ready(function() {
                 }
                 filterResults(i);
             }
+
             if (results === 0) {
                 $('#results').text('No results found.');
+                $('#rsltimg').css("filter", "grayscale(80%)");
             } else if (results === 1) {
-                if ($('#results').css('visibility') === 'hidden') {
-                    // This only occurs if the user is searching by id.
-                    $('#results').velocity({
-                        opacity: 1
-                    }, {
-                        visibility: 'visible',
-                        duration: 250
-                    });
-                }
                 $('#results').text('Found it!');
             } else {
-                $('#results').text(results + ' results found.').velocity({
+                $('#results').text(results + ' results found.');
+            }
+
+            if ( results >= 1 ) {
+                $('#rsltimg').css("filter", "grayscale(0)");
+            }
+
+            if ($('#results').css('visibility') === 'hidden') {
+                $('#results').velocity({
                     opacity: 1
                 }, {
                     visibility: 'visible',
                     duration: 250
                 });
             }
-            $('#rsltimg').css("filter", "grayscale(0)");
         } else {
             resetFilter();
-            results = 0;
-            $('#results').velocity({
-                opacity: 0
-            }, {
-                visibility: 'hidden',
-                duration: 250
-            });
-            $('#rsltimg').css("filter", "grayscale(80%)");
         }
     });
 
