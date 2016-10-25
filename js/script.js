@@ -237,7 +237,7 @@ function assembleImage(galleryObject) {
 
         // Populate front and back of card
         $top.append($thumbnail);
-        $title.append(galleryObject.caption);
+        $title.append(galleryObject.title);
         $details.append($icon, $title, $resolution, $id);
         $link.append($details);
         $bottom.append($link);
