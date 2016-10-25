@@ -75,6 +75,7 @@ function onPlayerReady(event) {
     }
 }
 
+
 function onPlayerStateChange(event) {
     var showPauseButton = [
             {
@@ -83,7 +84,7 @@ function onPlayerStateChange(event) {
                     opacity: 0
                 },
                 o: {
-                    duration: 100,
+                    duration: 50,
                     visibility: 'hidden'
                 }
             }, {
@@ -92,8 +93,9 @@ function onPlayerStateChange(event) {
                     opacity: 1
                 },
                 o: {
-                    duration: 100,
-                    visibility: 'visible'
+                    duration: 50,
+                    visibility: 'visible',
+                    sequenceQueue: false
                 }
             }
         ],
@@ -104,7 +106,7 @@ function onPlayerStateChange(event) {
                     opacity: 0
                 },
                 o: {
-                    duration: 100,
+                    duration: 50,
                     visibility: 'hidden'
                 }
             }, {
@@ -113,8 +115,9 @@ function onPlayerStateChange(event) {
                     opacity: 1
                 },
                 o: {
-                    duration: 100,
-                    visibility: 'visible'
+                    duration: 50,
+                    visibility: 'visible',
+                    sequenceQueue: false
                 }
             }
         ];
@@ -126,12 +129,12 @@ function onPlayerStateChange(event) {
         $('#currentSong').text(videoTitle);
         $.Velocity.RunSequence(showPauseButton);
 
-        /* Add currentVideo object to the recentlyPlayed array. We only want to store the current and previous video, so if the array is longer than 2 objects, remove the last object in the array. */
+        /* Add currentVideo object to start of the recentlyPlayed array. We only want to store the current and previous video, so if the array is longer than 2 objects, remove the last object in the array. */
         recentlyPlayed.unshift(currentVideo);
         if (recentlyPlayed.length > 2) {
             recentlyPlayed.pop();
         }
-    } else if (currentVideo != null) {
+    } else if (currentVideo !== null) {
         if (currentVideo.getPlayerState() === 2 || currentVideo.getPlayerState() === 0) {
             $.Velocity.RunSequence(showPlayButton);
         }
@@ -239,9 +242,8 @@ function assembleImage(galleryObject) {
         $link.append($details);
         $bottom.append($link);
         $galleryItem.append($top, $bottom);
-    } else if (galleryObject.type === 'yt') {
-        console.log('Video stuff fired.');
     }
+
     $galleryItem.attr('id', 'item' + galleryObject.id);
     $('#gallery').append($galleryItem);
 }
@@ -261,7 +263,6 @@ function nextImage() {
         if (prevClicked && currentSrc === galleryDB[i].src) {
             if (currentSrc === firstImage) {
                 currentSrc = lastImage;
-                console.log('First image detected, going to end of series.');
                 return currentSrc;
             } else {
                 currentSrc = galleryDB[(i - 1)].src;
@@ -270,7 +271,6 @@ function nextImage() {
         } else if (nextClicked && currentSrc === galleryDB[i].src) {
             if (currentSrc === lastImage) {
                 currentSrc = firstImage;
-                console.log('Last image detected, going to start of series.');
                 return currentSrc;
             } else {
                 currentSrc = galleryDB[(i + 1)].src;
@@ -395,7 +395,6 @@ $(document).ready(function() {
                 duration: 250
             });
             $('#rsltimg').css("filter", "grayscale(80%)");
-            console.log('Search filter has been reset.');
         }
     });
 
@@ -417,7 +416,6 @@ $(document).ready(function() {
             duration: 75,
             display: "block"
         });
-        console.log('Lightbox Activated');
     });
 
     // Lightbox control functions
@@ -428,7 +426,6 @@ $(document).ready(function() {
         nextClicked = false;
         updateImage();
         updateDescription();
-        console.log('Moving to previous image in series: ' + currentSrc);
     });
 
     // Next
@@ -437,7 +434,6 @@ $(document).ready(function() {
         nextClicked = true;
         updateImage();
         updateDescription();
-        console.log('Moving to next image in series: ' + currentSrc);
     });
 
     // Maximize
@@ -524,7 +520,6 @@ $(document).ready(function() {
             display: "none"
         });
         lightboxIsActive = false;
-        console.log('Lightbox Closed');
     });
 
     /* Info Help - When user clicks on 'Hotkey Info' bar [Toggle Effect]
@@ -569,7 +564,6 @@ $(document).ready(function() {
                         display: "none"
                     });
                     lightboxIsActive = false;
-                    console.log('Lightbox Closed.');
                     break;
                 case 37: // Left Arrow
                     $controls.children('#prev').trigger('click');
