@@ -52,8 +52,8 @@ function onYouTubeIframeAPIReady() {
         currentVideo.playVideo();
     });
 
-    var playButton = document.getElementById("replay");
-    playButton.addEventListener("click", function() {
+    var replayButton = document.getElementById("replay");
+    replayButton.addEventListener("click", function() {
         currentVideo.seekTo(0);
     });
 }
